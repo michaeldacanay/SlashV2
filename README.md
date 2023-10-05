@@ -1,4 +1,4 @@
-<p align="center"><img width="500" src="./assets/slash.png"></p> ,
+<p align="center"><img width="500" src="./assets/slash.png"></p> 
 
 ![GitHub](https://img.shields.io/github/license/Urvashi74/slash)
 ![github workflow](https://github.com/secheaper/cheaper/actions/workflows/python-app.yml/badge.svg)
