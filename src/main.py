@@ -67,6 +67,20 @@ async def read_root():
     response = RedirectResponse(url='/redoc')
     return response
 
+@app.get("/scrape")
+async def scrape():
+    '''This function will trigger the scraper that will add items to our databse
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    ----------
+    ideally, it will return something like "done"
+    '''
+    response = "done"
+    return response
 
 @app.get("/{site}/{item_name}", response_model=List[jsonScraps])
 async def search_items_API(
