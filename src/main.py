@@ -8,11 +8,16 @@ from fastapi.responses import RedirectResponse
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import csv
+import psycopg2
 
 # local imports
 import scraper.scraper as scr
 
-
+dbname = "quarkus"
+user = "quarkus"
+password = "quarkus"
+host = "localhost"
+port="5432"
 # response type define
 class jsonScraps(BaseModel):
     timestamp: str
@@ -68,7 +73,7 @@ async def read_root():
     return response
 
 @app.get("/scrape")
-async def scrape():
+def scrape():
     '''This function will trigger the scraper that will add items to our databse
 
     Parameters
@@ -79,11 +84,12 @@ async def scrape():
     ----------
     ideally, it will return something like "done"
     '''
+    search_items_API("az","laptops")
     response = "done"
     return response
 
-@app.get("/{site}/{item_name}", response_model=List[jsonScraps])
-async def search_items_API(
+# @app.get("/{site}/{item_name}", response_model=List[jsonScraps])
+def search_items_API(
     site: str,
     item_name: str,
     relevant: Optional[str] = None,
@@ -136,7 +142,20 @@ async def search_items_API(
 
     if not export and len(itemList) > 0:
         file.close()
-        return itemList
+        conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host,port=port)
+        cursor = conn.cursor()
+        # print(itemList)
+        insert_sql = """
+        INSERT INTO item (name, itemType, itemURl,store,price,discountAmount,discountPrice) VALUES (%(title)s,%(item_type)s, %(link)s, %(website)s,%(price)s,%(price)s,%(price)s);
+        """
+        for items in itemList: 
+            print(items)
+            items["title"] = items["title"][:200]
+            items["item_type"] = item_name
+            cursor.execute(insert_sql,items)
+        conn.commit()
+        cursor.close()
+        conn.close()
     elif len(itemList) > 0:
         # returning CSV
         with open('slash.csv', 'w', encoding='utf8', newline='') as f:
@@ -242,10 +261,8 @@ def getItemInfoByItemName(args):
     scrapers = []
     scrapers.append('amazon')
     scrapers.append('walmart')
-    scrapers.append('target')
     scrapers.append('costco')
     scrapers.append('bestbuy')
-    scrapers.append('ebay')
 
     # calling scraper.scrape to fetch results
     itemList = scr.scrape(args=args, scrapers=scrapers)
@@ -254,7 +271,7 @@ def getItemInfoByItemName(args):
 
 def getVarietyCountByWebsite(itemList):
     variety_count_dict = {
-        'amazon': 0, 'walmart': 0, 'target': 0, 'costco': 0, 'bestbuy': 0, 'ebay': 0
+        'amazon': 0, 'walmart': 0, 'costco': 0, 'bestbuy': 0
     }
 
     # iterate and parse the itemlist to create a dict of website vs count

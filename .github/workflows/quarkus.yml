@@ -1,0 +1,32 @@
+name: Basic build and test
+
+on: [push, pull_request]
+
+jobs:
+  jvm-build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java:
+          - '17'
+        project:
+          - backend
+          
+    name: "build-test-${{ matrix.project }}-${{ matrix.java }}"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Java ${{ matrix.java }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: temurin
+          cache: maven
+
+      - name: "build-test-jvm-${{ matrix.project }}-java-${{ matrix.java }}"
+        working-directory: ${{ matrix.project }}
+        run: |
+          ./mvnw -B clean verify \
+            -Dquarkus.http.host=0.0.0.0 \
+            -Dmaven.compiler.release=${{ matrix.java }} 
