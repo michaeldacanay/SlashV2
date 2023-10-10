@@ -27,6 +27,7 @@ public class ItemResource {
     }
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @Path("/hello")
     public String hello() {
         return "Hello from RESTEasy Reactive";
     }
