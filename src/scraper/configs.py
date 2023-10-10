@@ -7,6 +7,8 @@ from ebaysdk.finding import Connection
 from scraper.formattr import formatTitle
 
 # configs
+###############This will need to be edited to include the image, and other things
+###############
 WALMART = {
     'site': 'walmart',
     'url': 'https://www.walmart.com/search?q=',

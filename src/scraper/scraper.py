@@ -38,7 +38,7 @@ def httpsGet(URL):
         # TODO add logger
         return None
 
-
+#######This will need to be edited so the dictionary is in the correct format
 def search(query, config):
     """Scrape the given config for a specific item
 

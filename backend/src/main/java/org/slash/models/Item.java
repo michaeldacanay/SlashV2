@@ -1,7 +1,11 @@
 package org.slash.models;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
+
+import java.util.UUID;
+
+import static jakarta.persistence.GenerationType.SEQUENCE;
 
 
 /**
@@ -21,15 +25,19 @@ import jakarta.persistence.Id;
  */
 @Entity
 public class Item {
+//    @Id
+//    @GeneratedValue
+//    private Long id;
     @Id
-    @GeneratedValue
-    private Long id;
+    @Column(length = 512 )
     public String name;
     public String itemType;
+    @Column(length = 512 )
     public String itemURl;
-    public int price;
-    public int discountAmount;
-    public int discountPrice;
+    public String store;
+    public String price;
+    public String discountAmount;
+    public String discountPrice;
 
     public String getName() {
         return name;
@@ -55,27 +63,35 @@ public class Item {
         this.itemURl = itemURl;
     }
 
-    public int getPrice() {
+    public String getStore() {
+        return store;
+    }
+
+    public void setStore(String store) {
+        this.store = store;
+    }
+
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getDiscountAmount() {
+    public String getDiscountAmount() {
         return discountAmount;
     }
 
-    public void setDiscountAmount(int discountAmount) {
+    public void setDiscountAmount(String discountAmount) {
         this.discountAmount = discountAmount;
     }
 
-    public int getDiscountPrice() {
+    public String getDiscountPrice() {
         return discountPrice;
     }
 
-    public void setDiscountPrice(int discountPrice) {
+    public void setDiscountPrice(String discountPrice) {
         this.discountPrice = discountPrice;
     }
 }

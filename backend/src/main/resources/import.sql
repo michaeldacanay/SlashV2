@@ -1,11 +1,6 @@
 -- This file allow to write SQL commands that will be emitted in test and dev.
--- The commands are commented as their support depends of the database
--- insert into myentity (id, field) values(1, 'field-1');
--- insert into myentity (id, field) values(2, 'field-2');
--- insert into myentity (id, field) values(3, 'field-3');
--- alter sequence myentity_seq restart with 4;
 
-INSERT INTO item (id, name, itemType, itemURl,price,discountAmount,discountPrice) VALUES (1, 'Newest Dell Inspiron 3000 Laptop', 'laptop','url.com',100,50,50);
-INSERT INTO item (id, name, itemType, itemURl,price,discountAmount,discountPrice) VALUES (2, 'Newest Dell Inspiron 3000 Laptop', 'laptop','url.com',100,50,50);
-INSERT INTO item (id, name, itemType, itemURl,price,discountAmount,discountPrice) VALUES (3, 'Newest Dell Inspiron 3000 Laptop', 'laptop','url.com',100,50,50);
-INSERT INTO item (id, name, itemType, itemURl,price,discountAmount,discountPrice) VALUES (4, 'Newest Dell Inspiron 3000 Laptop', 'laptop','url.com',100,50,50);
+INSERT INTO item (name, itemType, itemURl,store,price,discountAmount,discountPrice) VALUES ('Newest Dell Inspiron 3000 Laptop', 'laptop','url.com','amazon','100','50','50');
+INSERT INTO item (name, itemType, itemURl,store,price,discountAmount,discountPrice) VALUES ('Newest Dell Inspiron 3000 Laptop1', 'laptop','url.com','amazon','100','50','50');
+--INSERT INTO item (id, name, itemType, itemURl,store,price,discountAmount,discountPrice) VALUES (gen_random_uuid(),'Newest Dell Inspiron 3000 Laptop', 'laptop','url.com','amazon','100','50','50');
+
