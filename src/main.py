@@ -261,10 +261,8 @@ def getItemInfoByItemName(args):
     scrapers = []
     scrapers.append('amazon')
     scrapers.append('walmart')
-    scrapers.append('target')
     scrapers.append('costco')
     scrapers.append('bestbuy')
-    scrapers.append('ebay')
 
     # calling scraper.scrape to fetch results
     itemList = scr.scrape(args=args, scrapers=scrapers)
@@ -273,7 +271,7 @@ def getItemInfoByItemName(args):
 
 def getVarietyCountByWebsite(itemList):
     variety_count_dict = {
-        'amazon': 0, 'walmart': 0, 'target': 0, 'costco': 0, 'bestbuy': 0, 'ebay': 0
+        'amazon': 0, 'walmart': 0, 'costco': 0, 'bestbuy': 0
     }
 
     # iterate and parse the itemlist to create a dict of website vs count
