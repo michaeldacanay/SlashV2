@@ -1,10 +1,18 @@
-# Getting Started with Create React App
+# Getting Started with the Slash Frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Before you start developing 
+
+you will need to add a .env.development.local with a value for `REACT_APP_API_URL`. The default should be : `REACT_APP_API_URL=http://localhost:8080/api/ ` 
+
+After doing that follow the next steps
 ## Available Scripts
 
 In the project directory, you can run:
+
+
 
 ### `npm start`
 
