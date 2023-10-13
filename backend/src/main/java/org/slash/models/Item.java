@@ -34,9 +34,10 @@ public class Item {
     public String itemType;
     @Column(length = 512 )
     public String itemURl;
+    @Column(length = 512 )
+    public String itemImageURl;
     public String store;
     public String price;
-    public String discountAmount;
     public String discountPrice;
 
     public String getName() {
@@ -63,6 +64,14 @@ public class Item {
         this.itemURl = itemURl;
     }
 
+    public String getItemImageURl() {
+        return itemImageURl;
+    }
+
+    public void setItemImageURl(String itemImageURl) {
+        this.itemImageURl = itemImageURl;
+    }
+
     public String getStore() {
         return store;
     }
@@ -77,14 +86,6 @@ public class Item {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(String discountAmount) {
-        this.discountAmount = discountAmount;
     }
 
     public String getDiscountPrice() {

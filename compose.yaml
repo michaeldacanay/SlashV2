@@ -2,6 +2,8 @@ services:
   scraper:
     build: 
       context: src
+    environment:
+      - DEPLOYMENT_ENV=compose
     ports:
       - 8000:8000
     networks:
@@ -15,14 +17,20 @@ services:
       context: backend
       dockerfile: src/main/docker/Dockerfile.jvm
     restart: always
+    depends_on:
+      - postgres
+      - scraper
+    ports:
+      - "8080:8080"
     networks:
       - react-quarkus
   postgres:
     image: postgres:14
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=quarkus
+      - POSTGRES_PASSWORD=quarkus
+      - POSTGRESQL_DATABASE=quarkus
     logging:
       options:
         max-size: 10m

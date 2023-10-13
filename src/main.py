@@ -9,14 +9,24 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import csv
 import psycopg2
+import os 
+from dotenv import load_dotenv
 
 # local imports
 import scraper.scraper as scr
 
+deployment_env = os.getenv('DEPLOYMENT_ENV')
+if deployment_env == 'production':
+    load_dotenv('.env.prod')
+elif deployment_env == 'compose':
+    load_dotenv('.env.compose')
+else:
+    load_dotenv('.env.dev')
+
 dbname = "quarkus"
 user = "quarkus"
 password = "quarkus"
-host = "localhost"
+host = os.getenv('DATABASE_HOST')
 port="5432"
 # response type define
 class jsonScraps(BaseModel):
@@ -146,7 +156,7 @@ def search_items_API(
         cursor = conn.cursor()
         # print(itemList)
         insert_sql = """
-        INSERT INTO item (name, itemType, itemURl,store,price,discountAmount,discountPrice) VALUES (%(title)s,%(item_type)s, %(link)s, %(website)s,%(price)s,%(price)s,%(price)s);
+        INSERT INTO item (name, itemType, itemURl,itemImageURl,store,price,discountPrice) VALUES (%(title)s,%(item_type)s, %(link)s,%(link)s, %(website)s,%(price)s,%(price)s);
         """
         for items in itemList: 
             print(items)
