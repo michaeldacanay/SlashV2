@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
+//example data: 
+// {
+//     "name": "HP Newest Flagship 15.6 HD Pavilion Lapt...",
+//     "itemType": "laptops",
+//     "itemURl": "www.amazon.com/sspa/click?ie=UTF8&spc=MTo1NjgzMDI2NzQ2MTcwNjUwOjE2OTcyMjM1MjI6c3BfYXRmOjMwMDA2MTE4NDAyMzQwMjo6MDo6&url=%2FHP-Flagship-Quad-Core-Conferencing-Accessory%2Fdp%2FB0CC2GD4D9%2Fref%3Dsr_1_1_sspa%3Fkeywords%3Dlaptops%26qid%3D1697223522%26sr%3D8-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGY%26psc%3D1",
+//     "itemImageURl": "www.amazon.com/sspa/click?ie=UTF8&spc=MTo1NjgzMDI2NzQ2MTcwNjUwOjE2OTcyMjM1MjI6c3BfYXRmOjMwMDA2MTE4NDAyMzQwMjo6MDo6&url=%2FHP-Flagship-Quad-Core-Conferencing-Accessory%2Fdp%2FB0CC2GD4D9%2Fref%3Dsr_1_1_sspa%3Fkeywords%3Dlaptops%26qid%3D1697223522%26sr%3D8-1-spons%26sp_csd%3Dd2lkZ2V0TmFtZT1zcF9hdGY%26psc%3D1",
+//     "store": "amazon",
+//     "price": "$469.00",
+//     "discountPrice": "$469.00"
+// }
 const DataDisplay = () => {
     const [data, setData] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -14,11 +25,20 @@ const DataDisplay = () => {
     return (
         <div>
             <h1>Data from the API:</h1>
-            <ul>
-                {data.map((item) => (
+
+            {data.map((item) => (
+                <ul>
                     <li key={item.id}>{item.name}</li>
-                ))}
-            </ul>
+                    <li>{item.itemType}</li>
+                    <li>{item.itemURl}</li>
+                    <li>{item.itemImageURl}</li>
+                    <li>{item.store}</li>
+                    <li>{item.price}</li>
+                    <li>{item.discountPrice}</li>
+                </ul>
+
+            ))}
+
         </div>
     );
 };
