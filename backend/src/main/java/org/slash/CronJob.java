@@ -17,18 +17,19 @@ public class CronJob {
     ItemRepository itemRepository;
     @RestClient
     PythonScraperClient pythonScraperClient;
+
     @Transactional
     public Long delete() {
         return itemRepository.deleteAll();
     }
 
-    @Scheduled(every = "30s")
+    // @Scheduled(every = "30s")
     void cronJob() {
         LOG.info("executing cronjob");
         LOG.info("Clearing database...");
         Long items = delete();
         LOG.info("Database cleared, seeding it now...");
-        if (pythonScraperClient.triggerScraper().getStatus() == 500){
+        if (pythonScraperClient.triggerScraper().getStatus() == 500) {
             Log.info("The scraper is failing");
         }
     }
