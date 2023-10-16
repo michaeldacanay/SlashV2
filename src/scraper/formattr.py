@@ -32,11 +32,13 @@ def formatResult(website, titles, prices, links,image_urls):
         link = links[0]['href']
 # changes for image url        
     if image_urls and website=='costco':
-         image_url = image_urls[0].get('src')
+        image_url = image_urls[0].get('src')
     if image_urls and website=='bestbuy':
-         image_url = image_urls[0]['src']
+        image_url = image_urls[0]['src']
     if image_urls and website=='walmart':
-         image_url = image_urls[0].get('src')
+        image_url = image_urls[0].get('src')
+    if image_urls and website=='amazon':
+        image_url = image_urls[0].get('src')
     product = {
         'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "title": formatTitle(title),
