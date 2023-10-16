@@ -94,7 +94,7 @@ def scrape():
     ----------
     ideally, it will return something like "done"
     '''
-    search_items_API("az","laptops")
+    search_items_API("all","mobiles")
     response = "done"
     return response
 
@@ -105,7 +105,7 @@ def search_items_API(
     relevant: Optional[str] = None,
     order_by_col: Optional[str] = None,
     reverse: Optional[bool] = False,
-    listLengthInd: Optional[int] = 10,
+    listLengthInd: Optional[int] = 50,
     export: Optional[bool] = False
 ):
     '''Wrapper API to fetch AMAZON, WALMART and TARGET query results
@@ -160,7 +160,7 @@ def search_items_API(
         """
         for items in itemList: 
             print(items)
-            items["title"] = items["title"][:200]
+            items["title"] = items["title"][:1024]
             items["item_type"] = item_name
             cursor.execute(insert_sql,items)
         conn.commit()
@@ -341,4 +341,4 @@ def getFloatPrice(price):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
