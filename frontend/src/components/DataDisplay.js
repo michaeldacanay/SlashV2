@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import 'primereact/resources/themes/bootstrap4-light-blue/theme.css'
+import 'primereact/resources/primereact.min.css'
 
 
 //example data: 
@@ -22,24 +26,36 @@ const DataDisplay = () => {
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
     console.log(data)
+    // return (
+    //     <div>
+    //         <h1>Data from the API:</h1>
+
+    //         {data.map((item) => (
+    //             <ul>
+    //                 <li key={item.id}>{item.name}</li>
+    //                 <li>{item.itemType}</li>
+    //                 <li>{item.itemURl}</li>
+    //                 <li>{item.itemImageURl}</li>
+    //                 <li>{item.store}</li>
+    //                 <li>{item.price}</li>
+    //                 <li>{item.discountPrice}</li>
+    //             </ul>
+
+    //         ))}
+
+    //     </div>
+    // );
     return (
-        <div>
-            <h1>Data from the API:</h1>
-
-            {data.map((item) => (
-                <ul>
-                    <li key={item.id}>{item.name}</li>
-                    <li>{item.itemType}</li>
-                    <li>{item.itemURl}</li>
-                    <li>{item.itemImageURl}</li>
-                    <li>{item.store}</li>
-                    <li>{item.price}</li>
-                    <li>{item.discountPrice}</li>
-                </ul>
-
-            ))}
-
-        </div>
+        <DataTable value={data}>
+            <Column field="id" header="ID" />
+            <Column field="name" header="Product-Name" />
+            <Column field="itemtype" header="Category" />
+            <Column field="itemurl" header="Link" />
+            <Column field="imgurl" header="Image" />
+            <Column field="store" header="Website" />
+            <Column field="price" header="Price" />
+            <Column field="dprice" header="Discounted Price" />
+        </DataTable>
     );
 };
 
