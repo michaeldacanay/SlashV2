@@ -18,5 +18,5 @@ export default async function getResults(site, item) {
   let url = "http://127.0.0.1:8080/api/all";
   let response = await axios.get(url);
   console.log("Results are " + JSON.stringify(response.data));
-  return JSON.stringify(response.data);
+  return JSON.stringify(data);
 }

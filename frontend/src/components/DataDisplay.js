@@ -45,16 +45,59 @@ const DataDisplay = () => {
 
     //     </div>
     // );
+    const header = (
+        <div>
+            <h1>Product List</h1>
+            <p>This is the header content</p>
+        </div>
+    );
+
+    const footer = (
+        <div>
+            <p>This is the footer content</p>
+        </div>
+    );
+
+    // const imageBodyTemplate = (rowData) => {
+    //     const imageUrl = rowData.itemImageURl;
+    //     <img src={imageUrl} alt={rowData.name} style={{ width: '100px', height: '100px' }} />
+    // };
+    const imageBodyTemplate = (rowData) => {
+        const imageUrl = rowData.itemImageURl;
+        return <img src={imageUrl} alt={rowData.name} style={{ width: '100px', height: '100px' }} />;
+    };
+
+    // const urlBodyTemplate = (rowData) => {
+    //     const linkurl = rowData.itemURl;
+    //     <p href={linkurl}>Link</p>
+    //     console.log(linkurl)
+    // };
+    const urlBodyTemplate = (rowData) => {
+        const linkUrl = "https://" + rowData.itemURl;
+        console.log(linkUrl)
+        return <a href={linkUrl} target="_blank" rel="noopener noreferrer" >Link</a>;
+
+    };
+
     return (
-        <DataTable value={data}>
-            <Column field="name" header="Product-Name" />
-            <Column field="itemType" header="Category" />
-            <Column field="itemURl" header="Link" />
-            <Column field="itemImageURl" header="Image" />
-            <Column field="store" header="Website" />
-            <Column field="price" header="Price" />
-            <Column field="discountPrice" header="Discounted Price" />
-        </DataTable>
+        <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+            <DataTable value={data}
+                removableSort
+                header={header}
+                footer={footer}
+                showGridlines
+                tableStyle={{ Width: '60rem' }}
+                paginator rows={10}
+                rowsPerPageOptions={[5, 10, 25, 50]}>
+                <Column field="name" header="Product-Name" sortable />
+                <Column field="itemType" header="Category" sortable />
+                <Column header="Image" body={imageBodyTemplate} />
+                <Column field="store" header="Website" sortable />
+                <Column field="price" header="Price" sortable />
+                <Column field="discountPrice" header="Discounted Price" sortable />
+                <Column header="Link" body={urlBodyTemplate} />
+            </DataTable>
+        </div>
     );
 };
 

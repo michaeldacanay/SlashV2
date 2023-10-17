@@ -32,3 +32,5 @@ all query:dell
 all query:mobiles
 all query:mobiles
 all query:mobiles
+all query:mobiles
+all query:mobiles
