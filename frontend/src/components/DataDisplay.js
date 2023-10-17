@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import 'primereact/resources/themes/bootstrap4-light-blue/theme.css'
+import 'primereact/resources/themes/lara-light-purple/theme.css'
 import 'primereact/resources/primereact.min.css'
 
 
@@ -47,14 +47,13 @@ const DataDisplay = () => {
     // );
     return (
         <DataTable value={data}>
-            <Column field="id" header="ID" />
             <Column field="name" header="Product-Name" />
-            <Column field="itemtype" header="Category" />
-            <Column field="itemurl" header="Link" />
-            <Column field="imgurl" header="Image" />
+            <Column field="itemType" header="Category" />
+            <Column field="itemURl" header="Link" />
+            <Column field="itemImageURl" header="Image" />
             <Column field="store" header="Website" />
             <Column field="price" header="Price" />
-            <Column field="dprice" header="Discounted Price" />
+            <Column field="discountPrice" header="Discounted Price" />
         </DataTable>
     );
 };
