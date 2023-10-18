@@ -22,8 +22,19 @@ public class ItemResource {
     }
     @GET
     @Path("/{itemtype}")
-    public List<Item> getByItem(@PathParam("itemtype") String itemType) {
+    public List<Item> getByItem(@PathParam("itemtype") String itemType ) {
         return itemRepository.list("itemType",itemType);
+    }
+    @GET
+    @Path("/{store}")
+    public List<Item> getByStore(@PathParam("store") String store) {
+        return itemRepository.list("store",store);
+    }
+    @GET
+    @Path("/{itemtype}/{store}")
+    public List<Item> getByItemAndStore(@PathParam("itemtype") String itemType, @PathParam("store") String store) {
+        return itemRepository.list("itemType = ?1 and store = ?2",itemType,store);
+
     }
     @GET
     @Produces(MediaType.TEXT_PLAIN)

@@ -28,15 +28,13 @@ public class Item {
 //    @Id
 //    @GeneratedValue
 //    private Long id;
-
-    
-    @Column(columnDefinition="text", length=10485760) //because was me giving error in the length of name 
+    @Id
+    @Column(length = 512 )
     public String name;
     public String itemType;
-    @Column(columnDefinition="text", length=10485760)
-    @Id           //because primary_key on name caused error it had mutiple same instance  
+    @Column(length = 512 )
     public String itemURl;
-    @Column (columnDefinition="text", length=10485760)
+    @Column(length = 512 )
     public String itemImageURl;
     public String store;
     public String price;

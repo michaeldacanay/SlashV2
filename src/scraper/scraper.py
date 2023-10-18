@@ -72,8 +72,7 @@ def search(query, config):
         title = res.select(config['title_indicator'])
         price = res.select(config['price_indicator'])
         link = res.select(config['link_indicator'])
-        image_urls = res.select(config['image_url_indicator'])
-        product = form.formatResult(config['site'], title, price, link,image_urls)
+        product = form.formatResult(config['site'], title, price, link)
         products.append(product)
     return products
 
@@ -107,10 +106,10 @@ def scrape(args, scrapers):
             local = search(query, WALMART)
         elif scraper == 'amazon':
             local = search(query, AMAZON)
-        # elif scraper == 'target':
-        #     local = scrape_target(query)
-        # elif scraper == 'ebay':
-        #     local = scrape_ebay(query)
+        elif scraper == 'target':
+            local = scrape_target(query)
+        elif scraper == 'ebay':
+            local = scrape_ebay(query)
         elif scraper == 'costco':
             local = search(query, COSTCO)
         elif scraper == 'bestbuy':
