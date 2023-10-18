@@ -21,7 +21,7 @@ public class ItemResource {
         return itemRepository.listAll();
     }
     @GET
-    @Path("/{itemtype}")
+    @Path("/item/{itemtype}")
     public List<Item> getByItem(@PathParam("itemtype") String itemType ) {
         return itemRepository.list("itemType",itemType);
     }
