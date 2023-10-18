@@ -11,10 +11,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routing></Routing>
-    // </BrowserRouter>
-    <DataDisplay></DataDisplay>
+    <BrowserRouter>
+      <Routing></Routing>
+    </BrowserRouter>
   );
 }
 
