@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "./HomePage";
-import SearchPage from "./SearchPage";
+import Search from "./SearchForm";
 import DataDisplay from "./DataDisplay";
 
 export const routes = [
@@ -12,7 +12,7 @@ export const routes = [
     {
         path: "/search",
         name: "Search",
-        element: <SearchPage />,
+        element: <Search />,
     },
     {
         path: "/data",
