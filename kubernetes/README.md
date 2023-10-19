@@ -33,3 +33,9 @@ Our routes are as follows:
 3. [The frontend](http://slash-frontend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/)
 
 If you get "Application" is not available, change the https to http. If that still doesn't work, then our trial may have run out for Openshift because we only get to host apps 12 hours at a time. We have a video [here]() to show our app on Kubernetes/Openshift and to walk through some of the components.
+
+### Openshift Showcase
+
+![Openshift Topology](assets/openshift-topology.png)
+
+Heres our application and some of the componenents on [Openshift](assets/openshift-kubernetes-walkthrough.mov)
