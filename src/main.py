@@ -11,6 +11,7 @@ import csv
 import psycopg2
 import os 
 from dotenv import load_dotenv
+from threading import Thread
 
 # local imports
 import scraper.scraper as scr
@@ -94,9 +95,12 @@ def scrape():
     ----------
     ideally, it will return something like "done"
     '''
-    search_items_API("all","laptops")
-    search_items_API("all","anime")
-    search_items_API("all","mobiles")
+    Thread(target=search_items_API,args=("all","laptops",)).start()
+    Thread(target=search_items_API,args=("all","anime",)).start()
+    Thread(target=search_items_API,args=("all","phones",)).start()
+    # search_items_API("all","laptops")
+    # search_items_API("all","anime")
+    # search_items_API("all","mobiles")
     response = "done"
     return response
 
@@ -149,7 +153,7 @@ def search_items_API(
 
     # calling scraper.scrape to fetch results
     itemList = scr.scrape(args=args, scrapers=scrapers)
-
+    print("working....")
     if not export and len(itemList) > 0:
         conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host,port=port)
         cursor = conn.cursor()

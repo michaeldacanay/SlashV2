@@ -28,6 +28,6 @@ public class StartupBean {
         if (pythonScraperClient.triggerScraper().getStatus() == 500) {
             Log.info("The scraper is failing");
         }
-        LOG.info("Seeding is done...");
+        LOG.info("Seeding is happening...");
     }
 }
