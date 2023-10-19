@@ -1,7 +1,7 @@
 import { InputGroup, FormControl, DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import React, { useState } from 'react'
 import './custom.css'
-import DataFetch from './DataFetch';
+import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
 
 function Search() {

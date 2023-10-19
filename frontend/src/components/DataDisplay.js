@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
+import { DataTable } from 'primereact/datatable/datatable.esm.js';
+import { Column } from 'primereact/column/column.esm.js';
 import 'primereact/resources/themes/saga-purple/theme.css'
 import 'primereact/resources/primereact.min.css'
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -9,7 +9,6 @@ import { Button } from 'react-bootstrap';
 function DataDisplay() {
     const location = useLocation();
     const data = location.state ? location.state.response : null;
-    console.log(data)
     const navigate = useNavigate();
     const HandleSubmission = async () => {
         try {
@@ -52,7 +51,6 @@ function DataDisplay() {
 
     const urlBodyTemplate = (rowData) => {
         const linkUrl = "https://" + rowData.itemURl;
-        console.log(linkUrl)
         return <a href={linkUrl} target="_blank" rel="noopener noreferrer" >Link</a>;
 
     };

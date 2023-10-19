@@ -1,7 +1,7 @@
 import React from "react";
-import HomePage from "./HomePage";
-import Search from "./SearchForm";
-import DataDisplay from "./DataDisplay";
+import HomePage from "./HomePage.js";
+import Search from "./SearchForm.js";
+import DataDisplay from "./DataDisplay.js";
 
 export const routes = [
     {

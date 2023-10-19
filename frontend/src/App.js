@@ -1,6 +1,6 @@
 import './App.css';
 import './components/custom.css'
-import Routing from './components/Routing';
+import Routing from './components/Routing.js';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
