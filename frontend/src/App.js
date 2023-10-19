@@ -1,12 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import DataDisplay from './components/DataDisplay';
+import './components/custom.css'
+import Routing from './components/Routing';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      {<DataDisplay />}
-    </div>
+    <BrowserRouter>
+      <Routing></Routing>
+    </BrowserRouter>
   );
 }
 

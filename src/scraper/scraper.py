@@ -72,7 +72,8 @@ def search(query, config):
         title = res.select(config['title_indicator'])
         price = res.select(config['price_indicator'])
         link = res.select(config['link_indicator'])
-        product = form.formatResult(config['site'], title, price, link)
+        image_urls = res.select(config['image_url_indicator'])
+        product = form.formatResult(config['site'], title, price, link,image_urls)
         products.append(product)
     return products
 
@@ -106,17 +107,17 @@ def scrape(args, scrapers):
             local = search(query, WALMART)
         elif scraper == 'amazon':
             local = search(query, AMAZON)
-        elif scraper == 'target':
-            local = scrape_target(query)
-        elif scraper == 'ebay':
-            local = scrape_ebay(query)
+        # elif scraper == 'target':
+        #     local = scrape_target(query)
+        # elif scraper == 'ebay':
+        #     local = scrape_ebay(query)
         elif scraper == 'costco':
             local = search(query, COSTCO)
         elif scraper == 'bestbuy':
             local = search(query, BESTBUY)
         else:
             continue
-        # TBD : move number of items fetched to global level ?
+
         for sort_by in args['sort']:
             local = form.sortList(local, sort_by, args['des'])[:args.get('num', len(local))]
         overall.extend(local)
