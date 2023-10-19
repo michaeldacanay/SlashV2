@@ -30,4 +30,4 @@ def test_formatResults():
     product = formatter.formatResult("example", titles, prices, links, image_urls)
     ans = {"title":"title", "price":"1099", "website":"example"}
 
-    assert product["title"] == ans["title"] and product["price"] == ans["price"] and product["website"] == ans["website"]
+    assert product["title"] == ans["title"] and str(product["price"]) == ans["price"] and product["website"] == ans["website"]
