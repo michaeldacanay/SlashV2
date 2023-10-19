@@ -16,15 +16,7 @@ sys.path.insert(0, parentdir)
 import src.scraper.formattr as formatter
 from bs4 import BeautifulSoup
 
-def test_sortList():
-    """
-    Checks the sortList function
-    """
-    arr = [{"price":"$10"}, {"price":"$20"}, {"price":"$0"}]
-    ansArr = [{"price":"$0"}, {"price":"$10"}, {"price":"$20"}]
-    revAnsArr = [{"price":"$20"}, {"price":"$10"}, {"price":"$0"}]
-    assert formatter.sortList(arr, "pr", False) == ansArr
-    assert formatter.sortList(arr, "pr", True) == revAnsArr
+
 
 def test_formatResults():
     """

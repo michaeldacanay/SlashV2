@@ -18,7 +18,8 @@ WALMART = {
     },
     'title_indicator': 'span.lh-title',
     'price_indicator': 'div.lh-copy',
-    'link_indicator': 'a'
+    'link_indicator': 'a',
+    'image_url_indicator': 'img',
 }
 
 AMAZON = {
@@ -31,7 +32,7 @@ AMAZON = {
     'title_indicator': 'h2 a span',
     'price_indicator': 'span.a-price span',
     'link_indicator': 'h2 a.a-link-normal',
-    'image_url_indicator': 'img.s-image'
+    'image_url_indicator': 'img.product-image',
 }
 
 COSTCO = {
@@ -41,9 +42,11 @@ COSTCO = {
     'item_indicator': {
         'class': 'product-tile-set'
     },
+    'image_url_indicator': 'img.img-responsive',
     'title_indicator': 'span a',
     'price_indicator': 'div.price',
     'link_indicator': 'span.description a',
+    
 }
 
 BESTBUY = {
@@ -53,9 +56,11 @@ BESTBUY = {
     'item_indicator': {
         'class': 'sku-item'
     },
-    'title_indicator': 'h4.sku-header a',
-    'price_indicator': 'div.priceView-customer-price span',
-    'link_indicator': 'a.image-link',
+    'image_url_indicator': 'img.product-image',
+    'title_indicator': 'h4 a',
+     'price_indicator': 'div.priceView-customer-price span',
+     'link_indicator': 'a.image-link',
+    
 }
 
 
