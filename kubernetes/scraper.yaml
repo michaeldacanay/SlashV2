@@ -48,9 +48,5 @@ spec:
             - containerPort: 8000
               name: http
               protocol: TCP
-          resources:
-            limits:
-              memory: 768Mi
-            requests:
-              memory: 256Mi
+
 ---
