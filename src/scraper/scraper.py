@@ -30,13 +30,19 @@ def httpsGet(URL):
         'Cache-Control': 'no-cache'
     }
     s = requests.Session()
-    page = s.get(URL, headers=headers)
-    if page.status_code == 200:
-        soup1 = BeautifulSoup(page.content, 'html.parser')
-        return BeautifulSoup(soup1.prettify(), 'html.parser')
-    else:
-        # TODO add logger
-        return None
+    try: 
+        page = s.get(URL, headers=headers,timeout=4)
+        if page.status_code == 200:
+            soup1 = BeautifulSoup(page.content, 'html.parser')
+            return BeautifulSoup(soup1.prettify(), 'html.parser')
+        else:
+            # TODO add logger
+            return None
+    except requests.exceptions.RequestException as e:
+        print(e)
+    except requests.exceptions.ReadTimeout as timeerr:
+        print(timeerr)
+
 
 #######This will need to be edited so the dictionary is in the correct format
 def search(query, config):
@@ -61,7 +67,9 @@ def search(query, config):
     URL = config['url'] + query
 
     # fetch url
+    print("httpget")
     page = httpsGet(URL)
+    print("httpgot")
     if not page:
         return []
 
@@ -104,16 +112,20 @@ def scrape(args, scrapers):
     overall = []
     for scraper in scrapers:
         if scraper == 'walmart':
+            print('walmart')
             local = search(query, WALMART)
         elif scraper == 'amazon':
+            print('amazon')
             local = search(query, AMAZON)
         # elif scraper == 'target':
         #     local = scrape_target(query)
         # elif scraper == 'ebay':
         #     local = scrape_ebay(query)
         elif scraper == 'costco':
+            print('costco')
             local = search(query, COSTCO)
         elif scraper == 'bestbuy':
+            print('bestbuy')
             local = search(query, BESTBUY)
         else:
             continue
