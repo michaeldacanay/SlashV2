@@ -29,29 +29,6 @@ user = "quarkus"
 password = "quarkus"
 host = os.getenv('DATABASE_HOST')
 port="5432"
-# response type define
-class jsonScraps(BaseModel):
-    timestamp: str
-    title: str
-    price: str
-    website: str
-    link: Optional[str] = None
-
-
-# response type for variety count api
-class analysisVarietyCountJson(BaseModel):
-    website: str
-    count: int
-
-
-# response type for top cosy value per item over the website
-class analysisTopCostJson(BaseModel):
-    website: str
-    lowest_price: float
-    lowest_price_link: str
-    highest_price: float
-    highest_price_link: str
-
 
 app = FastAPI()
 
@@ -108,10 +85,6 @@ def scrape():
 def search_items_API(
     site: str,
     item_name: str,
-    relevant: Optional[str] = None,
-    order_by_col: Optional[str] = None,
-    reverse: Optional[bool] = False,
-    listLengthInd: Optional[int] = 10,
     export: Optional[bool] = False
 ):
     '''Wrapper API to fetch AMAZON, WALMART and TARGET query results
@@ -130,26 +103,24 @@ def search_items_API(
     # building argument
     args = {
         'search': item_name,
-        'sort': 'pr' if order_by_col == 'price' else 'pr',  # placeholder TDB
-        'des': reverse,  # placeholder TBD
-        'num': listLengthInd,
-        'relevant': relevant
     }
 
     scrapers = []
 
-    if site == 'az' or site == 'all':
-        scrapers.append('amazon')
-    if site == 'wm' or site == 'all':
-        scrapers.append('walmart')
-    if site == 'tg' or site == 'all':
-        scrapers.append('target')
-    if site == 'cc' or site == 'all':
-        scrapers.append('costco')
-    if site == 'bb' or site == 'all':
-        scrapers.append('bestbuy')
-    if site == 'eb' or site == 'all':
-        scrapers.append('ebay')
+    site_mappings = {
+        'az': 'amazon',
+        'wm': 'walmart',
+        'tg': 'target',
+        'cc': 'costco',
+        'bb': 'bestbuy',
+        'eb': 'ebay',
+    }
+
+    if site == 'all':
+        scrapers = list(site_mappings.values())
+    else:
+        scrapers = [site_mappings.get(site, None)].filter(None)
+
 
     # calling scraper.scrape to fetch results
     itemList = scr.scrape(args=args, scrapers=scrapers)
@@ -167,14 +138,10 @@ def search_items_API(
                 items["title"] = items["title"][:200]
                 items["item_type"] = item_name
                 cursor.execute(insert_sql,items)
-            
-        
+
         conn.commit()
         cursor.close()
         conn.close()
-
-
-
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -4,7 +4,7 @@ import requests
 
 # local imports
 import scraper.formattr as form
-from scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+from scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY
 
 
 def httpsGet(URL):
@@ -87,12 +87,8 @@ def scrape(args, scrapers):
         Dictionary of arguments used for scraping
 
         search : str [query to search on]
-        sort : str [sort by column name ; pr - price]
-        des : boolean [True for reverse, False for asc]
-        num : number of rows in the output
-    scrapers: list
-        List of scrapers to use
-
+        scrapers: list [List of scrapers to use]
+    
     Returns
     ----------
     overall: list
@@ -107,10 +103,6 @@ def scrape(args, scrapers):
             local = search(query, WALMART)
         elif scraper == 'amazon':
             local = search(query, AMAZON)
-        # elif scraper == 'target':
-        #     local = scrape_target(query)
-        # elif scraper == 'ebay':
-        #     local = scrape_ebay(query)
         elif scraper == 'costco':
             local = search(query, COSTCO)
         elif scraper == 'bestbuy':
@@ -118,11 +110,6 @@ def scrape(args, scrapers):
         else:
             continue
 
-        for sort_by in args['sort']:
-            local = form.sortList(local, sort_by, args['des'])[:args.get('num', len(local))]
         overall.extend(local)
-
-    for sort_by in args['sort']:
-        overall = form.sortList(overall, sort_by, args['des'])
 
     return overall
