@@ -15,13 +15,13 @@ function Search() {
     const [searchWeb, setSearchWeb] = useState("All");
     const navigate = useNavigate();
 
-    const [responseData, setResponseData] = useState(null); // State to hold response data
+    // const [responseData, setResponseData] = useState(null); // State to hold response data
 
     const HandleSubmission = async () => {
         try {
             const result = await DataFetch(searchWeb, searchItem);
             navigate("/data", { state: { response: result } });
-            setResponseData(result);
+            // setResponseData(result);
             console.log(result)
         } catch (error) {
             console.log(error);

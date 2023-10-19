@@ -17,7 +17,10 @@ export default async function DataFetch(site, item) {
     let url;
 
     if (site === "all") {
-        url = `${apiUrl}${item}`;
+        url = `${apiUrl}/item/${item}`;
+    }
+    else if (item === "all") {
+        url = `${apiUrl}/${site}`;
     }
     else if (site === "all" && item === "all") {
         url = `${apiUrl}/all`;
@@ -32,7 +35,7 @@ export default async function DataFetch(site, item) {
     console.log('Before Axios Request');
     try {
         const response = await axios.get(url);
-        console.log('Before Axios Request');
+        console.log('After Axios Request');
         console.log(response.data);
         return response.data;
 

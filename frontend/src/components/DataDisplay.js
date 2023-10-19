@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import 'primereact/resources/themes/lara-light-purple/theme.css'
+import 'primereact/resources/themes/saga-purple/theme.css'
 import 'primereact/resources/primereact.min.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
@@ -33,11 +33,11 @@ function DataDisplay() {
     const header = (
         <div>
             <h1>Product List</h1>
-            <Button bsclass="search-btn" style={{
+            {<Button bsclass="search-btn" style={{
                 backgroundColor: '#00AA9B',
                 color: 'white',
                 borderColor: '#00AA9B',
-            }} onClick={HandleSubmission}>Back to Search</Button>
+            }} onClick={HandleSubmission}>Back to Search</Button>}
         </div>
     );
     const footer = (
@@ -58,22 +58,22 @@ function DataDisplay() {
     };
 
     return (
-        <div style={{ maxWidth: '100%', overflowX: 'auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             {data && data.length > 0 ? (
                 <DataTable value={data}
-                    removableSort
                     header={header}
                     footer={footer}
                     showGridlines
                     tableStyle={{ width: '60rem' }}
                     paginator rows={10}
-                    rowsPerPageOptions={[5, 10, 25, 50]}>
+                    rowsPerPageOptions={[5, 10, 25, 50]}
+                    removableSort
+                >
                     <Column field="name" header="Product-Name" sortable />
                     <Column field="itemType" header="Category" sortable />
                     <Column header="Image" body={imageBodyTemplate} />
                     <Column field="store" header="Website" sortable />
                     <Column field="price" header="Price" sortable />
-                    <Column field="discountPrice" header="Discounted Price" sortable />
                     <Column header="Link" body={urlBodyTemplate} />
                 </DataTable>
             ) : (
