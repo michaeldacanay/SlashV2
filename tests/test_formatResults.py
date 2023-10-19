@@ -23,10 +23,11 @@ def test_formatResults():
     Checks the formatResults function
     """
     titles = [BeautifulSoup('<div class="someclass">title  </div>', "html.parser")]
-    prices = [BeautifulSoup('<div class="someclass">$0.99  </div>', "html.parser")]
+    prices = [BeautifulSoup('<div class="someclass">$1,099  </div>', "html.parser")]
     links = []
+    image_urls = []
 
-    product = formatter.formatResult("example", titles, prices, links)
-    ans = {"title":"title", "price":"$0.99", "website":"example"}
+    product = formatter.formatResult("example", titles, prices, links, image_urls)
+    ans = {"title":"title", "price":"1099", "website":"example"}
 
-    assert product["title"] == ans["title"] and product["price"] == ans["price"] and product["website"] == ans["website"]
+    assert product["title"] == ans["title"] and str(product["price"]) == ans["price"] and product["website"] == ans["website"]

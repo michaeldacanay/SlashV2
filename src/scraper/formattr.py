@@ -56,21 +56,6 @@ def formatResult(website, titles, prices, links,image_urls):
     return product
 
 
-
-def sortList(arr, sortBy, reverse):
-    """
-    The sortList function is used to sort the products list based on the
-    flags provided as args. Currently, it supports sorting by price.
-    """
-    if sortBy == "pr":
-        return sorted(arr, key=lambda x: getNumbers(x["price"]), reverse=reverse)
-    # To-do: sort by rating
-    elif sortBy == "ra":
-        # return sorted(arr, key=lambda x: getNumbers(x.price), reverse=reverse)
-        pass
-    return arr
-
-
 def formatSearchQuery(query):
     """
     The formatSearchQuery function formats the search string into a string that
