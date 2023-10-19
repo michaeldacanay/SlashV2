@@ -121,9 +121,7 @@ def search_items_API(
     itemListJson: JSON List
         list of search results as JSON List
     '''
-    # logging in file
-    file = open("logger.txt", "a")
-    file.write(site +' query:' + str(item_name)+'\n')
+
 
     # building argument
     args = {
@@ -153,7 +151,6 @@ def search_items_API(
     itemList = scr.scrape(args=args, scrapers=scrapers)
 
     if not export and len(itemList) > 0:
-        file.close()
         conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host,port=port)
         cursor = conn.cursor()
         # print(itemList)
@@ -161,7 +158,7 @@ def search_items_API(
         INSERT INTO item (name, itemType, itemURl,itemImageURl,store,price) VALUES (%(title)s,%(item_type)s, %(link)s,%(image_url)s, %(website)s,%(price)s);
         """
         for items in itemList:
-            if items.get("price")!= "": 
+            if items.get("price")!= "" and items.get("title") !="": 
                 print(items)
                 items["title"] = items["title"][:200]
                 items["item_type"] = item_name
