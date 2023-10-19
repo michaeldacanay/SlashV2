@@ -30,7 +30,8 @@ AMAZON = {
     },
     'title_indicator': 'h2 a span',
     'price_indicator': 'span.a-price span',
-    'link_indicator': 'h2 a.a-link-normal'
+    'link_indicator': 'h2 a.a-link-normal',
+    'image_url_indicator': 'img.s-image'
 }
 
 COSTCO = {

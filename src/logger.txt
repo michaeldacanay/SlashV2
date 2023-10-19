@@ -29,3 +29,8 @@ tg query:dell
 eb query:dell
 bb query:dell
 all query:dell
+all query:mobiles
+all query:mobiles
+all query:mobiles
+all query:mobiles
+all query:mobiles
