@@ -1,0 +1,47 @@
+.custom-navbar {
+  background-color: #00AA9B;
+}
+
+.brand {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bolder;
+}
+
+.form {
+  padding: 200px;
+}
+
+.search-btn:hover {
+  background-color: darkgreen;
+  /* Change the background color on hover */
+  color: white;
+  /* Change the text color on hover */
+}
+
+.hpage {
+  background-color: #03514B;
+  height: 100vh;
+}
+
+.logo {
+  max-width: 600px;
+  border-radius: 25%;
+  /* This creates a circular border for the image */
+  border: 4px solid #00AA9B;
+  /* You can change the color and width of the border */
+}
+
+/* src/App.css */
+.intro-text {
+  padding: 20px;
+  background-color: #00AA9B;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.intro-text p {
+  margin-bottom: 10px;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
