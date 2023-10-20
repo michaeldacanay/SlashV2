@@ -57,8 +57,6 @@ Slash is open-source and ready for you to explore. Here's how to begin:
   ::
   <a href="#bulb-use-case">Use Case</a>
   ::
-  <a href="#file_cabinet-api">API</a>
-  ::
   <a href="#page_facing_up-why">Why</a>
   ::
   <a href="#golf-future-roadmap">Future Roadmap</a>
@@ -87,7 +85,7 @@ git clone https://github.com/SE-Fall2023-Group-41/SlashV2.git
 cd SlashV2
 ```
 
-2. This project uses Python 3 for the scraper, [Quarkus](https://quarkus.io/) for the backend  and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
+2. This project uses Python 3 for the scraper, [Quarkus](https://quarkus.io/) for the backend, and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
 
 For the Scraper to work we ensure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All the Python requirements of the project are listed in the `requirements.txt` file. Use pip to install all of those.
 
@@ -222,8 +220,6 @@ https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e
 - Use the stored history to provide personalized product recommendations and deal alerts based on user preferences.
 
 
-
-# Team Members
 
 ## Team Members
 
