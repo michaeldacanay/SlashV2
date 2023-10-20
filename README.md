@@ -23,8 +23,7 @@ User-Friendly APIs: We offer simple and intuitive public APIs, allowing you to f
 Customizable Output: Slash provides JSON responses that you can easily customize to match your specific needs and requirements.
 🛒 Supported Websites<br>
 Slash currently supports the following major e-commerce websites:<br>
-[Walmart](https://www.walmart.com/) <br>
-[BestBuy](https://www.bestbuy.com/)  <br>
+[Walmart](https://www.walmart.com/),[BestBuy](https://www.bestbuy.com/),
 [Costco](https://www.costco.com/)  <br>
 
 
@@ -32,22 +31,25 @@ Slash currently supports the following major e-commerce websites:<br>
 
 
 
-## :rocket: Improvements over Previous project
+## :rocket: Improvements over the Previous project
 
 We have added a lot of new features to slash in this phase 
 
-1. Database{explain}.
-2. scraper better with images{explain}.
-3. Sort the prices{}
-4. .
+1. Database Integration: In the previous project, data retrieval relied on calling the scraper on every frontend call, resulting in redundant calls causing slow requests for users. However, in our project, we have integrated a database. This significant improvement allows us to store and retrieve data directly from the database, reducing the need to call the scraper repeatedly. Because of this, we were able to enhance speed, reduce scraper calls, and make data more consistent and scalable. It also increases the optimization of resources.
+2. Enhanced Scraper: Our project has revamped the data retrieval process with a highly improved scraper. This enhanced scraper collects data more efficiently and accurately, ensuring faster updates. Additionally, we've fine-tuned the data formatting, resulting in a more user-friendly and visually appealing display. Users can easily access information, compare prices, view product images, and identify the source websites, providing a superior user experience.
+3. Image Scraping: Unlike the previous project, we have implemented image scraping in our project. This addition allows users to view product images alongside other information, providing a more comprehensive and engaging experience
+4. Sorting and Customization: We've empowered users with sorting options based on prices, product names, websites, and more. This flexibility allows users to organize and filter data according to their preferences.
+5. User Interface (UI): In addition to data enhancements, we've invested in a more attractive and user-friendly interface. The UI has been redesigned for a more engaging and visually appealing experience. We have also improved the search function by streamlining it, ensuring that users can now find the information they need with just the press of a single button. Additionally, we've introduced enhanced functionality for managing data, including sorting of tables and pagination, allowing users to customize their viewing experience by selecting the number of items displayed per page, ranging from 5 items to 10, all the way up to 50 items per page
+6. Docker Image Accessibility: Users can take advantage of readily available Docker images from our public repository. This accessibility eliminates the need to build images from scratch, saving time and effort.
+7. Deployment to Kubernetes: Our project is now deployed on Kubernetes, which brings scalability and resilience to our platform. This ensures that users experience consistent and reliable access to the service.
 
 ---
 Get ready to supercharge your shopping experience with Slash!
 🚀 Getting Started
-Slash is open source and ready for you to explore. Here's how to begin:
+Slash is open-source and ready for you to explore. Here's how to begin:
 
 <p align="center">
-  <a href="#movie_camera-checkout-our-video">Checkout our video</a>
+  <a href="#movie_camera-check out-our-video">Checkout our video</a>
   ::
   <a href="#rocket-installation">Installation</a>
   ::
@@ -61,8 +63,6 @@ Slash is open source and ready for you to explore. Here's how to begin:
   ::
   <a href="#golf-future-roadmap">Future Roadmap</a>
   ::
-  <a href="#sparkles-contributors">Contributors</a>
-  ::
   <a href="#email-support">Support</a>
 
 </p>
@@ -71,7 +71,10 @@ Slash is open source and ready for you to explore. Here's how to begin:
 
 ## :movie_camera: Checkout our video
 
-<p align="center"><img width="700" src="./assets/slash-phase3.gif"></p>
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43cd-93bb-f331589b9aa3
+
+
 
 ---
 
@@ -84,14 +87,14 @@ git clone https://github.com/SE-Fall2023-Group-41/SlashV2.git
 cd SlashV2
 ```
 
-2. This project uses Python 3 for the scraper , [Quarkus](https://quarkus.io/) for the backend  and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
+2. This project uses Python 3 for the scraper, [Quarkus](https://quarkus.io/) for the backend  and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
 
-For the Scraper to work we ensure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All the python requirements of the project are listed in the `requirements.txt` file. Use pip to install all of those.
+For the Scraper to work we ensure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All the Python requirements of the project are listed in the `requirements.txt` file. Use pip to install all of those.
 
 ```
 pip3 install -r requirements.txt
 ```
-3. First we run the scraper.For this we cd into the src folder. Once in the src folder, use the python command to run the main.p file.
+3. First we run the scraper. For this we cd into the src folder. Once in the src folder, use the python command to run the main.py file.
 
 ```
 cd src
@@ -108,7 +111,7 @@ For Mac
 For Windows
 mvnw.cmd quarkus : dev
 ```
-5. For the frontend setup to ensure that Node 20 is  preinstalled,you will have to cd into the frontend. Once in the frontend folder, use the command npm start
+5. For the frontend setup to ensure that Node 20 is  preinstalled, you will have to cd into the frontend. Once in the frontend folder, use the command npm start
 
 
 
@@ -146,8 +149,8 @@ These commands above will run and build 4 containers locally.
 ## Some handy links:
 <br>
 Here are some handy links to access different aspects of the application:
-<br>
-[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/ ): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot 
+
+[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot 
 <p align="center"><img width="500" src="./assets/se_ss1.png"></p> 
 
 [OpenAPI Specification](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/openapi ): Access the OpenAPI specification for a detailed description of the API endpoints.
@@ -158,7 +161,8 @@ Here are some handy links to access different aspects of the application:
 
 [Scraper Exposed URL](http://slash-scraper-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Access the scraper's exposed URL.
 <p align="center"><img width="500" src="./assets/se_ss3.png"></p> 
-[Public Docker Images](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
+
+[PublicDockerImages](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
 <p align="center"><img width="500" src="./assets/se_ss4.png"></p> 
 Feel free to explore these links to access different components of the application and make the most of its features.
 
@@ -168,42 +172,33 @@ Feel free to explore these links to access different components of the applicati
 - FastAPI : https://fastapi.tiangolo.com
 - Docker : https://www.docker.com
 - Quarkus: https://quarkus.io/
+- Openshifts:  https://docs.openshift.com/
 
 
 
-## :file_cabinet: API
+## :file_cabinet: Sort and Search Snapshots
 
-## Documentation
+<p align="center">Shows the search function for query laptops</p> 
 
-Documentation can be accessed anytime via the below link.
 
-     `https://slash-app-staging.azurewebsites.net/`
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/3104485a-2e9b-4259-826d-f163e25f6d33
 
-## Search Items Api
 
-Wrapper API to fetch slash scrape results. This API provides a one step solution to access scrape results from all our integrated websites.
 
-    https://slash-app-staging.azurewebsites.net/{site}/{item_name}
 
-**Required parameters:**
 
-- **site**: _az_ for amazon; _wm_ for walmart; _eb_ for ebay; _cc_ for costco; _tg_ for target and _bb_ for bustbuy. Alternatively '_all_' in site can be used to get results for all sites.
+<p align="center">Opens a link of the laptop we are interested to buy</p> 
 
-- **item_name**: items to be searched by slash web api; _examples below_
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/b567edbc-337e-47e4-90a4-57e603b0774b
 
-`https://slash-app-staging.azurewebsites.net/az/toys`
 
-`https://slash-app-staging.azurewebsites.net/all/dell`
 
-**Optional parameters**
+<p align="center">Sorts by website</p> 
 
-- **relevant**: string relevance: items will be ordered by relevance. Not supported currently.
-- **order_by_col**: string column_name: items will be ordered by the column name. Currently only the 'price' column ordering is supported.
-- **reverse**: boolean val: items will be displayed in the same or the opposite order based on the value of this parameter.
-- **listLengthInd**: integer len(default value is 10): sets the upper limit on the number of entries that will be displayed
-- **export**: boolean val(default value is false): items can be exported in a csv file;; _examples below_
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e27-92e6-e870b8774e91
 
-`https://slash-app-staging.azurewebsites.net/all/dell?export=false&listLengthInd=5&order_by_col=price&reverse=false`
+
+
 
 ## :bulb: Use Case
 
@@ -215,16 +210,16 @@ Wrapper API to fetch slash scrape results. This API provides a one step solution
 - In a market where we are spoilt for choices, we often look for the best deals.
 - The ubiquity of internet access has leveled the retail playing field, making it easy for individuals and businesses to sell products without geographic limitation. In 2020, U.S. e-commerce sales, receiving a boost due to the COVID-19 pandemic, grew 44% and represented more than 21% of total retail sales, according to e-commerce information source Internet Retailer.
 - The growth of e-commerce has not only changed the way customers shop, but also their expectations of how brands approach customer service, personalize communications, and provide customers choices.
-- E-commerce market has prompted cut throat competition amongst dealers, which is discernable through the price patterns for products of major market players. Price cuts are somewhat of a norm now and getting the best deal for your money can sometimes be a hassle (even while online shopping).
-- This is what Slash aims to reduce by giving you an easy to use, all in one place solution for finding the best deals for your products that major market dealers have to offer!
+- E-commerce market has prompted cutthroat competition amongst dealers, which is discernable through the price patterns for products of major market players. Price cuts are somewhat of a norm now and getting the best deal for your money can sometimes be a hassle (even while online shopping).
+- This is what Slash aims to reduce by giving you an easy-to-use, all-in-one-place solution for finding the best deals for your products that major market dealers have to offer!
 - Slash in its current form is for students who wish to get the best deals out of every e-commerce site and can be used by anyone who is willing to develop an application that consumes these web APIs.
-- Future scope includes anything from a web application with a frontend or any Android or IOS application that utilises these Web APIs at their backend. Anyone can build their own custom application on top of these web APIs.
+- Future scope includes anything from a web application with a frontend or any Android or IOS application that utilizes these Web APIs at their backend. Anyone can build their own custom application on top of these web APIs.
 
 ## :golf: Future Roadmap
 - Chrome Extension using the functionalities of Slash API
 - An iOS or Android application.
-- Add login feature to store user history to provide features like bookmarking, price drop alerts and many more.
-- Use the stored history to provide personalized product recommendations and deal alerts based on users' preferences.
+- Add a login feature to store user history to provide features like bookmarking, price drop alerts, and many more.
+- Use the stored history to provide personalized product recommendations and deal alerts based on user preferences.
 
 
 
