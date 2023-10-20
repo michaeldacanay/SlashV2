@@ -177,9 +177,25 @@ Feel free to explore these links to access different components of the applicati
 
 
 
-## :file_cabinet: API
+## :file_cabinet: Sort and Search Snapshots
 
-## Documentation
+
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/3104485a-2e9b-4259-826d-f163e25f6d33
+<p align="center">Shows the search function for query laptops</p> 
+
+
+
+
+<p align="center">Opens a link of the laptop we are interested to buy</p> 
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/b567edbc-337e-47e4-90a4-57e603b0774b
+
+
+
+<p align="center">Sorts by website</p> 
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e27-92e6-e870b8774e91
+
+
 
 Documentation can be accessed anytime via the below link.
 
