@@ -71,7 +71,10 @@ Slash is open source and ready for you to explore. Here's how to begin:
 
 ## :movie_camera: Checkout our video
 
-<p align="center"><img width="700" src="./assets/slash-phase3.gif"></p>
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43cd-93bb-f331589b9aa3
+
+
 
 ---
 
@@ -91,7 +94,7 @@ For the Scraper to work we ensure that [Python](https://www.python.org/downloads
 ```
 pip3 install -r requirements.txt
 ```
-3. First we run the scraper.For this we cd into the src folder. Once in the src folder, use the python command to run the main.p file.
+3. First we run the scraper.For this we cd into the src folder. Once in the src folder, use the python command to run the main.py file.
 
 ```
 cd src
@@ -100,7 +103,7 @@ python3 main.py
 For Windows
 python main.py
 ```
-4. For the backend setup ensure that JDK 17  is  preinstalled, you will have to cd into the backend. Once in the backend folder, use the command mvnw.cmd
+4. For the backend setup ensure that JDK 17  is  preinstalled,you will have to cd into the backend. Once in the backend folder, use the command mvnw.cmd
 ```
 cd backend
 For Mac
@@ -147,7 +150,7 @@ These commands above will run and build 4 containers locally.
 <br>
 Here are some handy links to access different aspects of the application:
 <br>
-[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/ ): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot 
+[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot 
 <p align="center"><img width="500" src="./assets/se_ss1.png"></p> 
 
 [OpenAPI Specification](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/openapi ): Access the OpenAPI specification for a detailed description of the API endpoints.
@@ -158,7 +161,7 @@ Here are some handy links to access different aspects of the application:
 
 [Scraper Exposed URL](http://slash-scraper-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Access the scraper's exposed URL.
 <p align="center"><img width="500" src="./assets/se_ss3.png"></p> 
-[Public Docker Images](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
+[PublicDockerImages](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
 <p align="center"><img width="500" src="./assets/se_ss4.png"></p> 
 Feel free to explore these links to access different components of the application and make the most of its features.
 
@@ -168,6 +171,7 @@ Feel free to explore these links to access different components of the applicati
 - FastAPI : https://fastapi.tiangolo.com
 - Docker : https://www.docker.com
 - Quarkus: https://quarkus.io/
+- Openshifts:  https://docs.openshift.com/
 
 
 
