@@ -33,6 +33,26 @@ const HomePage = () => {
                         <p>
                             Powerful: Produces JSON responses that can be easily customized to bring about the desired output
                         </p>
+                        <br></br>
+                        <p>
+                            Contact Us: SEslash0041@gmail.com
+                        </p>
+                        <br></br>
+                        <p>
+                            About Us:
+                        </p>
+                        <p>
+                            Ingmar Fjolla
+                        </p>
+                        <p>
+                            Rishab Anil Muzhangathu
+                        </p>
+                        <p>
+                            Rishabh Bhargava
+                        </p>
+                        <p>
+                            Russel Lobo
+                        </p>
                     </div>
                     <Button variant='primary' onClick={submit}>Start</Button>
                 </div>
