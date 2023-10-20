@@ -32,11 +32,11 @@ Slash currently supports the following major e-commerce websites:<br>
 
 
 
-## :rocket: Improvements over Previous project
+## :rocket: Improvements over the Previous project
 
 We have added a lot of new features to slash in this phase 
 
-1. Database Integration: In the previous project, data retrieval relied on calling the scraper on every frontend call, resulting in redundant calls causing to slow requests for users. However, in our project, we have integrated a database. This significant improvement allows us to store and retrieve data directly from the database, reducing the need to call the scraper repeatedly.Because of this we were able to enchance speed,reduce scraper calls,make data more consistent and scalabe. It also increases optimization of resources.
+1. Database Integration: In the previous project, data retrieval relied on calling the scraper on every frontend call, resulting in redundant calls causing slow requests for users. However, in our project, we have integrated a database. This significant improvement allows us to store and retrieve data directly from the database, reducing the need to call the scraper repeatedly. Because of this, we were able to enhance speed, reduce scraper calls, and make data more consistent and scalable. It also increases the optimization of resources.
 2. Enhanced Scraper: Our project has revamped the data retrieval process with a highly improved scraper. This enhanced scraper collects data more efficiently and accurately, ensuring faster updates. Additionally, we've fine-tuned the data formatting, resulting in a more user-friendly and visually appealing display. Users can easily access information, compare prices, view product images, and identify the source websites, providing a superior user experience.
 3. Image Scraping: Unlike the previous project, we have implemented image scraping in our project. This addition allows users to view product images alongside other information, providing a more comprehensive and engaging experience
 4. Sorting and Customization: We've empowered users with sorting options based on prices, product names, websites, and more. This flexibility allows users to organize and filter data according to their preferences.
@@ -47,10 +47,10 @@ We have added a lot of new features to slash in this phase
 ---
 Get ready to supercharge your shopping experience with Slash!
 🚀 Getting Started
-Slash is open source and ready for you to explore. Here's how to begin:
+Slash is open-source and ready for you to explore. Here's how to begin:
 
 <p align="center">
-  <a href="#movie_camera-checkout-our-video">Checkout our video</a>
+  <a href="#movie_camera-check out-our-video">Checkout our video</a>
   ::
   <a href="#rocket-installation">Installation</a>
   ::
@@ -89,14 +89,14 @@ git clone https://github.com/SE-Fall2023-Group-41/SlashV2.git
 cd SlashV2
 ```
 
-2. This project uses Python 3 for the scraper , [Quarkus](https://quarkus.io/) for the backend  and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
+2. This project uses Python 3 for the scraper, [Quarkus](https://quarkus.io/) for the backend  and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
 
-For the Scraper to work we ensure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All the python requirements of the project are listed in the `requirements.txt` file. Use pip to install all of those.
+For the Scraper to work we ensure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All the Python requirements of the project are listed in the `requirements.txt` file. Use pip to install all of those.
 
 ```
 pip3 install -r requirements.txt
 ```
-3. First we run the scraper.For this we cd into the src folder. Once in the src folder, use the python command to run the main.py file.
+3. First we run the scraper. For this we cd into the src folder. Once in the src folder, use the python command to run the main.py file.
 
 ```
 cd src
@@ -105,7 +105,7 @@ python3 main.py
 For Windows
 python main.py
 ```
-4. For the backend setup ensure that JDK 17  is  preinstalled,you will have to cd into the backend. Once in the backend folder, use the command mvnw.cmd
+4. For the backend setup ensure that JDK 17  is  preinstalled, you will have to cd into the backend. Once in the backend folder, use the command mvnw.cmd
 ```
 cd backend
 For Mac
@@ -113,7 +113,7 @@ For Mac
 For Windows
 mvnw.cmd quarkus : dev
 ```
-5. For the frontend setup to ensure that Node 20 is  preinstalled,you will have to cd into the frontend. Once in the frontend folder, use the command npm start
+5. For the frontend setup to ensure that Node 20 is  preinstalled, you will have to cd into the frontend. Once in the frontend folder, use the command npm start
 
 
 
@@ -179,27 +179,27 @@ Feel free to explore these links to access different components of the applicati
 
 ## :file_cabinet: Sort and Search Snapshots
 
+<p align="center">Shows the search function for query laptops</p> 
 
 
 https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/3104485a-2e9b-4259-826d-f163e25f6d33
-<p align="center">Shows the search function for query laptops</p> 
+
 
 
 
 
 <p align="center">Opens a link of the laptop we are interested to buy</p> 
+
 https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/b567edbc-337e-47e4-90a4-57e603b0774b
 
 
 
 <p align="center">Sorts by website</p> 
+
 https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e27-92e6-e870b8774e91
 
 
 
-Documentation can be accessed anytime via the below link.
-
-     `https://slash-app-staging.azurewebsites.net/`
 
 ## :bulb: Use Case
 
