@@ -23,8 +23,7 @@ User-Friendly APIs: We offer simple and intuitive public APIs, allowing you to f
 Customizable Output: Slash provides JSON responses that you can easily customize to match your specific needs and requirements.
 🛒 Supported Websites<br>
 Slash currently supports the following major e-commerce websites:<br>
-[Walmart](https://www.walmart.com/) <br>
-[BestBuy](https://www.bestbuy.com/)  <br>
+[Walmart](https://www.walmart.com/),[BestBuy](https://www.bestbuy.com/),
 [Costco](https://www.costco.com/)  <br>
 
 
@@ -63,7 +62,6 @@ Slash is open-source and ready for you to explore. Here's how to begin:
   <a href="#page_facing_up-why">Why</a>
   ::
   <a href="#golf-future-roadmap">Future Roadmap</a>
- 
   ::
   <a href="#email-support">Support</a>
 
@@ -151,7 +149,7 @@ These commands above will run and build 4 containers locally.
 ## Some handy links:
 <br>
 Here are some handy links to access different aspects of the application:
-<br>
+
 [Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot 
 <p align="center"><img width="500" src="./assets/se_ss1.png"></p> 
 
@@ -163,6 +161,7 @@ Here are some handy links to access different aspects of the application:
 
 [Scraper Exposed URL](http://slash-scraper-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Access the scraper's exposed URL.
 <p align="center"><img width="500" src="./assets/se_ss3.png"></p> 
+
 [PublicDockerImages](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
 <p align="center"><img width="500" src="./assets/se_ss4.png"></p> 
 Feel free to explore these links to access different components of the application and make the most of its features.
@@ -220,7 +219,7 @@ https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e
 - Chrome Extension using the functionalities of Slash API
 - An iOS or Android application.
 - Add a login feature to store user history to provide features like bookmarking, price drop alerts, and many more.
-- Use the stored history to provide personalized product recommendations and deal alerts based on user's preferences.
+- Use the stored history to provide personalized product recommendations and deal alerts based on user preferences.
 
 
 
