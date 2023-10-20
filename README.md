@@ -147,17 +147,19 @@ These commands above will run and build 4 containers locally.
 <br>
 Here are some handy links to access different aspects of the application:
 <br>
-[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/ ): Explore the API using the Swagger UI, where you can experiment and interact with the backend.
-
+[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/ ): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot 
+<p align="center"><img width="500" src="./assets/se_ss1.png"></p> 
 
 [OpenAPI Specification](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/openapi ): Access the OpenAPI specification for a detailed description of the API endpoints.
 
-[Slash Web Application](http://slash-frontend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Visit the Slash web application by clicking on this link.
+
+[Slash Web Application](http://slash-frontend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Visit the Slash web application by clicking on this link. Below is a snapshot 
+<p align="center"><img width="500" src="./assets/se_ss2.png"></p> 
 
 [Scraper Exposed URL](http://slash-scraper-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Access the scraper's exposed URL.
-
+<p align="center"><img width="500" src="./assets/se_ss3.png"></p> 
 [Public Docker Images](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
-
+<p align="center"><img width="500" src="./assets/se_ss4.png"></p> 
 Feel free to explore these links to access different components of the application and make the most of its features.
 
 
