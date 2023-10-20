@@ -53,6 +53,8 @@ const HomePage = () => {
                         <p>
                             Russel Lobo
                         </p>
+                        <br></br>
+                        <p>Licensed by MIT</p>
                     </div>
                     <Button variant='primary' onClick={submit}>Start</Button>
                 </div>
