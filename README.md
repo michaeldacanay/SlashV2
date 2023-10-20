@@ -36,10 +36,13 @@ Slash currently supports the following major e-commerce websites:<br>
 
 We have added a lot of new features to slash in this phase 
 
-1. Database{explain}.
-2. scraper better with images{explain}.
-3. Sort the prices{}
-4. .
+1. Database Integration: In the previous project, data retrieval relied on calling the scraper on every frontend call, resulting in redundant calls causing to slow requests for users. However, in our project, we have integrated a database. This significant improvement allows us to store and retrieve data directly from the database, reducing the need to call the scraper repeatedly.Because of this we were able to enchance speed,reduce scraper calls,make data more consistent and scalabe. It also increases optimization of resources.
+2. Enhanced Scraper: Our project has revamped the data retrieval process with a highly improved scraper. This enhanced scraper collects data more efficiently and accurately, ensuring faster updates. Additionally, we've fine-tuned the data formatting, resulting in a more user-friendly and visually appealing display. Users can easily access information, compare prices, view product images, and identify the source websites, providing a superior user experience.
+3. Image Scraping: Unlike the previous project, we have implemented image scraping in our project. This addition allows users to view product images alongside other information, providing a more comprehensive and engaging experience
+4. Sorting and Customization: We've empowered users with sorting options based on prices, product names, websites, and more. This flexibility allows users to organize and filter data according to their preferences.
+5. User Interface (UI): In addition to data enhancements, we've invested in a more attractive and user-friendly interface. The UI has been redesigned for a more engaging and visually appealing experience. We have also improved the search function by streamlining it, ensuring that users can now find the information they need with just the press of a single button. Additionally, we've introduced enhanced functionality for managing data, including sorting of tables and pagination, allowing users to customize their viewing experience by selecting the number of items displayed per page, ranging from 5 items to 10, all the way up to 50 items per page
+6. Docker Image Accessibility: Users can take advantage of readily available Docker images from our public repository. This accessibility eliminates the need to build images from scratch, saving time and effort.
+7. Deployment to Kubernetes: Our project is now deployed on Kubernetes, which brings scalability and resilience to our platform. This ensures that users experience consistent and reliable access to the service.
 
 ---
 Get ready to supercharge your shopping experience with Slash!
@@ -60,8 +63,7 @@ Slash is open source and ready for you to explore. Here's how to begin:
   <a href="#page_facing_up-why">Why</a>
   ::
   <a href="#golf-future-roadmap">Future Roadmap</a>
-  ::
-  <a href="#sparkles-contributors">Contributors</a>
+ 
   ::
   <a href="#email-support">Support</a>
 
@@ -183,32 +185,6 @@ Documentation can be accessed anytime via the below link.
 
      `https://slash-app-staging.azurewebsites.net/`
 
-## Search Items Api
-
-Wrapper API to fetch slash scrape results. This API provides a one step solution to access scrape results from all our integrated websites.
-
-    https://slash-app-staging.azurewebsites.net/{site}/{item_name}
-
-**Required parameters:**
-
-- **site**: _az_ for amazon; _wm_ for walmart; _eb_ for ebay; _cc_ for costco; _tg_ for target and _bb_ for bustbuy. Alternatively '_all_' in site can be used to get results for all sites.
-
-- **item_name**: items to be searched by slash web api; _examples below_
-
-`https://slash-app-staging.azurewebsites.net/az/toys`
-
-`https://slash-app-staging.azurewebsites.net/all/dell`
-
-**Optional parameters**
-
-- **relevant**: string relevance: items will be ordered by relevance. Not supported currently.
-- **order_by_col**: string column_name: items will be ordered by the column name. Currently only the 'price' column ordering is supported.
-- **reverse**: boolean val: items will be displayed in the same or the opposite order based on the value of this parameter.
-- **listLengthInd**: integer len(default value is 10): sets the upper limit on the number of entries that will be displayed
-- **export**: boolean val(default value is false): items can be exported in a csv file;; _examples below_
-
-`https://slash-app-staging.azurewebsites.net/all/dell?export=false&listLengthInd=5&order_by_col=price&reverse=false`
-
 ## :bulb: Use Case
 
 - **_Students_**: Students coming to university are generally on a budget and time constraint and generally spend hours wasting time to search for products on Websites. Slash is the perfect tool for these students that slashes all the unnecessary details on a website and helps them get prices for a product across multiple websites.Make the most of this tool in the upcoming Black Friday Sale.
@@ -219,16 +195,16 @@ Wrapper API to fetch slash scrape results. This API provides a one step solution
 - In a market where we are spoilt for choices, we often look for the best deals.
 - The ubiquity of internet access has leveled the retail playing field, making it easy for individuals and businesses to sell products without geographic limitation. In 2020, U.S. e-commerce sales, receiving a boost due to the COVID-19 pandemic, grew 44% and represented more than 21% of total retail sales, according to e-commerce information source Internet Retailer.
 - The growth of e-commerce has not only changed the way customers shop, but also their expectations of how brands approach customer service, personalize communications, and provide customers choices.
-- E-commerce market has prompted cut throat competition amongst dealers, which is discernable through the price patterns for products of major market players. Price cuts are somewhat of a norm now and getting the best deal for your money can sometimes be a hassle (even while online shopping).
-- This is what Slash aims to reduce by giving you an easy to use, all in one place solution for finding the best deals for your products that major market dealers have to offer!
+- E-commerce market has prompted cutthroat competition amongst dealers, which is discernable through the price patterns for products of major market players. Price cuts are somewhat of a norm now and getting the best deal for your money can sometimes be a hassle (even while online shopping).
+- This is what Slash aims to reduce by giving you an easy-to-use, all-in-one-place solution for finding the best deals for your products that major market dealers have to offer!
 - Slash in its current form is for students who wish to get the best deals out of every e-commerce site and can be used by anyone who is willing to develop an application that consumes these web APIs.
-- Future scope includes anything from a web application with a frontend or any Android or IOS application that utilises these Web APIs at their backend. Anyone can build their own custom application on top of these web APIs.
+- Future scope includes anything from a web application with a frontend or any Android or IOS application that utilizes these Web APIs at their backend. Anyone can build their own custom application on top of these web APIs.
 
 ## :golf: Future Roadmap
 - Chrome Extension using the functionalities of Slash API
 - An iOS or Android application.
-- Add login feature to store user history to provide features like bookmarking, price drop alerts and many more.
-- Use the stored history to provide personalized product recommendations and deal alerts based on users' preferences.
+- Add a login feature to store user history to provide features like bookmarking, price drop alerts, and many more.
+- Use the stored history to provide personalized product recommendations and deal alerts based on user's preferences.
 
 
 
