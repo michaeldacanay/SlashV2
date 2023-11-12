@@ -12,6 +12,7 @@ import jakarta.ws.rs.core.SecurityContext;
 public class UserResource {
 
     @GET
+    @RolesAllowed("user")
     @Path("/me")
     @Produces(MediaType.TEXT_PLAIN)
     public String me(@Context SecurityContext securityContext) {
