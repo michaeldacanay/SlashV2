@@ -8,7 +8,7 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     const submit = () => {
-        navigate("/search");
+        navigate("/login");
     }
     return (
         <div className="hpage">
