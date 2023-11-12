@@ -9,6 +9,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import org.slash.client.PythonScraperClient;
 import org.slash.repositories.ItemRepository;
+import org.slash.models.User;
+import jakarta.transaction.Transactional;
 
 @UnlessBuildProfile("test")
 public class StartupBean {
@@ -29,5 +31,11 @@ public class StartupBean {
             Log.info("The scraper is failing");
         }
         LOG.info("Seeding is happening...");
+    }
+    @Transactional
+    public void loadUsers(@Observes StartupEvent evt) {
+        // reset and load all test users
+        User.deleteAll();
+        User.add("user", "user", "user");
     }
 }
