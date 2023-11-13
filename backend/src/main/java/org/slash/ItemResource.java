@@ -42,4 +42,11 @@ public class ItemResource {
     public String hello() {
         return "Hello from RESTEasy Reactive";
     }
+
+    @GET
+    @Path("post-logout")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String postLogout() {
+        return "You were logged out";
+    }
 }
