@@ -107,7 +107,7 @@ cd backend
 For Mac
 ./mvnw compile quarkus:dev
 For Windows
-mvnw.cmd quarkus : dev
+mvnw.cmd quarkus:dev
 ```
 5. For the frontend setup to ensure that Node 20 is  preinstalled, you will have to cd into the frontend. Once in the frontend folder, use the command npm start
 
