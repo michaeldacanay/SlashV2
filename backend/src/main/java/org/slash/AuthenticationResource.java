@@ -10,8 +10,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/hello")
-public class TestResource {
+@Path("/login")
+public class AuthenticationResource {
 
     @Inject
     @IdToken
@@ -21,6 +21,6 @@ public class TestResource {
     @Authenticated
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return "Hello, " + idToken.getName();
+        return "Success";
     }
 }

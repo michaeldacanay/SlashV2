@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../slash.png';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import Login from "./Login.js";
 
 const HomePage = () => {
 
@@ -10,6 +11,7 @@ const HomePage = () => {
     const submit = () => {
         navigate("/search");
     }
+
     return (
         <div className="hpage">
             <div className="container text-center pt-5">
@@ -56,7 +58,8 @@ const HomePage = () => {
                         <br></br>
                         <p>Licensed by MIT</p>
                     </div>
-                    <Button variant='primary' onClick={submit}>Start</Button>
+                    <Button variant='primary' onClick={submit}>Run Slash without an account</Button>
+                    <Login />
                 </div>
             </div>
         </div>
