@@ -60,8 +60,10 @@ async def read_root():
     response = RedirectResponse(url='/redoc')
     return response
 
-@app.get("/scrape")
-def scrape():
+@app.get("/scrape/{item}")
+def scrape(
+    item: str
+):
     '''This function will trigger the scraper that will add items to our databse
 
     Parameters
@@ -72,14 +74,20 @@ def scrape():
     ----------
     ideally, it will return something like "done"
     '''
-    a = Thread(target=search_items_API,args=("all","laptops",))
-    b = Thread(target=search_items_API,args=("all","anime",))
-    c = Thread(target=search_items_API,args=("all","phones",))
-    a.start()
-    b.start()
-    c.start()
     response = "done"
-    return response
+
+    if item == "startup":
+        a = Thread(target=search_items_API,args=("all","laptops",))
+        b = Thread(target=search_items_API,args=("all","anime",))
+        c = Thread(target=search_items_API,args=("all","phones",))
+        a.start()
+        b.start()
+        c.start()
+        return response
+
+    else:
+        search_items_API("all", item)
+        return response
 
 # @app.get("/{site}/{item_name}", response_model=List[jsonScraps])
 def search_items_API(

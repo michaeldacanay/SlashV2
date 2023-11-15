@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import './custom.css'
 import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
+import RequestModal from "./RequestModal.js";
 
 function Search() {
     const [selectedWebsite, setSelectedWebsite] = useState(null);
@@ -24,6 +25,12 @@ function Search() {
         }
 
     }
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
+
     return (
         <div className="form">
             <InputGroup className="mb-3">
@@ -50,6 +57,22 @@ function Search() {
                     borderColor: '#00AA9B',
                 }} onClick={HandleSubmission}>Search</Button>
             </InputGroup>
+            <br />
+            <div>
+                <span>
+                    <label style={{ display: 'inline-block', marginRight: '10px' }}>
+                        If our database doesn't have what you want...
+                    </label>
+                    <Button style={{
+                        backgroundColor: '#00AA9B',
+                        color: 'white',
+                        borderColor: '#00AA9B',
+                        display: 'inline-block',
+                    }} onClick={openModal}>Request a new product category!</Button>
+                </span>
+                <RequestModal isOpen={isModalOpen} onRequestClose={closeModal} />
+            </div>
+
         </div>
     );
 }
