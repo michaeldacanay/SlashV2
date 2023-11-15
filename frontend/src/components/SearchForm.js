@@ -4,6 +4,7 @@ import './custom.css'
 import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
 import RequestModal from "./RequestModal.js";
+import axios from "axios";
 
 function Search() {
     const [selectedWebsite, setSelectedWebsite] = useState(null);
@@ -13,23 +14,28 @@ function Search() {
     };
 
     const [searchItem, setSearchItem] = useState(undefined);
-    const [searchWeb, setSearchWeb] = useState("All");
+    const [searchWeb, setSearchWeb] = useState("all");
     const navigate = useNavigate();
 
     const HandleSubmission = async () => {
+        // try {
+        //     await axios.get(`http://localhost:8080/request/${searchWeb}/${searchItem}`)
+        //     console.log("sent scrape api request");
+        // } catch (error) {
+        //     console.error('Error with scraper: ', error);
+        // }
+
+
         try {
             const result = await DataFetch(searchWeb, searchItem);
-            navigate("/data", { state: { response: result } });
+            navigate("/data", { state: { response: result, searchItem: searchItem, isModalOpen: false } });
         } catch (error) {
             console.log(error);
         }
 
     }
 
-    const [isModalOpen, setModalOpen] = useState(false);
 
-    const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
 
     return (
         <div className="form">
@@ -45,11 +51,13 @@ function Search() {
                     title={selectedWebsite || "All"}
                     id="input-group-dropdown-2"
                 >
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("Amazon")}>Amazon</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("Walmart")}>Walmart</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("Costco")}>Costco</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("BestBuy")}>BestBuy</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("All")}>All</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("amazon")}>Amazon</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("walmart")}>Walmart</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("costco")}>Costco</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("bestBuy")}>BestBuy</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("target")}>Target</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("ebay")}>Ebay</Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleWebsiteSelect("all")}>All</Dropdown.Item>
                 </DropdownButton>
                 <Button bsclass="search-btn" style={{
                     backgroundColor: '#00AA9B',
@@ -57,22 +65,6 @@ function Search() {
                     borderColor: '#00AA9B',
                 }} onClick={HandleSubmission}>Search</Button>
             </InputGroup>
-            <br />
-            <div>
-                <span>
-                    <label style={{ display: 'inline-block', marginRight: '10px' }}>
-                        If our database doesn't have what you want...
-                    </label>
-                    <Button style={{
-                        backgroundColor: '#00AA9B',
-                        color: 'white',
-                        borderColor: '#00AA9B',
-                        display: 'inline-block',
-                    }} onClick={openModal}>Request a new product category!</Button>
-                </span>
-                <RequestModal isOpen={isModalOpen} onRequestClose={closeModal} />
-            </div>
-
         </div>
     );
 }

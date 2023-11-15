@@ -9,6 +9,6 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @Path("/scrape")
 public interface PythonScraperClient {
     @GET
-    @Path("/{item}")
-    public Response triggerScraper(@PathParam("item") String item);
+    @Path("/{store}/{item}")
+    public Response triggerScraper(@PathParam("store") String item, @PathParam("item") String store);
 }

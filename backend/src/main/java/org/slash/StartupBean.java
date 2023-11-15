@@ -25,7 +25,7 @@ public class StartupBean {
     @UnlessBuildProfile("test")
     void onStart(@Observes StartupEvent ev) {
         LOG.info("The application is and calling the Python API to seed data...");
-        if (pythonScraperClient.triggerScraper("startup").getStatus() == 500) {
+        if (pythonScraperClient.triggerScraper("all", "startup").getStatus() == 500) {
             Log.info("The scraper is failing");
         }
         LOG.info("Seeding is happening...");
