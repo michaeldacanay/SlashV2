@@ -28,7 +28,7 @@ const Profile = () => {
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
-                <h1>hello {user.email} from the backend</h1>
+                <h1>hello {profile} from the backend</h1>
             </Layout>
         </div>
     )

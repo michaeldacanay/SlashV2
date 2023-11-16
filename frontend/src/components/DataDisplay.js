@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { DataTable } from 'primereact/datatable/datatable.esm.js';
 import { Column } from 'primereact/column/column.esm.js';
 import 'primereact/resources/themes/saga-purple/theme.css'
@@ -8,9 +8,10 @@ import { Button } from 'react-bootstrap';
 import RequestModal from "./RequestModal.js";
 import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './Layout.js';
+import axios from "axios";
 
 function DataDisplay() {
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
     const location = useLocation();
     const searchItem = location.state ? location.state.searchItem : null;
     const data = location.state ? location.state.response : null;
@@ -62,6 +63,30 @@ function DataDisplay() {
 
     };
 
+    const addButton = (rowData) => {
+        return <Button
+            style={{
+                backgroundColor: '#00AA9B',
+                color: 'white',
+                borderColor: '#00AA9B',
+            }}
+            onClick={() => addToWishlist(rowData.itemURl)}>+
+        </Button>
+    }
+
+    const addToWishlist = async (itemUrl) => {
+        console.log("add to wishlist:", itemUrl)
+        try {
+            const response = await axios.post("http://localhost:8080/user/addItem",{
+                itemUrl: itemUrl,
+                email: user.email,
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
@@ -82,11 +107,15 @@ function DataDisplay() {
                             <Column field="store" header="Website" sortable />
                             <Column field="price" header="Price" sortable />
                             <Column header="Link" body={urlBodyTemplate} />
+
+                            {isAuthenticated ? (
+                                <Column header="Add to your Wishlist" body={addButton} />
+                            ) : null}
                         </DataTable>
                     ) : (
-                        <div>Sorry, couldn't find that item to compare.</div>
+                        <RequestModal isOpen={isModalOpen} searchItem={searchItem} />
                     )}
-                    <RequestModal isOpen={isModalOpen} searchItem={searchItem} />
+
                 </div>
             </Layout>
         </div>
