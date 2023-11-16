@@ -2,6 +2,7 @@ import React from "react";
 import HomePage from "./HomePage.js";
 import Search from "./SearchForm.js";
 import DataDisplay from "./DataDisplay.js";
+import Login from "./Login.js";
 
 export const routes = [
     {
@@ -19,4 +20,9 @@ export const routes = [
         name: "Data",
         element: <DataDisplay />,
     },
+    {
+        path: "/login",
+        name: "Login",
+        element: <Login />
+    }
 ];

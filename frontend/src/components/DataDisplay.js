@@ -6,11 +6,15 @@ import 'primereact/resources/primereact.min.css'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import RequestModal from "./RequestModal.js";
+import { useAuth0 } from '@auth0/auth0-react';
+import Layout from './Layout.js';
 
 function DataDisplay() {
+    const { isAuthenticated } = useAuth0();
     const location = useLocation();
     const searchItem = location.state ? location.state.searchItem : null;
     const data = location.state ? location.state.response : null;
+    console.log(data);
     const isModalOpen = location.state ? location.state.isModalOpen : null;
     const navigate = useNavigate();
 
@@ -59,30 +63,35 @@ function DataDisplay() {
     };
 
     return (
-
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {data && data.length > 0 ? (
-                <DataTable value={data}
-                    header={header}
-                    footer={footer}
-                    showGridlines
-                    tableStyle={{ width: '60rem' }}
-                    paginator rows={10}
-                    rowsPerPageOptions={[5, 10, 25, 50]}
-                    removableSort
-                >
-                    <Column field="name" header="Product-Name" sortable />
-                    <Column field="itemType" header="Category" sortable />
-                    <Column header="Image" body={imageBodyTemplate} />
-                    <Column field="store" header="Website" sortable />
-                    <Column field="price" header="Price" sortable />
-                    <Column header="Link" body={urlBodyTemplate} />
-                </DataTable>
-            ) : (
-                <div>Sorry, couldn't find that item to compare.</div>
-            )}
-            <RequestModal isOpen={isModalOpen} searchItem={searchItem} />
+        <div>
+            <Layout isAuthenticated={isAuthenticated}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    {data && data.length > 0 ? (
+                        <DataTable value={data}
+                                   header={header}
+                                   footer={footer}
+                                   showGridlines
+                                   tableStyle={{ width: '60rem' }}
+                                   paginator rows={10}
+                                   rowsPerPageOptions={[5, 10, 25, 50]}
+                                   removableSort
+                        >
+                            <Column field="name" header="Product-Name" sortable />
+                            <Column field="itemType" header="Category" sortable />
+                            <Column header="Image" body={imageBodyTemplate} />
+                            <Column field="store" header="Website" sortable />
+                            <Column field="price" header="Price" sortable />
+                            <Column header="Link" body={urlBodyTemplate} />
+                        </DataTable>
+                    ) : (
+                        <div>Sorry, couldn't find that item to compare.</div>
+                    )}
+                    <RequestModal isOpen={isModalOpen} searchItem={searchItem} />
+                </div>
+            </Layout>
         </div>
+
+
     );
-};
+}
 export default DataDisplay;

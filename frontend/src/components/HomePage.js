@@ -8,8 +8,12 @@ const HomePage = () => {
 
     const navigate = useNavigate();
 
-    const submit = () => {
+    const noLogin = () => {
         navigate("/search");
+    }
+
+    const loginWithRedirect = () => {
+        navigate("/login");
     }
 
     return (
@@ -58,8 +62,8 @@ const HomePage = () => {
                         <br></br>
                         <p>Licensed by MIT</p>
                     </div>
-                    <Button variant='primary' onClick={submit}>Run Slash without an account</Button>
-                    <Login />
+                    <Button variant='primary' onClick={noLogin}>Run Slash without an account</Button>
+                    <Button variant='primary' onClick={loginWithRedirect}>Log in to you Slash account!</Button>
                 </div>
             </div>
         </div>
