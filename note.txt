@@ -1,0 +1,59 @@
+Notes:  src/main/java.../ItemResource.java -- main API
+Resource for API
+before waited a minute to scrape all items
+now store data in db
+Bean (java thing)
+on startup, first instance of scrpaer
+
+Client- triggers another API
+
+
+localhost:8000 -- FastAPI
+
+models/Item.java : thing in the database
+ActiveRecord vs Repository Pattern
+see Quarkus documentation, what is it? API?
+
+Once a day, backend triggers Python API
+have backend running at all times (on k8s)
+
+
+Deploy on k8s
+30/60 day openshift trial
+k8s things are called resources
+quay.io vs docker... no rate limiting
+RedHat owns quay, quarkus (similar to Springboot/Websphere), out of box database
+Reactive threads, programming paradigm: reactive (cool/good thing to learn, similar to programming in JS (running on event loop))
+Hibernate is ORM
+<artifactId>quarkus-hibernate-orm-panache</artifactId>
+
+panache abstracts hibernate
+
+Panache ORM tutorial- look up
+
+
+
+
+everything in Reactive is a handshake (?)
+
+potential features:
+login (Quarkus has out of the box features, look into Annotations (User Resource))
+look into APIs instead of scraping
+store/cache results of webscraping (for all users)
+
+
+
+backend/src/main/java/ItemResource.java
+if itemRespository.isEmpty() trigger Python API
+
+currently no handshake between Python API and Quarkus
+fire and forget- cron job
+
+if (pythonScraperClient.triggerScraper().getStatus() == 500) {
+    triggers scraper
+
+IN java/CronJob.java
+
+
+Elegant way:
+currently no items... tell user this datatype doesn't exist... wait 3 minutes
