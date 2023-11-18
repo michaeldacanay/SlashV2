@@ -7,11 +7,16 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import RequestModal from "./RequestModal.js";
 import fx from 'money';
+import { useAuth0 } from '@auth0/auth0-react';
+import Layout from './Layout.js';
+import axios from "axios";
 
 function DataDisplay() {
+    const { isAuthenticated, user } = useAuth0();
     const location = useLocation();
     const searchItem = location.state ? location.state.searchItem : null;
     const data = location.state ? location.state.response : null;
+    console.log(data);
     const isModalOpen = location.state ? location.state.isModalOpen : null;
     const navigate = useNavigate();
 
@@ -119,33 +124,61 @@ function DataDisplay() {
 
     };
 
-    return (
+    const addButton = (rowData) => {
+        return <Button
+            style={{
+                backgroundColor: '#00AA9B',
+                color: 'white',
+                borderColor: '#00AA9B',
+            }}
+            onClick={() => addToWishlist(rowData.itemURl)}>+
+        </Button>
+    }
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {data && data.length > 0 ? (
-                <DataTable value={data}
-                    header={header}
-                    footer={footer}
-                    showGridlines
-                    tableStyle={{ width: '60rem' }}
-                    paginator rows={10}
-                    rowsPerPageOptions={[5, 10, 25, 50]}
-                    removableSort
-                >
-                    <Column field="name" header="Product-Name" sortable />
-                    <Column field="itemType" header="Category" sortable />
-                    <Column header="Image" body={imageBodyTemplate} />
-                    <Column field="store" header="Website" sortable />
-                    <Column field="price" header="Price" sortable />
-                    <Column header="Link" body={urlBodyTemplate} />
-                    {/* <Column field="convertedPrice" header={`Price (${selectedCurrency})`} */}
-                    <Column header={`Price (${selectedCurrency})`} body={priceBodyTemplate} sortable />
-                </DataTable>
-            ) : (
-                <div>Sorry, couldn't find that item to compare.</div>
-            )}
-            <RequestModal isOpen={isModalOpen} searchItem={searchItem} />
+    const addToWishlist = async (itemUrl) => {
+        console.log("add to wishlist:", itemUrl)
+        try {
+            const response = await axios.post("http://localhost:8080/user/addItem", {
+                itemUrl: itemUrl,
+                email: user.email,
+            });
+            console.log(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    return (
+        <div>
+            <Layout isAuthenticated={isAuthenticated}>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    {data && data.length > 0 ? (
+                        <DataTable value={data}
+                            header={header}
+                            footer={footer}
+                            showGridlines
+                            tableStyle={{ width: '60rem' }}
+                            paginator rows={10}
+                            rowsPerPageOptions={[5, 10, 25, 50]}
+                            removableSort
+                        >
+                            <Column field="name" header="Product-Name" sortable />
+                            <Column field="itemType" header="Category" sortable />
+                            <Column header="Image" body={imageBodyTemplate} />
+                            <Column field="store" header="Website" sortable />
+                            <Column field="price" header="Price" sortable />
+                            <Column header="Link" body={urlBodyTemplate} />
+                            <Column header={`Price (${selectedCurrency})`} body={priceBodyTemplate} sortable />
+                            {isAuthenticated ? (
+                                <Column header="Add to your Wishlist" body={addButton} />
+                            ) : null}
+                        </DataTable>
+                    ) : (
+                        <RequestModal isOpen={isModalOpen} searchItem={searchItem} />
+                    )}
+                </div>
+            </Layout>
         </div>
     );
-};
+}
 export default DataDisplay;

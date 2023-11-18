@@ -9,6 +9,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import org.slash.client.PythonScraperClient;
 import org.slash.repositories.ItemRepository;
+import org.slash.repositories.UserRepository;
 
 @UnlessBuildProfile("test")
 public class StartupBean {
@@ -20,6 +21,8 @@ public class StartupBean {
     private static final Logger LOG = Logger.getLogger(CronJob.class);
     @Inject
     ItemRepository itemRepository;
+    @Inject
+    UserRepository userRepository;
     @RestClient
     PythonScraperClient pythonScraperClient;
     @UnlessBuildProfile("test")

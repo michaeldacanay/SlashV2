@@ -3,10 +3,11 @@ import React, { useState } from 'react'
 import './custom.css'
 import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
-import RequestModal from "./RequestModal.js";
-import axios from "axios";
+import { useAuth0 } from '@auth0/auth0-react';
+import Layout from './Layout.js';
 
 function Search() {
+    const { isAuthenticated } = useAuth0();
     const [selectedWebsite, setSelectedWebsite] = useState(null);
     const handleWebsiteSelect = (website) => {
         setSelectedWebsite(website);
@@ -38,34 +39,39 @@ function Search() {
 
 
     return (
-        <div className="form">
-            <InputGroup className="mb-3">
-                <FormControl
-                    placeholder="Enter item name"
-                    aria-label="Itemtype"
-                    onChange={(e) => setSearchItem(e.target.value)}
-                />
-                <DropdownButton
-                    as={InputGroup.Append}
-                    variant="outline-secondary"
-                    title={selectedWebsite || "All"}
-                    id="input-group-dropdown-2"
-                >
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("amazon")}>Amazon</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("walmart")}>Walmart</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("costco")}>Costco</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("bestBuy")}>BestBuy</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("target")}>Target</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("ebay")}>Ebay</Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleWebsiteSelect("all")}>All</Dropdown.Item>
-                </DropdownButton>
-                <Button bsclass="search-btn" style={{
-                    backgroundColor: '#00AA9B',
-                    color: 'white',
-                    borderColor: '#00AA9B',
-                }} onClick={HandleSubmission}>Search</Button>
-            </InputGroup>
+        <div>
+            <Layout isAuthenticated={isAuthenticated}>
+                <div className="form">
+                    <InputGroup className="mb-3">
+                        <FormControl
+                            placeholder="Enter item name"
+                            aria-label="Itemtype"
+                            onChange={(e) => setSearchItem(e.target.value)}
+                        />
+                        <DropdownButton
+                            as={InputGroup.Append}
+                            variant="outline-secondary"
+                            title={selectedWebsite || "All"}
+                            id="input-group-dropdown-2"
+                        >
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("amazon")}>Amazon</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("walmart")}>Walmart</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("costco")}>Costco</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("bestBuy")}>BestBuy</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("target")}>Target</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("ebay")}>Ebay</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleWebsiteSelect("all")}>All</Dropdown.Item>
+                        </DropdownButton>
+                        <Button bsclass="search-btn" style={{
+                            backgroundColor: '#00AA9B',
+                            color: 'white',
+                            borderColor: '#00AA9B',
+                        }} onClick={HandleSubmission}>Search</Button>
+                    </InputGroup>
+                </div>
+            </Layout>
         </div>
+
     );
 }
 

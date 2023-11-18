@@ -2,14 +2,18 @@ import React from 'react';
 import logo from '../slash.png';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import Login from "./Login.js";
+
 
 const HomePage = () => {
 
     const navigate = useNavigate();
 
-    const submit = () => {
+    const noLogin = () => {
         navigate("/search");
+    }
+
+    const loginWithRedirect = () => {
+        navigate("/login");
     }
 
     return (
@@ -36,30 +40,25 @@ const HomePage = () => {
                             Powerful: Produces JSON responses that can be easily customized to bring about the desired output
                         </p>
                         <br></br>
-                        <p>
-                            Contact Us: SEslash0041@gmail.com
-                        </p>
-                        <br></br>
-                        <p>
-                            About Us:
-                        </p>
-                        <p>
-                            Ingmar Fjolla
-                        </p>
-                        <p>
-                            Rishab Anil Muzhangathu
-                        </p>
-                        <p>
-                            Rishabh Bhargava
-                        </p>
-                        <p>
-                            Russel Lobo
-                        </p>
-                        <br></br>
                         <p>Licensed by MIT</p>
                     </div>
-                    <Button variant='primary' onClick={submit}>Run Slash without an account</Button>
-                    <Login />
+                    <li>
+                        <Button
+                            variant='primary'
+                            style={{backgroundColor: "#00AA9B"}}
+                            onClick={loginWithRedirect}>
+                            Log in to your Slash account!
+                        </Button>
+                    </li>
+                    <br />
+                    <li>
+                        <Button
+                            variant='primary'
+                            style={{backgroundColor: "#00AA9B"}}
+                            onClick={noLogin}>Run Slash without an account
+                        </Button>
+                    </li>
+
                 </div>
             </div>
         </div>
