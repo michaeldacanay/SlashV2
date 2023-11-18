@@ -25,8 +25,12 @@ function DataDisplay() {
         fx.base = "USD"; // Adjust this based on your data
         fx.rates = {
             "USD": 1,
-            "EUR": 0.85,
-            "GBP": 0.75,
+            "EUR": 0.92,
+            "GBP": 0.8,
+            "JPY": 149.54, // Example exchange rate for Japanese Yen
+            "INR": 83.29,  // Example exchange rate for Indian Rupee
+            "AUD": 1.54,   // Example exchange rate for Australian Dollar
+            "CAD": 1.37,
             // Add more currencies as needed
         };
         // Check if both source and target currencies are defined in rates
@@ -48,6 +52,10 @@ function DataDisplay() {
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="INR">INR</option>
+            <option value="AUD">AUD</option>
+            <option value="CAD">CAD</option>
             {/* Add more currencies as needed */}
         </select>
     );
@@ -79,13 +87,18 @@ function DataDisplay() {
     }
 
     const header = (
-        <div>
-            <h1>Product List</h1>
-            {<Button bsclass="search-btn" style={{
-                backgroundColor: '#00AA9B',
-                color: 'white',
-                borderColor: '#00AA9B',
-            }} onClick={HandleSubmission}>Back to Search</Button>}
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div>
+                <h1>Product List</h1>
+                {<Button bsclass="search-btn" style={{
+                    backgroundColor: '#00AA9B',
+                    color: 'white',
+                    borderColor: '#00AA9B',
+                }} onClick={HandleSubmission}>Back to Search</Button>}
+            </div>
+            <div>
+                {currencyDropdown}
+            </div>
         </div>
     );
     const footer = (
@@ -108,10 +121,7 @@ function DataDisplay() {
 
     return (
 
-        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-            <div style={{ marginBottom: '10px' }}>
-                {currencyDropdown}
-            </div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
             {data && data.length > 0 ? (
                 <DataTable value={data}
                     header={header}
