@@ -37,12 +37,12 @@ public class ItemResource {
         return itemRepository.list("itemType = ?1 and store = ?2",itemType,store);
 
     }
-//    @GET
-//    @Produces(MediaType.TEXT_PLAIN)
-//    @Path("/hello")
-//    public String hello() {
-//        return "Hello from RESTEasy Reactive";
-//    }
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/hello")
+    public String hello() {
+        return "Hello from RESTEasy Reactive";
+    }
 
     @GET
     @Path("post-logout")
