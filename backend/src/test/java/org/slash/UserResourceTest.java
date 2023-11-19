@@ -42,6 +42,6 @@ public class UserResourceTest {
 
     @Test
     public void testSearchHistory() {
-        fail("fail")
+        fail("fail");
     }
 }
