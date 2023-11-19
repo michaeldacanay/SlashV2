@@ -105,7 +105,7 @@ public class UserResourceTest {
 
         String addResponse = userResource.addItem(request);
 
-        assertThat(addResponse).isEqualTo("Success");
+        assertThat(addResponse).isEqualTo("Add Success");
 
         List<Item> wishlist = userResource.getWishlist(existingUserEmail);
 
@@ -137,7 +137,7 @@ public class UserResourceTest {
 
         String addResponse = userResource.addItem(request);
 
-        assertThat(addResponse).isEqualTo("Success");
+        assertThat(addResponse).isEqualTo("Add Success");
 
         List<Item> wishlist = userResource.getWishlist(existingUserEmail);
 
@@ -149,11 +149,11 @@ public class UserResourceTest {
 
         String deleteResponse = userResource.deleteItem(request);
 
-        assertThat(deleteResponse).isEqualTo("Success");
-        List<Item> wishlist = userResource.getWishlist(existingUserEmail);
+        assertThat(deleteResponse).isEqualTo("Delete Success");
+        List<Item> updatedWishlist = userResource.getWishlist(existingUserEmail);
 
-        assertThat(wishlist).isNotNull();
-        assertThat(wishlist.size()).isEqualTo(0);
+        assertThat(updatedWishlist).isNotNull();
+        assertThat(updatedWishlist.size()).isEqualTo(0);
 
 
 

@@ -77,7 +77,25 @@ public class UserResource {
         wishlist.add(item);
         userRepository.persist(currentUser);
         System.out.println(currentUser.getWishlist());
-        return "Success";
+        return "Add Success";
+    }
+
+    @Transactional
+    @POST
+    @Path("/deleteItem")
+    public String deleteItem(ItemRequest itemRequest) {
+        String email = itemRequest.getEmail();
+        String itemURl = itemRequest.getItemUrl();
+        User currentUser = userRepository.find("email", email).firstResult();
+
+        List<Item> wishlist = currentUser.getWishlist();
+        for (Item item : wishlist) {
+            if (item.getItemURl() == itemURl) {
+                wishlist.remove(item);
+            }
+        }
+        userRepository.persist(currentUser);
+        return "Delete Success";
     }
 
     public static class ItemRequest {
