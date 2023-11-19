@@ -2,9 +2,18 @@ package org.slash;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slash.UserResource;
 import org.slash.models.User;
+import org.slash.models.Item;
+import org.slash.UserResource.ItemRequest;
 import org.slash.repositories.UserRepository;
+import org.slash.repositories.ItemRepository;
+
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
@@ -15,33 +24,92 @@ import static org.assertj.core.api.Assertions.fail;
 @QuarkusTest
 public class UserResourceTest {
 
+    @Inject
+    UserRepository userRepository;
+
+    @Inject
+    ItemRepository itemRepository;
+
+    @Inject
+    UserResource userResource;
+
+    @BeforeEach
+    public void setup() {
+        userRepository.deleteAll();
+        itemRepository.deleteAll();
+
+        User testUser = new User();
+        testUser.setEmail("test@test.com");
+        userRepository.persist(testUser);
+    }
+
     @Test
     public void testAddUser() {
 
-        fail("fail");
+        String newEmail = "new@new.com";
+
+        userResource.addUser(newEmail);
+
+        User addedUser = userRepository.find("email", newEmail).firstResult();
+        assertThat(addedUser).isNotNull();
+        assertThat(addedUser.getEmail()).isEqualTo(newEmail);
     }
 
     @Test
     public void testProfile() {
-        fail("fail");
+        String existingUserEmail = "test@test.com";
+
+        String profileResponse = userResource.profile(existingUserEmail);
+
+        assertThat(profileResponse).isEqualTo("test@test.com, hello from the backend!");
     }
 
     @Test
     public void testGetWishlist() {
-        fail("fail");
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        List<Item> wishlist = existingUser.getWishlist();
+        Item testItem = new Item();
+        wishlist.add(testItem);
+
+        List<Item> wishlistResponse = userResource.getWishlist(existingUserEmail);
+
+        assertThat(wishlistResponse).isNotNull();
+        assertThat(wishlistResponse.get(0)).isEqualTo(testItem);
     }
 
-    @Test public void sendWishlist() {
-        fail("fail");
-    }
+//    @Test public void testSendWishlist() {
+//        fail("fail");
+//    }
 
     @Test
     public void testAddItem() {
-        fail("fail");
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        Item testItem = new Item();
+        testItem.setItemURl("fakeURLs.com");
+
+        ItemRequest request = new ItemRequest();
+        request.setEmail(existingUserEmail);
+        request.setItemUrl("fakeURLS.com");
+
+        String addResponse = userResource.addItem(request);
+
+        assertThat(addResponse).isEqualTo("Success");
+
+        List<Item> wishlist = userResource.getWishlist(existingUserEmail);
+
+        assertThat(wishlist).isNotNull();
+        assertThat(wishlist.get(0)).isEqualTo(testItem);
+
+        Item wishItem = wishlist.get(0);
+        assertThat(wishItem.getItemURl()).isEqualTo("fakeURLS.com");
     }
 
-    @Test
-    public void testSearchHistory() {
-        fail("fail");
-    }
+//    @Test
+//    public void testSearchHistory() {
+//        fail("fail");
+//    }
 }

@@ -16,10 +16,15 @@ const Wishlist = () => {
 
     useEffect(() => {
         const loadWishlist = async () => {
+            const email = user.email;
             console.log(isAuthenticated);
             try {
                 if (isAuthenticated) {
-                    const response = await axios.post("http://localhost:8080/user/wishlist/", {email: user.email})
+                    const response = await axios.post("http://localhost:8080/user/wishlist/", {email}, {
+                        headers: {
+                            'Content-Type': 'text/plain',
+                        }
+                    });
                     console.log(response.data);
                     setList(response.data);
 

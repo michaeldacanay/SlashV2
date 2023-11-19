@@ -11,10 +11,19 @@ const Profile = () => {
     useEffect(() => {
         const loadProfile = async () => {
             console.log(isAuthenticated);
+            const email = user.email;
             try {
                 if (isAuthenticated) {
-                    await axios.post("http://localhost:8080/user/addUser/", {email: user.email})
-                    const response = await axios.post("http://localhost:8080/user/profile/", {email: user.email})
+                    await axios.post("http://localhost:8080/user/addUser/", {email}, {
+                        headers: {
+                            'Content-Type': 'text/plain',
+                        }
+                    });
+                    const response = await axios.post("http://localhost:8080/user/profile/", {email}, {
+                        headers: {
+                            'Content-Type': 'text/plain',
+                        }
+                    });
                     setProfile(response.data);
                     console.log("profilecheck");
                 }
@@ -28,7 +37,7 @@ const Profile = () => {
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
-                <h1>hello {profile} from the backend</h1>
+                <h1>{profile}</h1>
             </Layout>
         </div>
     )

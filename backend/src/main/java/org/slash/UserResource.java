@@ -26,11 +26,11 @@ public class UserResource {
     @Path("/addUser")
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
-    public void addUser(UserEmail email) {
-        User currentUser = userRepository.find("email", email.getEmail()).firstResult();
+    public void addUser(String email) {
+        User currentUser = userRepository.find("email", email).firstResult();
         if (currentUser == null) {
             User newUser = new User();
-            newUser.setEmail(email.getEmail());
+            newUser.setEmail(email);
 
             userRepository.persist(newUser);
         }
@@ -39,9 +39,9 @@ public class UserResource {
     @POST
     @Path("/profile")
     @Produces(MediaType.TEXT_PLAIN)
-    public String profile(UserEmail email) {
+    public String profile(String email) {
         System.out.println(email + "profile");
-        User currentUser = userRepository.find("email", email.getEmail()).firstResult();
+        User currentUser = userRepository.find("email", email).firstResult();
         System.out.println(currentUser.getEmail());
         if (currentUser != null) {
             return currentUser.getEmail() + ", hello from the backend!";
@@ -52,8 +52,8 @@ public class UserResource {
 
     @POST
     @Path("/wishlist")
-    public List<Item> getWishlist(UserEmail email) {
-        User currentUser = userRepository.find("email", email.getEmail()).firstResult();
+    public List<Item> getWishlist(String email) {
+        User currentUser = userRepository.find("email", email).firstResult();
         return currentUser.getWishlist();
     }
 
@@ -81,8 +81,6 @@ public class UserResource {
         private String email;
         private String itemUrl;
 
-        // getters and setters
-
         public String getEmail() {
             return email;
         }
@@ -100,12 +98,12 @@ public class UserResource {
         }
     }
 
-    public static class UserEmail {
-        private String email;
-
-        public String getEmail() { return email; }
-
-        public void setEmail(String email) { this.email = email; }
-    }
+//    public static class UserEmail {
+//        private String email;
+//
+//        public String getEmail() { return email; }
+//
+//        public void setEmail(String email) { this.email = email; }
+//    }
 
 }
