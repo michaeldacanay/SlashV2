@@ -6,6 +6,7 @@ import 'primereact/resources/primereact.min.css'
 import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './Layout.js';
 import axios from "axios";
+import {Button} from "react-bootstrap";
 
 const Wishlist = () => {
     const { user, isAuthenticated } = useAuth0();
@@ -48,6 +49,29 @@ const Wishlist = () => {
 
     };
 
+    const deleteFromWishlist = async (itemUrl) => {
+        try {
+            const response = await axios.post("http://localhost:8080/user/deleteItem", {
+                itemUrl: itemUrl,
+                email: user.email,
+            });
+            setList(prevList => prevList.filter(item => item.itemURl !== itemUrl));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const deleteButton = (rowData) => {
+        return <Button
+            style={{
+                backgroundColor: 'red',
+                color: 'white',
+                borderColor: 'red',
+            }}
+            onClick={() => deleteFromWishlist(rowData.itemURl)}>X
+        </Button>
+    }
+
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
@@ -67,7 +91,7 @@ const Wishlist = () => {
                             <Column field="store" header="Website" sortable />
                             <Column field="price" header="Price" sortable />
                             <Column header="Link" body={urlBodyTemplate} />
-
+                            <Column header="Add to your Wishlist" body={deleteButton} />
 
                         </DataTable>
 
