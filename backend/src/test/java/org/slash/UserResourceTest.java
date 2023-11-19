@@ -91,12 +91,16 @@ public class UserResourceTest {
 
         User existingUser = userRepository.find("email", existingUserEmail).firstResult();
         Item testItem = new Item();
-        testItem.setItemURl("fakeURLs.com");
+        String url = "fakeURLS.com";
+        testItem.setItemURl(url);
         itemRepository.persist(testItem);
+
+        Item storedTestItem = itemRepository.find("itemURl", url).firstResult();
+        assertThat(storedTestItem.getItemURl()).isEqualTo(url);
 
         ItemRequest request = new ItemRequest();
         request.setEmail(existingUserEmail);
-        request.setItemUrl("fakeURLS.com");
+        request.setItemUrl(url);
 
 
         String addResponse = userResource.addItem(request);
@@ -109,7 +113,7 @@ public class UserResourceTest {
         assertThat(wishlist.size()).isEqualTo(1);
 
         Item wishItem = wishlist.get(0);
-        assertThat(wishItem.getItemURl()).isEqualTo("fakeURLS.com");
+        assertThat(wishItem.getItemURl()).isEqualTo(url);
     }
 
 //    @Test
