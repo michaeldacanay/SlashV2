@@ -89,10 +89,17 @@ public class UserResource {
         User currentUser = userRepository.find("email", email).firstResult();
 
         List<Item> wishlist = currentUser.getWishlist();
+        int indexToRemove = -1;
         for (Item item : wishlist) {
             if (item.getItemURl() == itemURl) {
-                wishlist.remove(item);
+                indexToRemove = indexOf(item);
             }
+        }
+
+        if (indexToRemove >= 0) {
+            wishlist.remove(indexToRemove);
+        } else {
+            return "Item not found";
         }
         userRepository.persist(currentUser);
         return "Delete Success";
