@@ -116,6 +116,48 @@ public class UserResourceTest {
         assertThat(wishItem.getItemURl()).isEqualTo(url);
     }
 
+    @Test
+    @Transactional
+    public void testDeleteItem() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        Item testItem = new Item();
+        String url = "fakeURLS.com";
+        testItem.setItemURl(url);
+        itemRepository.persist(testItem);
+
+        Item storedTestItem = itemRepository.find("itemURl", url).firstResult();
+        assertThat(storedTestItem.getItemURl()).isEqualTo(url);
+
+        ItemRequest request = new ItemRequest();
+        request.setEmail(existingUserEmail);
+        request.setItemUrl(url);
+
+
+        String addResponse = userResource.addItem(request);
+
+        assertThat(addResponse).isEqualTo("Success");
+
+        List<Item> wishlist = userResource.getWishlist(existingUserEmail);
+
+        assertThat(wishlist).isNotNull();
+        assertThat(wishlist.size()).isEqualTo(1);
+
+        Item wishItem = wishlist.get(0);
+        assertThat(wishItem.getItemURl()).isEqualTo(url);
+
+        String deleteResponse = userResource.deleteItem(request);
+
+        assertThat(deleteResponse).isEqualTo("Success");
+        List<Item> wishlist = userResource.getWishlist(existingUserEmail);
+
+        assertThat(wishlist).isNotNull();
+        assertThat(wishlist.size()).isEqualTo(0);
+
+
+    }
+
 //    @Test
 //    public void testSearchHistory() {
 //        fail("fail");
