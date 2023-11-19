@@ -92,10 +92,12 @@ public class UserResourceTest {
         User existingUser = userRepository.find("email", existingUserEmail).firstResult();
         Item testItem = new Item();
         testItem.setItemURl("fakeURLs.com");
+        itemRepository.persist(testItem);
 
         ItemRequest request = new ItemRequest();
         request.setEmail(existingUserEmail);
         request.setItemUrl("fakeURLS.com");
+
 
         String addResponse = userResource.addItem(request);
 
