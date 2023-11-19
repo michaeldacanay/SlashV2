@@ -12,14 +12,15 @@ const Profile = () => {
         const loadProfile = async () => {
             console.log(isAuthenticated);
             const email = user.email;
+            console.log(email + "CHECK");
             try {
                 if (isAuthenticated) {
-                    await axios.post("http://localhost:8080/user/addUser/", {email}, {
+                    await axios.post("http://localhost:8080/user/addUser/", email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }
                     });
-                    const response = await axios.post("http://localhost:8080/user/profile/", {email}, {
+                    const response = await axios.post("http://localhost:8080/user/profile/", email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }

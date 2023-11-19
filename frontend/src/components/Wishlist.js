@@ -20,7 +20,7 @@ const Wishlist = () => {
             console.log(isAuthenticated);
             try {
                 if (isAuthenticated) {
-                    const response = await axios.post("http://localhost:8080/user/wishlist/", {email}, {
+                    const response = await axios.post("http://localhost:8080/user/wishlist/", email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }

@@ -24,13 +24,14 @@ public class UserResource {
 
     @POST
     @Path("/addUser")
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
     @Transactional
     public void addUser(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
         if (currentUser == null) {
             User newUser = new User();
             newUser.setEmail(email);
+            System.out.println(email);
 
             userRepository.persist(newUser);
         }
@@ -38,6 +39,7 @@ public class UserResource {
 
     @POST
     @Path("/profile")
+    @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)
     public String profile(String email) {
         System.out.println(email + "profile");
@@ -52,6 +54,7 @@ public class UserResource {
 
     @POST
     @Path("/wishlist")
+    @Consumes(MediaType.TEXT_PLAIN)
     public List<Item> getWishlist(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
         return currentUser.getWishlist();
@@ -97,13 +100,5 @@ public class UserResource {
             this.itemUrl = itemUrl;
         }
     }
-
-//    public static class UserEmail {
-//        private String email;
-//
-//        public String getEmail() { return email; }
-//
-//        public void setEmail(String email) { this.email = email; }
-//    }
 
 }
