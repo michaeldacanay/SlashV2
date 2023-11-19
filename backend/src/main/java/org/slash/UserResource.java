@@ -12,6 +12,8 @@ import jakarta.json.JsonObject;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 @Path("/user")
 public class UserResource {
@@ -89,18 +91,15 @@ public class UserResource {
         User currentUser = userRepository.find("email", email).firstResult();
 
         List<Item> wishlist = currentUser.getWishlist();
-        int indexToRemove = -1;
-        for (Item item : wishlist) {
-            if (item.getItemURl() == itemURl) {
-                indexToRemove = indexOf(item);
+        Iterator<Item> iterator = wishlist.iterator();
+        while (iterator.hasNext()) {
+            Item item = iterator.next();
+            String url = item.getItemURl();
+            if (url.equals(itemURl)) {
+                iterator.remove();
             }
         }
 
-        if (indexToRemove >= 0) {
-            wishlist.remove(indexToRemove);
-        } else {
-            return "Item not found";
-        }
         userRepository.persist(currentUser);
         return "Delete Success";
     }
