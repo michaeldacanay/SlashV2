@@ -85,6 +85,7 @@ public class UserResourceTest {
 //    }
 
     @Test
+    @Transactional
     public void testAddItem() {
         String existingUserEmail = "test@test.com";
 
@@ -100,13 +101,13 @@ public class UserResourceTest {
 
         assertThat(addResponse).isEqualTo("Success");
 
-//        List<Item> wishlist = userResource.getWishlist(existingUserEmail);
-//
-//        assertThat(wishlist).isNotNull();
-//        assertThat(wishlist.get(0)).isEqualTo(testItem);
-//
-//        Item wishItem = wishlist.get(0);
-//        assertThat(wishItem.getItemURl()).isEqualTo("fakeURLS.com");
+        List<Item> wishlist = userResource.getWishlist(existingUserEmail);
+
+        assertThat(wishlist).isNotNull();
+        assertThat(wishlist.size()).isEqualTo(1);
+
+        Item wishItem = wishlist.get(0);
+        assertThat(wishItem.getItemURl()).isEqualTo("fakeURLS.com");
     }
 
 //    @Test
