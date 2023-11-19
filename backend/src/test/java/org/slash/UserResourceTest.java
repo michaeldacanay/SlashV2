@@ -34,6 +34,7 @@ public class UserResourceTest {
     UserResource userResource;
 
     @BeforeEach
+    @Transactional
     public void setup() {
         userRepository.deleteAll();
         itemRepository.deleteAll();
