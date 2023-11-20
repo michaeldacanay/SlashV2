@@ -56,8 +56,8 @@ public class User {
 
     public void setWishlist(List<Item> wishlist) { this.wishlist = wishlist; }
 
-    public List<String> getSearchHistory() { return searchHistory };
+    public List<String> getSearchHistory() { return searchHistory; }
 
-    public void setSearchHistory(List<String> searchHistory) { this.searchHistory = searchHistory };
+    public void setSearchHistory(List<String> searchHistory) { this.searchHistory = searchHistory; }
 
 }
