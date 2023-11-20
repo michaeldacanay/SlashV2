@@ -93,7 +93,7 @@ public class UserResourceTest {
         Item testItem = new Item();
         String url = "fakeURLS.com";
         testItem.setItemURl(url);
-//        itemRepository.persist(testItem);
+        itemRepository.persipersistst(testItem);
 
         Item storedTestItem = itemRepository.find("itemURl", url).firstResult();
         assertThat(storedTestItem.getItemURl()).isEqualTo(url);
@@ -168,7 +168,7 @@ public class UserResourceTest {
         List<String> searchHistory = existingUser.getSearchHistory();
         String search = "searchTerm";
         searchHistory.add(search);
-        userRepository.persist(existingUser);
+//        userRepository.persist(existingUser);
         System.out.println(searchHistory);
 
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
