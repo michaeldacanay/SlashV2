@@ -44,9 +44,7 @@ public class UserResource {
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)
     public String profile(String email) {
-        System.out.println(email + "profile");
         User currentUser = userRepository.find("email", email).firstResult();
-        System.out.println(currentUser.getEmail());
         if (currentUser != null) {
             return currentUser.getEmail() + ", hello from the backend!";
         } else {
@@ -66,19 +64,15 @@ public class UserResource {
     @POST
     @Path("/addItem")
     public String addItem(ItemRequest itemRequest) {
-        System.out.println(itemRequest.getEmail());
         String email = itemRequest.getEmail();
-        System.out.println(email);
         String itemURl = itemRequest.getItemUrl();
 
         User currentUser = userRepository.find("email", email).firstResult();
-        System.out.println(currentUser);
         List<Item> wishlist = currentUser.getWishlist();
         Item item = itemRepository.find("itemURl", itemURl).firstResult();
 
         wishlist.add(item);
         userRepository.persist(currentUser);
-        System.out.println(currentUser.getWishlist());
         return "Add Success";
     }
 
