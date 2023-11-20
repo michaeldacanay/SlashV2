@@ -108,6 +108,37 @@ public class UserResource {
         return currentUser.getSearchHistory();
     }
 
+    @Transactional
+    @POST
+    @Path("/addSearch")
+    public String addItem(SearchRequest searchRequest) {
+        String email = SearchRequest.getEmail();
+        String search = SearchRequest.getSearch();
+
+        User currentUser = userRepository.find("email", email).firstResult();
+        List<String> searchHistory = currentUser.getSearchHistory();
+
+        searchHistory.add(search);
+        userRepository.persist(currentUser);
+        return "Add Success";
+    }
+
+    @Transactional
+    @POST
+    @Path("/deleteSearch")
+    public String deleteSearch(SearchRequest searchRequest) {
+        String email = SearchRequest.getEmail();
+        String searchIndexString = SearchRequest.getSearch();
+        int searchIndex = Integer.parseInt(searchIndexString);
+        User currentUser = userRepository.find("email", email).firstResult();
+
+        List<String> searchHistory = currentUser.getSearchHistory();
+        searchHistory.remove(searchIndex);
+
+        userRepository.persist(currentUser);
+        return "Delete Success";
+    }
+
     public static class ItemRequest {
         private String email;
         private String itemUrl;
@@ -126,6 +157,27 @@ public class UserResource {
 
         public void setItemUrl(String itemUrl) {
             this.itemUrl = itemUrl;
+        }
+    }
+
+    public static class SearchRequest {
+        private String email;
+        private String search;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getSearch() {
+            return search;
+        }
+
+        public void setSearch(String search) {
+            this.search = search;
         }
     }
 

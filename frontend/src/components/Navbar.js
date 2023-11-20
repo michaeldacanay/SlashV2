@@ -20,6 +20,9 @@ const Navbar = ({ isAuthenticated }) => {
                             <Link to="/wishlist">Wishlist</Link>
                         </li>
                         <li>
+                            <Link to="/searchHistory">Search History</Link>
+                        </li>
+                        <li>
                             <Link to="/logout">Log out</Link>
                         </li>
                     </>

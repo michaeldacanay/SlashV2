@@ -199,7 +199,7 @@ public class UserResourceTest {
         assertThat(searchHistory.size()).isEqualTo(1);
 
         String storedSearch = searchHistory.get(0);
-        assertThat(stored.isEqualTo(search);
+        assertThat(stored.isEqualTo(search));
     }
 
     @Test
@@ -225,7 +225,11 @@ public class UserResourceTest {
         assertThat(searchHistory.size()).isEqualTo(1);
 
         String storedSearch = searchHistory.get(0);
-        assertThat(stored.isEqualTo(search);
+        assertThat(stored.isEqualTo(search));
+
+        SearchRequest deleteRequest = new SearchRequest();
+        request.setEmail(existingUserEmail);
+        request.setSearch("0");
 
         String deleteResponse = userResource.deleteSearch(request);
 

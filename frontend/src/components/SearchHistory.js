@@ -42,23 +42,27 @@ const SearchHistory = () => {
     }, [user, isAuthenticated])
 
 
-    const deleteFromSearchHistory = async (search) => {
+    const deleteFromSearchHistory = async (rowIndex) => {
         try {
-            const response = await axios.post("http://localhost:8080/user/deleteSearch", search);
-            setList(prevList => prevList.filter(item => item !== search));
+            const rowIndexAsString = String(rowIndex);
+            const response = await axios.post("http://localhost:8080/user/deleteSearch", {
+                index: rowIndexAsString,
+                email: user.email,
+            });
+            setList(prevList => prevList.filter((item, index) => index !== rowIndex));
         } catch (error) {
             console.log(error);
         }
     }
 
-    const deleteButton = (rowData) => {
+    const deleteButton = (rowIndex) => {
         return <Button
             style={{
                 backgroundColor: 'red',
                 color: 'white',
                 borderColor: 'red',
             }}
-            onClick={() => deleteFromSearchHistory(rowData)}>X
+            onClick={() => deleteFromSearchHistory(rowIndex)}>X
         </Button>
     }
 
@@ -82,14 +86,14 @@ const SearchHistory = () => {
             <Layout isAuthenticated={isAuthenticated}>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
 
-                    <DataTable value=list
+                    <DataTable value={list}
 
                                showGridlines
                                tableStyle={{ width: '60rem' }}
 
                     >
-                        <Column field="name" header="Product-Name" body={reSearchButton} />
-                        <Column header="Remove your Wishlist" body={deleteButton} />
+                        <Column field="name" header="Search" body={reSearchButton} />
+                        <Column header="Remove from your history" body={deleteButton} />
 
                     </DataTable>
 

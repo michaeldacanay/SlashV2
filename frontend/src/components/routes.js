@@ -6,6 +6,7 @@ import Login from "./Login.js";
 import Profile from "./Profile.js";
 import Logout from "./Logout.js";
 import Wishlist from "./Wishlist.js";
+import SearchHistory from "./SearchHistory.js";
 
 export const routes = [
     {
@@ -42,5 +43,10 @@ export const routes = [
         path: "/wishlist",
         name: "Wishlist",
         element: <Wishlist />
+    },
+    {
+        path: "/searchHistory",
+        name: "SearchHistory",
+        element: <SearchHistory />
     }
 ];
