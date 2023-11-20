@@ -33,7 +33,6 @@ public class UserResource {
         if (currentUser == null) {
             User newUser = new User();
             newUser.setEmail(email);
-            System.out.println(email);
 
             userRepository.persist(newUser);
         }

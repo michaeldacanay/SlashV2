@@ -160,6 +160,7 @@ public class UserResourceTest {
     }
 
     @Test
+    @Transactional
     public void testSearchHistory() {
         String existingUserEmail = "test@test.com";
 
@@ -167,6 +168,7 @@ public class UserResourceTest {
         List<String> searchHistory = existingUser.getSearchHistory();
         String search = "searchTerm";
         searchHistory.add(search);
+        userRepository.persist(existingUser);
         System.out.println(searchHistory);
 
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
