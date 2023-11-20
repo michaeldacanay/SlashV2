@@ -39,9 +39,11 @@ public class User {
     @Column(columnDefinition="text", length=10485760)
     public String email;
 
+    @Column
     @OneToMany
     public List<Item> wishlist;
 
+    @Column
     public List<String> searchHistory;
 
     public String getEmail() {

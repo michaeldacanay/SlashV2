@@ -165,8 +165,8 @@ public class UserResourceTest {
 
         User existingUser = userRepository.find("email", existingUserEmail).firstResult();
         List<String> searchHistory = existingUser.getSearchHistory();
-        String Url = "fakeURLS.com";
-        searchHistory.add(Url);
+        String search = "searchTerm";
+        searchHistory.add(search);
 
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
 
