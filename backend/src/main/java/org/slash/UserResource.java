@@ -97,7 +97,7 @@ public class UserResource {
         return "Delete Success";
     }
 
-//    @Transactional
+
     @POST
     @Consumes(MediaType.TEXT_PLAIN)
     @Path("/searchHistory")

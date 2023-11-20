@@ -5,9 +5,10 @@ import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './Layout.js';
+import axios from "axios";
 
 function Search() {
-    const { isAuthenticated } = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
     const [selectedWebsite, setSelectedWebsite] = useState(null);
     const handleWebsiteSelect = (website) => {
         setSelectedWebsite(website);
@@ -19,17 +20,15 @@ function Search() {
     const navigate = useNavigate();
 
     const HandleSubmission = async () => {
-        // try {
-        //     await axios.get(`http://localhost:8080/request/${searchWeb}/${searchItem}`)
-        //     console.log("sent scrape api request");
-        // } catch (error) {
-        //     console.error('Error with scraper: ', error);
-        // }
-
 
         try {
             const result = await DataFetch(searchWeb, searchItem);
-            ////add to search history
+            if (isAuthenticated) {
+                await axios.post("http://localhost:8080/user/addSearch", {
+                    search: searchItem,
+                    email: user.email
+                });
+            }
             navigate("/data", { state: { response: result, searchItem: searchItem, isModalOpen: false } });
         } catch (error) {
             console.log(error);

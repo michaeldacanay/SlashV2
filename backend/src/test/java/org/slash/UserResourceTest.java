@@ -155,8 +155,6 @@ public class UserResourceTest {
         assertThat(updatedWishlist).isNotNull();
         assertThat(updatedWishlist.size()).isEqualTo(0);
 
-
-
     }
 
     @Test
@@ -168,17 +166,76 @@ public class UserResourceTest {
         List<String> searchHistory = existingUser.getSearchHistory();
         String search = "searchTerm";
         searchHistory.add(search);
-//        userRepository.persist(existingUser);
         System.out.println(searchHistory);
 
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
-        System.out.println(searchHistory);
-        System.out.println(searchHistoryResponse);
+
 
         assertThat(searchHistoryResponse).isNotNull();
         assertThat(searchHistoryResponse.get(0)).isEqualTo(search);
 
-
-
     }
+
+    @Test
+    @Transactional
+    public void testAddSearch() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        String search = "laptops";
+
+        SearchRequest request = new SearchRequest();
+        request.setEmail(existingUserEmail);
+        request.setSearch(search);
+
+
+        String addResponse = userResource.addSearch(request);
+
+        assertThat(addResponse).isEqualTo("Add Success");
+
+        List<String> searchHistory = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(searchHistory).isNotNull();
+        assertThat(searchHistory.size()).isEqualTo(1);
+
+        String storedSearch = searchHistory.get(0);
+        assertThat(stored.isEqualTo(search);
+    }
+
+    @Test
+    @Transactional
+    public void testDeleteSearch() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        String search = "laptops";
+
+        SearchRequest request = new SearchRequest();
+        request.setEmail(existingUserEmail);
+        request.setSearch(search);
+
+
+        String addResponse = userResource.addSearch(request);
+
+        assertThat(addResponse).isEqualTo("Add Success");
+
+        List<String> searchHistory = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(searchHistory).isNotNull();
+        assertThat(searchHistory.size()).isEqualTo(1);
+
+        String storedSearch = searchHistory.get(0);
+        assertThat(stored.isEqualTo(search);
+
+        String deleteResponse = userResource.deleteSearch(request);
+
+        assertThat(deleteResponse).isEqualTo("Delete Success");
+        List<String> updatedSearchHistory = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(updatedSearchHistory).isNotNull();
+        assertThat(updatedSearchHistory.size()).isEqualTo(0);
+    }
+
+
+
 }
