@@ -159,8 +159,21 @@ public class UserResourceTest {
 
     }
 
-//    @Test
-//    public void testSearchHistory() {
-//        fail("fail");
-//    }
+    @Test
+    public void testSearchHistory() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        List<String> searchHistory = existingUser.getSearchHistory();
+        String Url = "fakeURLS.com";
+        searchHistory.add(Url);
+
+        List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(searchHistoryResponse).isNotNull();
+        assertThat(searchHistoryResponse.get(0)).isEqualTo(Url);
+
+
+
+    }
 }

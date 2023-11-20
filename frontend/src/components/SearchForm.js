@@ -29,6 +29,7 @@ function Search() {
 
         try {
             const result = await DataFetch(searchWeb, searchItem);
+            ////add to search history
             navigate("/data", { state: { response: result, searchItem: searchItem, isModalOpen: false } });
         } catch (error) {
             console.log(error);

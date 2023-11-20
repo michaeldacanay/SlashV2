@@ -42,6 +42,8 @@ public class User {
     @OneToMany
     public List<Item> wishlist;
 
+    public List<String> searchHistory;
+
     public String getEmail() {
         return email;
     }
@@ -53,5 +55,9 @@ public class User {
     public List<Item> getWishlist() { return wishlist; }
 
     public void setWishlist(List<Item> wishlist) { this.wishlist = wishlist; }
+
+    public List<String> getSearchHistory() { return searchHistory };
+
+    public void setSearchHistory(List<String> searchHistory) { this.searchHistory = searchHistory };
 
 }

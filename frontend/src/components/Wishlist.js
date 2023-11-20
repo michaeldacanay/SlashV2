@@ -91,7 +91,7 @@ const Wishlist = () => {
                             <Column field="store" header="Website" sortable />
                             <Column field="price" header="Price" sortable />
                             <Column header="Link" body={urlBodyTemplate} />
-                            <Column header="Add to your Wishlist" body={deleteButton} />
+                            <Column header="Remove your Wishlist" body={deleteButton} />
 
                         </DataTable>
 
