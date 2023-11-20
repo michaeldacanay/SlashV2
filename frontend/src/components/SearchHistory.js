@@ -42,11 +42,13 @@ const SearchHistory = () => {
     }, [user, isAuthenticated])
 
 
-    const deleteFromSearchHistory = async (rowIndex) => {
+    const deleteFromSearchHistory = async (rowData) => {
+        console.log(rowData);
         try {
+            const rowIndex = list.indexOf(rowData);
             const rowIndexAsString = String(rowIndex);
             const response = await axios.post("http://localhost:8080/user/deleteSearch", {
-                index: rowIndexAsString,
+                search: rowIndexAsString,
                 email: user.email,
             });
             setList(prevList => prevList.filter((item, index) => index !== rowIndex));
@@ -55,25 +57,30 @@ const SearchHistory = () => {
         }
     }
 
-    const deleteButton = (rowIndex) => {
+    const deleteButton = (rowData) => {
+
         return <Button
             style={{
                 backgroundColor: 'red',
                 color: 'white',
                 borderColor: 'red',
             }}
-            onClick={() => deleteFromSearchHistory(rowIndex)}>X
+            onClick={() => deleteFromSearchHistory(rowData)}>X
         </Button>
     }
 
     const reSearchButton = (rowData) => {
-        return <span onClick={goToSearch}>{rowData}</span>
+        return <span onClick={() => goToSearch(rowData)}>{rowData}</span>
     }
 
     const goToSearch = async (rowData) => {
         try {
-            const result = await DataFetch("all", rowData);
-            navigate("/data", { state: { response: result, searchItem: rowData, isModalOpen: false } });
+            console.log(rowData);
+            console.log("add");
+            const search = rowData;
+            console.log(search);
+            const result = await DataFetch("all", search);
+            navigate("/data", { state: { response: result, searchItem: search, isModalOpen: false } });
         } catch (error) {
             console.log(error);
         }
@@ -92,7 +99,7 @@ const SearchHistory = () => {
                                tableStyle={{ width: '60rem' }}
 
                     >
-                        <Column field="name" header="Search" body={reSearchButton} />
+                        <Column header="Search" body={reSearchButton} />
                         <Column header="Remove from your history" body={deleteButton} />
 
                     </DataTable>
