@@ -1,3 +1,13 @@
+.custom-datatable .p-datatable-tbody>tr>td {
+  border: 1px solid #0d0e0e;
+  /* Change the color as needed */
+}
+
+.custom-datatable .p-datatable-thead>tr>th {
+  border: 1px solid #0d0e0e;
+  /* Change the color as needed */
+}
+
 .custom-navbar {
   background-color: #00AA9B;
 }
