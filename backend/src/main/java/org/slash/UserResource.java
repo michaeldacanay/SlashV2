@@ -112,8 +112,8 @@ public class UserResource {
     @POST
     @Path("/addSearch")
     public String addItem(SearchRequest searchRequest) {
-        String email = SearchRequest.getEmail();
-        String search = SearchRequest.getSearch();
+        String email = searchRequest.getEmail();
+        String search = searchRequest.getSearch();
 
         User currentUser = userRepository.find("email", email).firstResult();
         List<String> searchHistory = currentUser.getSearchHistory();
@@ -127,8 +127,8 @@ public class UserResource {
     @POST
     @Path("/deleteSearch")
     public String deleteSearch(SearchRequest searchRequest) {
-        String email = SearchRequest.getEmail();
-        String searchIndexString = SearchRequest.getSearch();
+        String email = searchRequest.getEmail();
+        String searchIndexString = searchRequest.getSearch();
         int searchIndex = Integer.parseInt(searchIndexString);
         User currentUser = userRepository.find("email", email).firstResult();
 
