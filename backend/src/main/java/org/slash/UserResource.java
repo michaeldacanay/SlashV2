@@ -111,7 +111,7 @@ public class UserResource {
     @Transactional
     @POST
     @Path("/addSearch")
-    public String addItem(SearchRequest searchRequest) {
+    public String addSearch(SearchRequest searchRequest) {
         String email = searchRequest.getEmail();
         String search = searchRequest.getSearch();
 

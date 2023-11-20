@@ -8,6 +8,7 @@ import org.slash.UserResource;
 import org.slash.models.User;
 import org.slash.models.Item;
 import org.slash.UserResource.ItemRequest;
+import org.slash.UserResource.SearchRequest;
 import org.slash.repositories.UserRepository;
 import org.slash.repositories.ItemRepository;
 
@@ -199,7 +200,7 @@ public class UserResourceTest {
         assertThat(searchHistory.size()).isEqualTo(1);
 
         String storedSearch = searchHistory.get(0);
-        assertThat(stored.isEqualTo(search));
+        assertThat(storedSearch).isEqualTo(search);
     }
 
     @Test
@@ -225,7 +226,7 @@ public class UserResourceTest {
         assertThat(searchHistory.size()).isEqualTo(1);
 
         String storedSearch = searchHistory.get(0);
-        assertThat(stored.isEqualTo(search));
+        assertThat(storedSearch).isEqualTo(search);
 
         SearchRequest deleteRequest = new SearchRequest();
         request.setEmail(existingUserEmail);
