@@ -5,7 +5,7 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 import java.util.List;
-import Java.util.ArrayList;
+import java.util.ArrayList;
 
 import static jakarta.persistence.GenerationType.SEQUENCE;
 
