@@ -171,7 +171,7 @@ public class UserResourceTest {
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
 
         assertThat(searchHistoryResponse).isNotNull();
-        assertThat(searchHistoryResponse.get(0)).isEqualTo(Url);
+        assertThat(searchHistoryResponse.get(0)).isEqualTo(search);
 
 
 
