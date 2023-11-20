@@ -105,7 +105,7 @@ public class UserResource {
     public List<String> getSearchHistory(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
         System.out.println(currentUser);
-        System.out.println(currentUser.getSearchHistory);
+        System.out.println(currentUser.getSearchHistory());
         return currentUser.getSearchHistory();
     }
 
