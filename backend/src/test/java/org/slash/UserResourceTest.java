@@ -167,8 +167,11 @@ public class UserResourceTest {
         List<String> searchHistory = existingUser.getSearchHistory();
         String search = "searchTerm";
         searchHistory.add(search);
+        System.out.println(searchHistory);
 
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
+        System.out.println(searchHistory);
+        System.out.println(searchHistoryResponse);
 
         assertThat(searchHistoryResponse).isNotNull();
         assertThat(searchHistoryResponse.get(0)).isEqualTo(search);
