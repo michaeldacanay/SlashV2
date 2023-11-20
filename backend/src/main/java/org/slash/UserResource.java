@@ -104,7 +104,13 @@ public class UserResource {
         return "Delete Success";
     }
 
-
+    @Transactional
+    @POST
+    @Path("/searchHistory")
+    public List<String> getSearchHistory(String email) {
+        User currentUser = userRepository.find("email", email).firstResult();
+        return currentUser.getSearchHistory();
+    }
 
     public static class ItemRequest {
         private String email;
