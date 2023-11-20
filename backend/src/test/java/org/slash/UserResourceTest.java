@@ -93,7 +93,7 @@ public class UserResourceTest {
         Item testItem = new Item();
         String url = "fakeURLS.com";
         testItem.setItemURl(url);
-        itemRepository.persipersistst(testItem);
+        itemRepository.persist(testItem);
 
         Item storedTestItem = itemRepository.find("itemURl", url).firstResult();
         assertThat(storedTestItem.getItemURl()).isEqualTo(url);
