@@ -121,6 +121,7 @@ mvnw.cmd quarkus:dev        # For Windows
 
 ```
 cd frontend
+npm install
 
 # .env.development.local (add if not present)
 # REACT_APP_API_URL=http://localhost:8080/api/
