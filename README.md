@@ -74,8 +74,8 @@ https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43
 Prerequisites:
 
 - Install [Python 3](https://www.python.org/downloads/) for scraper and [Pip](https://pip.pypa.io/en/stable/installation/). To verify, run `python --version` or `python3 --version`. Likewise, for pip: `pip --version` or `pip3 --version`
-- Install [Node 20+](https://nodejs.org/en/) for node and npm package manager for [React](https://react.dev/) framework for the frontend
-- Install [Docker](https://www.docker.com/get-started/)
+- Install [Node 20+](https://nodejs.org/en/) for node and npm package manager for [React](https://react.dev/) framework for the frontend. To verify, run `node --version`.
+- Install [Docker](https://www.docker.com/get-started/). Open Docker Desktop and make sure it is running.
 - Install [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) for [Quarkus](https://quarkus.io/) for the backend. To verify, run `java --version`.
 
 
