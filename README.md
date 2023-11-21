@@ -71,48 +71,60 @@ https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43
 
 ## :rocket: Installation
 
+Prerequisites:
+
+- Install [Python 3](https://www.python.org/downloads/) for scraper and [Pip](https://pip.pypa.io/en/stable/installation/). To verify, run `python --version` or `python3 --version`. Likewise, for pip: `pip --version` or `pip3 --version`
+- Install [Node 20+](https://nodejs.org/en/) for node and npm package manager for [React](https://react.dev/) framework for the frontend
+- Install [Docker](https://www.docker.com/get-started/)
+- Install [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) for [Quarkus](https://quarkus.io/) for the backend. To verify, run `java --version`.
+
+
 1. Clone the Github repository to a desired location on your computer. You will need [git](https://git-scm.com/) to be preinstalled on your machine. Once the repository is cloned, you will then `cd` into the local repository.
 
 ```
-git clone https://github.com/SE-Fall2023-Group-41/SlashV2.git
+git clone https://github.com/michaeldacanay/SlashV2.git
 cd SlashV2
 ```
 
-2. This project uses Python 3 for the scraper, [Quarkus](https://quarkus.io/) for the backend, and [React](https://react.dev/) framework for the frontend. You will also need to install [Docker](https://www.docker.com/get-started/).
-
-For the Scraper to work we ensure that [Python](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installation/) are preinstalled. All the Python requirements of the project are listed in the `requirements.txt` file. Use pip to install all of those.
-
-```
-pip3 install -r requirements.txt
-```
-
-3. First we run the scraper. For this we cd into the src folder. Once in the src folder, use the python command to run the main.py file.
+2. We use Python 3 for the scraper, located in the src folder. All the Python requirements of the project are listed in the `requirements.txt` file. It is suggested to first create a virtual environment before installing dependencies e.g. pipenv, venv, etc. Use pip to install all of those.
 
 ```
 cd src
-For Mac
-python3 main.py
-For Windows
-python main.py
+
+# suggested to create virtual environment
+# e.g. pipenv
+#
+# brew install pipenv
+# pipenv --python 3.10
+# pipenv shell
+
+pip install -r requirements.txt (OR pip3 install -r requirements.txt)
+```
+
+3. Run the scraper, using the python command to run the main.py file.
+
+```
+# in src
+python main.py (OR python3 main.py)
 ```
 
 4. For the backend setup ensure that JDK 17 is preinstalled, you will have to cd into the backend. Once in the backend folder, use the command mvnw.cmd
 
 ```
 cd backend
-For Mac
-./mvnw compile quarkus:dev
-For Windows
-mvnw.cmd quarkus:dev
+
+./mvnw compile quarkus:dev  # For Mac
+mvnw.cmd quarkus:dev        # For Windows
 ```
 
-5. For the frontend setup to ensure that Node 20 is preinstalled, you will have to cd into the frontend. Once in the frontend folder, use the command npm start
+5. For the frontend setup to ensure that Node 20 is preinstalled, you will have to cd into the frontend. Once in the frontend folder, add a .env.development.local file with `REACT_APP_API_URL=http://localhost:8080/api/` environment variable. Then, use the command `npm start`
 
 ```
 cd frontend
-For Mac
-npm start
-For Windows
+
+# .env.development.local (add if not present)
+# REACT_APP_API_URL=http://localhost:8080/api/
+
 npm start
 ```
 
