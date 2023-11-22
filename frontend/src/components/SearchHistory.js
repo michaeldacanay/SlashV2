@@ -57,15 +57,25 @@ const SearchHistory = () => {
     }
 
     const deleteButton = (rowData) => {
+        const buttonStyle = {
+            backgroundColor: 'red',
+            color: 'white',
+            borderColor: 'red',
+        }
 
-        return <Button
-            style={{
-                backgroundColor: 'red',
-                color: 'white',
-                borderColor: 'red',
-            }}
-            onClick={() => deleteFromSearchHistory(rowData)}>X
-        </Button>
+        const hoverStyle = {
+            backgroundColor: '#cc0000', // Change the background color on hover 
+        }
+        
+        return (
+            <Button
+                style={buttonStyle}
+                onMouseOver={(e) => e.target.style.backgroundColor = hoverStyle.backgroundColor}
+                onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
+                onClick={() => deleteFromSearchHistory(rowData)}>
+                X
+            </Button>
+        )
     }
 
     const reSearchButton = (rowData) => {
