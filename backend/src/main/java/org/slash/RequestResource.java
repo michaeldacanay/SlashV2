@@ -16,6 +16,5 @@ public class RequestResource {
     public int request(@PathParam("store") String store, @PathParam("item") String item) {
 
         return pythonScraperClient.triggerScraper(store, item).getStatus();
-
     }
 }
