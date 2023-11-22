@@ -10,9 +10,9 @@ const Profile = () => {
 
     useEffect(() => {
         const loadProfile = async () => {
-            console.log(isAuthenticated);
+
             const email = user.email;
-            console.log(email + "CHECK");
+
             try {
                 if (isAuthenticated) {
                     await axios.post("http://localhost:8080/user/addUser/", email, {
