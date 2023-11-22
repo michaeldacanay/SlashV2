@@ -4,32 +4,32 @@ import { Link } from 'react-router-dom';
 const Navbar = ({ isAuthenticated }) => {
     return (
         <nav>
-            <ul>
-                <li>
-                    <Link to="/">About</Link>
+            <ul class="nav nav-pills">
+                <li className='nav-item'>
+                    <Link to="/" class="nav-link">About</Link>
                 </li>
                 {isAuthenticated ? (
                     <>
-                        <li>
-                            <Link to="/search">Search</Link>
+                        <li className='nav-item active'>
+                            <Link to="/search" class="nav-link">Search</Link>
                         </li>
-                        <li>
-                            <Link to="/profile">Profile</Link>
+                        <li className='nav-item'>
+                            <Link to="/profile" class="nav-link">Profile</Link>
                         </li>
-                        <li>
-                            <Link to="/wishlist">Wishlist</Link>
+                        <li className='nav-item'>
+                            <Link to="/wishlist" class="nav-link">Wishlist</Link>
                         </li>
-                        <li>
-                            <Link to="/searchHistory">Search History</Link>
+                        <li className='nav-item'>
+                            <Link to="/searchHistory" class="nav-link">Search History</Link>
                         </li>
-                        <li>
-                            <Link to="/logout">Log out</Link>
+                        <li className='nav-item'>
+                            <Link to="/logout" class="nav-link">Log out</Link>
                         </li>
                     </>
 
                 ) : (
-                    <li>
-                        <Link to="/login">Log in</Link>
+                    <li className='nav-item'>
+                        <Link to="/login" class="nav-link">Log in</Link>
                     </li>
                 )}
             </ul>
