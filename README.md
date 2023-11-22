@@ -22,9 +22,12 @@ Save Time: Slash helps you find the best deals on your desired items across mult
 User-Friendly APIs: We offer simple and intuitive public APIs, allowing you to filter, sort, and search through search results effortlessly.<br>
 Customizable Output: Slash provides JSON responses that you can easily customize to match your specific needs and requirements.
 🛒 Supported Websites<br>
-Slash currently supports the following major e-commerce websites:<br>
-[Walmart](https://www.walmart.com/),[BestBuy](https://www.bestbuy.com/),
-[Costco](https://www.costco.com/) <br>
+Slash currently supports the following major e-commerce websites:
+
+- [Walmart](https://www.walmart.com/)
+- [BestBuy](https://www.bestbuy.com/)
+- [Costco](https://www.costco.com/)
+- [Amazon](https://www.amazon.com/)
 
 ## :rocket: Improvements over the Previous project
 
