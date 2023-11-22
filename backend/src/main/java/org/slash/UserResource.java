@@ -33,7 +33,6 @@ public class UserResource {
         if (currentUser == null) {
             User newUser = new User();
             newUser.setEmail(email);
-            System.out.println(email);
 
             userRepository.persist(newUser);
         }
@@ -44,9 +43,7 @@ public class UserResource {
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)
     public String profile(String email) {
-        System.out.println(email + "profile");
         User currentUser = userRepository.find("email", email).firstResult();
-        System.out.println(currentUser.getEmail());
         if (currentUser != null) {
             return currentUser.getEmail() + ", hello from the backend!";
         } else {
@@ -66,19 +63,15 @@ public class UserResource {
     @POST
     @Path("/addItem")
     public String addItem(ItemRequest itemRequest) {
-        System.out.println(itemRequest.getEmail());
         String email = itemRequest.getEmail();
-        System.out.println(email);
         String itemURl = itemRequest.getItemUrl();
 
         User currentUser = userRepository.find("email", email).firstResult();
-        System.out.println(currentUser);
         List<Item> wishlist = currentUser.getWishlist();
         Item item = itemRepository.find("itemURl", itemURl).firstResult();
 
         wishlist.add(item);
         userRepository.persist(currentUser);
-        System.out.println(currentUser.getWishlist());
         return "Add Success";
     }
 
@@ -105,6 +98,46 @@ public class UserResource {
     }
 
 
+    @POST
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Path("/searchHistory")
+    public List<String> getSearchHistory(String email) {
+        User currentUser = userRepository.find("email", email).firstResult();
+        System.out.println(currentUser);
+        System.out.println(currentUser.getSearchHistory());
+        return currentUser.getSearchHistory();
+    }
+
+    @Transactional
+    @POST
+    @Path("/addSearch")
+    public String addSearch(SearchRequest searchRequest) {
+        String email = searchRequest.getEmail();
+        String search = searchRequest.getSearch();
+
+        User currentUser = userRepository.find("email", email).firstResult();
+        List<String> searchHistory = currentUser.getSearchHistory();
+
+        searchHistory.add(search);
+        userRepository.persist(currentUser);
+        return "Add Success";
+    }
+
+    @Transactional
+    @POST
+    @Path("/deleteSearch")
+    public String deleteSearch(SearchRequest searchRequest) {
+        String email = searchRequest.getEmail();
+        String searchIndexString = searchRequest.getSearch();
+        int searchIndex = Integer.parseInt(searchIndexString);
+        User currentUser = userRepository.find("email", email).firstResult();
+
+        List<String> searchHistory = currentUser.getSearchHistory();
+        searchHistory.remove(searchIndex);
+
+        userRepository.persist(currentUser);
+        return "Delete Success";
+    }
 
     public static class ItemRequest {
         private String email;
@@ -124,6 +157,27 @@ public class UserResource {
 
         public void setItemUrl(String itemUrl) {
             this.itemUrl = itemUrl;
+        }
+    }
+
+    public static class SearchRequest {
+        private String email;
+        private String search;
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getSearch() {
+            return search;
+        }
+
+        public void setSearch(String search) {
+            this.search = search;
         }
     }
 

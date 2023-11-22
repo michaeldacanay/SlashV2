@@ -99,7 +99,7 @@ function DataDisplay() {
     }
 
     if (data === null || (Array.isArray(data) && data.length === 0)) {
-        console.log("here");
+
         return <RequestModal isOpen={true} searchItem={searchItem} />
     }
 
@@ -148,7 +148,7 @@ function DataDisplay() {
     }
 
     const addToWishlist = async (itemUrl) => {
-        console.log("add to wishlist:", itemUrl)
+
         try {
             const response = await axios.post("http://localhost:8080/user/addItem", {
                 itemUrl: itemUrl,

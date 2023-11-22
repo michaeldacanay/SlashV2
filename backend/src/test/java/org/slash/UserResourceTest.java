@@ -8,6 +8,7 @@ import org.slash.UserResource;
 import org.slash.models.User;
 import org.slash.models.Item;
 import org.slash.UserResource.ItemRequest;
+import org.slash.UserResource.SearchRequest;
 import org.slash.repositories.UserRepository;
 import org.slash.repositories.ItemRepository;
 
@@ -155,25 +156,91 @@ public class UserResourceTest {
         assertThat(updatedWishlist).isNotNull();
         assertThat(updatedWishlist.size()).isEqualTo(0);
 
-
-
     }
 
     @Test
+    @Transactional
     public void testSearchHistory() {
         String existingUserEmail = "test@test.com";
 
         User existingUser = userRepository.find("email", existingUserEmail).firstResult();
         List<String> searchHistory = existingUser.getSearchHistory();
-        String Url = "fakeURLS.com";
-        searchHistory.add(Url);
+        String search = "searchTerm";
+        searchHistory.add(search);
+        System.out.println(searchHistory);
 
         List<String> searchHistoryResponse = userResource.getSearchHistory(existingUserEmail);
 
+
         assertThat(searchHistoryResponse).isNotNull();
-        assertThat(searchHistoryResponse.get(0)).isEqualTo(Url);
-
-
+        assertThat(searchHistoryResponse.get(0)).isEqualTo(search);
 
     }
+
+    @Test
+    @Transactional
+    public void testAddSearch() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        String search = "laptops";
+
+        SearchRequest request = new SearchRequest();
+        request.setEmail(existingUserEmail);
+        request.setSearch(search);
+
+
+        String addResponse = userResource.addSearch(request);
+
+        assertThat(addResponse).isEqualTo("Add Success");
+
+        List<String> searchHistory = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(searchHistory).isNotNull();
+        assertThat(searchHistory.size()).isEqualTo(1);
+
+        String storedSearch = searchHistory.get(0);
+        assertThat(storedSearch).isEqualTo(search);
+    }
+
+    @Test
+    @Transactional
+    public void testDeleteSearch() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+        String search = "laptops";
+
+        SearchRequest request = new SearchRequest();
+        request.setEmail(existingUserEmail);
+        request.setSearch(search);
+
+
+        String addResponse = userResource.addSearch(request);
+
+        assertThat(addResponse).isEqualTo("Add Success");
+
+        List<String> searchHistory = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(searchHistory).isNotNull();
+        assertThat(searchHistory.size()).isEqualTo(1);
+
+        String storedSearch = searchHistory.get(0);
+        assertThat(storedSearch).isEqualTo(search);
+
+        SearchRequest deleteRequest = new SearchRequest();
+        request.setEmail(existingUserEmail);
+        request.setSearch("0");
+
+        String deleteResponse = userResource.deleteSearch(request);
+
+        assertThat(deleteResponse).isEqualTo("Delete Success");
+        List<String> updatedSearchHistory = userResource.getSearchHistory(existingUserEmail);
+
+        assertThat(updatedSearchHistory).isNotNull();
+        assertThat(updatedSearchHistory.size()).isEqualTo(0);
+    }
+
+
+
 }
