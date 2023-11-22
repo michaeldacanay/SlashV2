@@ -9,14 +9,13 @@ import axios from "axios";
 import {Button} from "react-bootstrap";
 import DataFetch from "./DataFetch.js";
 import { useNavigate } from 'react-router-dom';
+import './custom.css';
 
 const SearchHistory = () => {
     const { user, isAuthenticated } = useAuth0();
-
     const [list, setList] = useState([])
-
+    const [selectedSearch, setSelectedSearch] = useState(null);
     const navigate = useNavigate();
-
 
 
     useEffect(() => {
@@ -86,25 +85,23 @@ const SearchHistory = () => {
         }
     }
 
-
-
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-
                     <DataTable value={list}
-
-                               showGridlines
-                               tableStyle={{ width: '60rem' }}
-
+                        stripedRows
+                        showGridlines
+                        tableStyle={{ width: '60rem' }}
                     >
-                        <Column header="Search" body={reSearchButton} />
+                        <Column
+                            header="Search" 
+                            body={reSearchButton}
+                            style={{ cursor: 'pointer', textDecoration: 'none' }}
+                            className="search-column"
+                        />
                         <Column header="Remove from your history" body={deleteButton} />
-
                     </DataTable>
-
-
                 </div>
             </Layout>
         </div>

@@ -8,6 +8,10 @@
   /* Change the color as needed */
 }
 
+.search-column:hover span {
+  text-decoration: underline;
+}
+
 .custom-navbar {
   background-color: #00AA9B;
 }
