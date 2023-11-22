@@ -18,45 +18,43 @@ const customStyles = {
 const RequestModal = ({ isOpen, searchItem }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const request = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/request/all/${searchItem}`
-        );
-        console.log("sent scrape api request");
-        console.log(response);
-      } catch (error) {
-        console.error("Error with scraper: ", error);
-      }
-    };
+  const request = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8080/request/all/${searchItem}`
+      );
+      console.log("sent scrape api request");
+      console.log(response);
+    } catch (error) {
+      console.error("Error with scraper: ", error);
+    }
+  };
 
-    request().then(() => {
-      fetch();
-
+  const fetchData = async () => {
+    try {
+      const result = await DataFetch("all", searchItem);
       navigate("/data", {
-        state: { response: result, searchItem: searchItem },
+        state: {
+          response: result,
+          searchItem: searchItem,
+          isModalOpen: false,
+        },
       });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log("requesting...");
+    request().then(() => {
+      fetchData();
+
+      // navigate("/data", {
+      //   state: { response: result, searchItem: searchItem },
+      // });
     });
 
-    let result = {};
-
-    const fetch = async () => {
-      try {
-        result = await DataFetch("all", searchItem);
-        navigate("/data", {
-          state: {
-            response: result,
-            searchItem: searchItem,
-            isModalOpen: false,
-          },
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    // fetch();
   }, [searchItem, navigate]);
 
   return (
