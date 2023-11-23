@@ -25,6 +25,11 @@ function DataDisplay() {
 
     const [globalFilter, setGlobalFilter] = useState('');
 
+    const searchTerm = searchItem || '';
+
+    const resultMessage = data
+        ? `There are ${data.length} results for "${searchTerm}"`
+        : '';
 
     const currencyDropdown = (
         <select value={selectedCurrency} onChange={(e) => handleCurrencyChange(e.target.value)}>
@@ -107,6 +112,7 @@ function DataDisplay() {
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div>
                 <h1>Product List</h1>
+                <p>{resultMessage}</p>
                 {<Button bsclass="search-btn" style={{
                     backgroundColor: '#00AA9B',
                     color: 'white',
@@ -138,27 +144,27 @@ function DataDisplay() {
 
     const addButton = (rowData) => {
         const buttonStyle = {
-          backgroundColor: '#00AA9B',
-          color: 'white',
-          borderColor: '#00AA9B',
-          transition: 'background-color 0.3s ease-in-out', // Adding a transition for a smooth effect
+            backgroundColor: '#00AA9B',
+            color: 'white',
+            borderColor: '#00AA9B',
+            transition: 'background-color 0.3s ease-in-out', // Adding a transition for a smooth effect
         };
-      
+
         const hoverStyle = {
-          backgroundColor: '#007D73', // Change the background color on hover
+            backgroundColor: '#007D73', // Change the background color on hover
         };
-      
+
         return (
-          <Button
-            style={buttonStyle}
-            onMouseOver={(e) => e.target.style.backgroundColor = hoverStyle.backgroundColor}
-            onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
-            onClick={() => addToWishlist(rowData.itemURl)}
-          >
-            +
-          </Button>
+            <Button
+                style={buttonStyle}
+                onMouseOver={(e) => e.target.style.backgroundColor = hoverStyle.backgroundColor}
+                onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
+                onClick={() => addToWishlist(rowData.itemURl)}
+            >
+                +
+            </Button>
         );
-      };
+    };
 
     const addToWishlist = async (itemUrl) => {
         toast.success('Added to Wishlist successfully!');
@@ -178,14 +184,15 @@ function DataDisplay() {
 
     return (
         <div>
-            <Toaster/>
+            <Toaster />
             <Layout isAuthenticated={isAuthenticated}>
-                <div style={{ marginLeft: '1em', marginRight: '1em'}}>
+                <div style={{ marginLeft: '1em', marginRight: '1em' }}>
                     {data && data.length > 0 ? (
                         <DataTable value={data}
                             header={header}
                             footer={footer}
                             paginator rows={10}
+                            paginatorTemplate="RowsPerPageDropdown FirstPageLink PrevPageLink CurrentPageReport NextPageLink LastPageLink"
                             className="custom-datatable"
                             rowsPerPageOptions={[5, 10, 25, 50]}
                             removableSort
@@ -193,7 +200,6 @@ function DataDisplay() {
                             globalFilter={globalFilter}
                         >
                             <Column field="name" header="Product-Name" sortable filter />
-                            <Column field="itemType" header="Category" sortable />
                             <Column header="Image" body={imageBodyTemplate} />
                             <Column field="store" header="Website" sortable filter />
 
