@@ -100,7 +100,6 @@ function DataDisplay() {
     }
 
     if (data === null || (Array.isArray(data) && data.length === 0)) {
-
         return <RequestModal isOpen={true} searchItem={searchItem} />
     }
 
