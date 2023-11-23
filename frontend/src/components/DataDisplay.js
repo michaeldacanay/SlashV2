@@ -12,6 +12,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Layout from './Layout.js';
 import axios from "axios";
 import { InputNumber } from 'primereact/inputnumber/inputnumber.esm.js';
+import toast, { Toaster } from 'react-hot-toast';
 
 function DataDisplay() {
     const { isAuthenticated, user } = useAuth0();
@@ -137,18 +138,31 @@ function DataDisplay() {
     };
 
     const addButton = (rowData) => {
-        return <Button
-            style={{
-                backgroundColor: '#00AA9B',
-                color: 'white',
-                borderColor: '#00AA9B',
-            }}
-            onClick={() => addToWishlist(rowData.itemURl)}>+
-        </Button>
-    }
+        const buttonStyle = {
+          backgroundColor: '#00AA9B',
+          color: 'white',
+          borderColor: '#00AA9B',
+          transition: 'background-color 0.3s ease-in-out', // Adding a transition for a smooth effect
+        };
+      
+        const hoverStyle = {
+          backgroundColor: '#007D73', // Change the background color on hover
+        };
+      
+        return (
+          <Button
+            style={buttonStyle}
+            onMouseOver={(e) => e.target.style.backgroundColor = hoverStyle.backgroundColor}
+            onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
+            onClick={() => addToWishlist(rowData.itemURl)}
+          >
+            +
+          </Button>
+        );
+      };
 
     const addToWishlist = async (itemUrl) => {
-
+        toast.success('Added to Wishlist successfully!');
         try {
             const response = await axios.post("http://localhost:8080/user/addItem", {
                 itemUrl: itemUrl,
@@ -165,8 +179,9 @@ function DataDisplay() {
 
     return (
         <div>
+            <Toaster/>
             <Layout isAuthenticated={isAuthenticated}>
-                <div>
+                <div style={{ marginLeft: '1em', marginRight: '1em'}}>
                     {data && data.length > 0 ? (
                         <DataTable value={data}
                             header={header}
