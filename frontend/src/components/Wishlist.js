@@ -10,6 +10,7 @@ import {Button} from "react-bootstrap";
 
 const Wishlist = () => {
     const { user, isAuthenticated } = useAuth0();
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [list, setList] = useState([])
 
@@ -21,7 +22,7 @@ const Wishlist = () => {
             console.log(isAuthenticated);
             try {
                 if (isAuthenticated) {
-                    const response = await axios.post("http://localhost:8080/user/wishlist/", email, {
+                    const response = await axios.post(`${apiUrl}/user/wishlist`, email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }
@@ -51,7 +52,7 @@ const Wishlist = () => {
 
     const deleteFromWishlist = async (itemUrl) => {
         try {
-            const response = await axios.post("http://localhost:8080/user/deleteItem", {
+            const response = await axios.post(`${apiUrl}/user/deleteItem`, {
                 itemUrl: itemUrl,
                 email: user.email,
             });

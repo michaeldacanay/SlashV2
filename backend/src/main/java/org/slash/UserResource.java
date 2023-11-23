@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@Path("/user")
+@Path("/api")
 public class UserResource {
 
     @Inject
@@ -25,7 +25,7 @@ public class UserResource {
     ItemRepository itemRepository;
 
     @POST
-    @Path("/addUser")
+    @Path("/user/addUser")
     @Consumes(MediaType.TEXT_PLAIN)
     @Transactional
     public void addUser(String email) {
@@ -39,7 +39,7 @@ public class UserResource {
     }
 
     @POST
-    @Path("/profile")
+    @Path("/user/profile")
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.TEXT_PLAIN)
     public String profile(String email) {
@@ -52,7 +52,7 @@ public class UserResource {
     }
 
     @POST
-    @Path("/wishlist")
+    @Path("/user/wishlist")
     @Consumes(MediaType.TEXT_PLAIN)
     public List<Item> getWishlist(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
@@ -61,7 +61,7 @@ public class UserResource {
 
     @Transactional
     @POST
-    @Path("/addItem")
+    @Path("/user/addItem")
     public String addItem(ItemRequest itemRequest) {
         String email = itemRequest.getEmail();
         String itemURl = itemRequest.getItemUrl();
@@ -77,7 +77,7 @@ public class UserResource {
 
     @Transactional
     @POST
-    @Path("/deleteItem")
+    @Path("/user/deleteItem")
     public String deleteItem(ItemRequest itemRequest) {
         String email = itemRequest.getEmail();
         String itemURl = itemRequest.getItemUrl();
@@ -100,7 +100,7 @@ public class UserResource {
 
     @POST
     @Consumes(MediaType.TEXT_PLAIN)
-    @Path("/searchHistory")
+    @Path("/user/searchHistory")
     public List<String> getSearchHistory(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
         System.out.println(currentUser);
@@ -110,7 +110,7 @@ public class UserResource {
 
     @Transactional
     @POST
-    @Path("/addSearch")
+    @Path("/user/addSearch")
     public String addSearch(SearchRequest searchRequest) {
         String email = searchRequest.getEmail();
         String search = searchRequest.getSearch();
@@ -125,7 +125,7 @@ public class UserResource {
 
     @Transactional
     @POST
-    @Path("/deleteSearch")
+    @Path("/user/deleteSearch")
     public String deleteSearch(SearchRequest searchRequest) {
         String email = searchRequest.getEmail();
         String searchIndexString = searchRequest.getSearch();

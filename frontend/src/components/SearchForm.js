@@ -1,5 +1,5 @@
 import { InputGroup, FormControl, DropdownButton, Dropdown, Button } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import './custom.css'
 import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
@@ -8,12 +8,38 @@ import Layout from './Layout.js';
 import axios from "axios";
 
 function Search() {
-    const { isAuthenticated, user } = useAuth0();
+    const { isAuthenticated, user, isLoading } = useAuth0();
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [selectedWebsite, setSelectedWebsite] = useState(null);
     const handleWebsiteSelect = (website) => {
         setSelectedWebsite(website);
         setSearchWeb(website);
     };
+
+    useEffect(() => {
+        const insertUser = async () => {
+
+
+            try {
+                const email = user.email;
+                if (isAuthenticated && user) {
+                    await axios.post(`${apiUrl}/user/addUser`, email, {
+                        headers: {
+                            'Content-Type': 'text/plain',
+                        }
+                    });
+
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        if (!isLoading) {
+            insertUser();
+        }
+
+
+    }, [user, isAuthenticated])
 
     const [searchItem, setSearchItem] = useState(undefined);
     const [searchWeb, setSearchWeb] = useState("all");
@@ -24,7 +50,7 @@ function Search() {
         try {
             const result = await DataFetch(searchWeb, searchItem);
             if (isAuthenticated) {
-                await axios.post("http://localhost:8080/user/addSearch", {
+                await axios.post(`${apiUrl}/user/addSearch`, {
                     search: searchItem,
                     email: user.email
                 });

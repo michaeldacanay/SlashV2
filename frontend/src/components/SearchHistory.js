@@ -13,6 +13,7 @@ import './custom.css';
 
 const SearchHistory = () => {
     const { user, isAuthenticated } = useAuth0();
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [list, setList] = useState([])
     const [selectedSearch, setSelectedSearch] = useState(null);
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ const SearchHistory = () => {
             console.log(isAuthenticated);
             try {
                 if (isAuthenticated) {
-                    const response = await axios.post("http://localhost:8080/user/searchHistory", email, {
+                    const response = await axios.post(`${apiUrl}/user/searchHistory`, email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }
@@ -46,7 +47,7 @@ const SearchHistory = () => {
         try {
             const rowIndex = list.indexOf(rowData);
             const rowIndexAsString = String(rowIndex);
-            const response = await axios.post("http://localhost:8080/user/deleteSearch", {
+            const response = await axios.post(`${apiUrl}/user/deleteSearch`, {
                 search: rowIndexAsString,
                 email: user.email,
             });

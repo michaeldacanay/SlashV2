@@ -20,6 +20,7 @@ function DataDisplay() {
     const searchItem = location.state ? location.state.searchItem : null;
     const data = location.state ? location.state.response : null;
     const isModalOpen = location.state ? location.state.isModalOpen : null;
+    const apiUrl = process.env.REACT_APP_API_URL;
     const navigate = useNavigate();
     const [selectedCurrency, setSelectedCurrency] = useState('EUR');
 
@@ -169,7 +170,7 @@ function DataDisplay() {
     const addToWishlist = async (itemUrl) => {
         toast.success('Added to Wishlist successfully!');
         try {
-            const response = await axios.post("http://localhost:8080/user/addItem", {
+            const response = await axios.post(`${apiUrl}/user/addItem`, {
                 itemUrl: itemUrl,
                 email: user.email,
             });

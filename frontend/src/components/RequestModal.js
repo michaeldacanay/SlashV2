@@ -17,11 +17,12 @@ const customStyles = {
 
 const RequestModal = ({ isOpen, searchItem }) => {
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const request = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/request/all/${searchItem}`
+        `${apiUrl}/request/all/${searchItem}`
       );
       console.log("sent scrape api request");
       console.log(response);

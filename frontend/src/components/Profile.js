@@ -5,6 +5,7 @@ import Layout from "./Layout.js";
 
 const Profile = () => {
     const { user, isAuthenticated } = useAuth0();
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const [profile, setProfile] = useState("");
 
@@ -15,12 +16,12 @@ const Profile = () => {
 
             try {
                 if (isAuthenticated) {
-                    await axios.post("http://localhost:8080/user/addUser/", email, {
+                    await axios.post(`${apiUrl}/user/addUser`, email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }
                     });
-                    const response = await axios.post("http://localhost:8080/user/profile/", email, {
+                    const response = await axios.post(`${apiUrl}/user/profile`, email, {
                         headers: {
                             'Content-Type': 'text/plain',
                         }
