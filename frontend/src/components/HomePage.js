@@ -2,10 +2,10 @@ import React from 'react';
 import logo from '../slash.png';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 const HomePage = () => {
-
+    const { isAuthenticated } = useAuth0();
     const navigate = useNavigate();
 
     const noLogin = () => {
@@ -42,22 +42,40 @@ const HomePage = () => {
                         <br></br>
                         <p>Licensed by MIT</p>
                     </div>
-                    <li>
-                        <Button
-                            variant='primary'
-                            style={{backgroundColor: "#00AA9B"}}
-                            onClick={loginWithRedirect}>
-                            Log in to your Slash account!
-                        </Button>
-                    </li>
-                    <br />
-                    <li>
-                        <Button
-                            variant='primary'
-                            style={{backgroundColor: "#00AA9B"}}
-                            onClick={noLogin}>Run Slash without an account
-                        </Button>
-                    </li>
+                    {isAuthenticated ? (
+                        <div>
+                            <br />
+                            <div>
+                                <Button
+                                    variant='primary'
+                                    style={{backgroundColor: "#00AA9B", borderColor: "#00AA9B"}}
+                                    onClick={noLogin}>
+                                    SLASH
+                                </Button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <div>
+                                <Button
+                                    variant='primary'
+                                    style={{backgroundColor: "#00AA9B", borderColor: "#00AA9B"}}
+                                    onClick={loginWithRedirect}>
+                                    Log in to your Slash account!
+                                </Button>
+                            </div>
+                            <br />
+                            <div>
+                                <Button
+                                    variant='primary'
+                                    style={{backgroundColor: "#00AA9B", borderColor: "#00AA9B"}}
+                                    onClick={noLogin}>Run Slash without an account
+                                </Button>
+                            </div>
+                        </div>
+
+                    )}
+
 
                 </div>
             </div>

@@ -37,6 +37,11 @@
   height: 100vh;
 }
 
+.layout {
+
+  height: 100vh;
+}
+
 .logo {
   max-width: 600px;
   border-radius: 25%;

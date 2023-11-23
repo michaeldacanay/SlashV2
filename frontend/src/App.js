@@ -5,11 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { Auth0Provider} from "@auth0/auth0-react";
 
 function App() {
+    const currentURL = window.location.href;
+    const redirectURI = `${currentURL}search`;
+    console.log(redirectURI);
   return (
       <Auth0Provider
           domain="dev-yfntnylmrl7mvrml.us.auth0.com"
           clientId="S48oOVO0D58gNxelgBSonwentr8joTAs"
-          redirectUri="http://localhost:3000/search"
+          redirectUri={redirectURI}
       >
           <BrowserRouter>
               <Routing></Routing>

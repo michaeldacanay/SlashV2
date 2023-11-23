@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../Slashnavbar.png";
 
 const Navbar = ({ isAuthenticated }) => {
     return (
         <nav>
             <ul class="nav nav-pills">
+                <li>
+                    <img src={logo} alt="Slash Logo" />
+                </li>
                 <li className='nav-item'>
                     <Link to="/" class="nav-link">About</Link>
                 </li>

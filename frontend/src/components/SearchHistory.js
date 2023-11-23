@@ -103,15 +103,15 @@ const SearchHistory = () => {
                     <DataTable value={list}
                         stripedRows
                         showGridlines
-                        tableStyle={{ width: '60rem' }}
+
                     >
                         <Column
-                            header="Search" 
+                            header="Search History"
                             body={reSearchButton}
                             style={{ cursor: 'pointer', textDecoration: 'none' }}
                             className="search-column"
                         />
-                        <Column header="Remove from your history" body={deleteButton} />
+                        <Column header="Clear" body={deleteButton} />
                     </DataTable>
                 </div>
             </Layout>
