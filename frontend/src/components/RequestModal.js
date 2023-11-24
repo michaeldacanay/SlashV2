@@ -5,6 +5,7 @@ import "./custom.css";
 import axios from "axios";
 import DataFetch from "./DataFetch.js";
 import { useNavigate } from "react-router-dom";
+import logo from "../Slashnavbar.png";
 
 const customStyles = {
   content: {
@@ -60,6 +61,7 @@ const RequestModal = ({ isOpen, searchItem }) => {
 
   return (
     <Modal isOpen={isOpen} style={customStyles} contentLabel="Example Modal">
+      <img src={logo} alt="Slash Logo" />
       <h2>
         We didn't have that item in our database. Finding the best deals for
         you...
