@@ -25,7 +25,7 @@ metadata:
   name: slash-backend
 spec:
   ports:
-    - name: http
+    - name: https
       port: 80
       protocol: TCP
       targetPort: 8080
@@ -63,7 +63,7 @@ spec:
           name: slash-backend
           ports:
             - containerPort: 8080
-              name: http
+              name: https
               protocol: TCP
           resources:
             limits:
@@ -79,7 +79,7 @@ metadata:
   name: slash-backend
 spec:
   port:
-    targetPort: http
+    targetPort: https
   to:
     kind: Service
     name: slash-backend

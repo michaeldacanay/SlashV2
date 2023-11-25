@@ -7,7 +7,7 @@ metadata:
   name: slash-frontend
 spec:
   ports:
-    - name: http
+    - name: https
       port: 3000
       protocol: TCP
       targetPort: 3000
@@ -34,7 +34,7 @@ spec:
       containers:
         - env:
             - name: REACT_APP_API_URL
-              value: http://slash-backend:8080/api/
+              value: https://slash-backend:8080/api
             - name: KUBERNETES_NAMESPACE
               valueFrom:
                 fieldRef:
@@ -44,7 +44,7 @@ spec:
           name: slash-frontend
           ports:
             - containerPort: 3000
-              name: http
+              name: https
               protocol: TCP
           resources:
             limits:
@@ -60,7 +60,7 @@ metadata:
   name: slash-frontend
 spec:
   port:
-    targetPort: http
+    targetPort: https
   to:
     kind: Service
     name: slash-frontend
