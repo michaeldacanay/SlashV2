@@ -5,7 +5,11 @@ import './custom.css';
 
 const Layout = ({ children, isAuthenticated }) => {
 
-    const [backgroundColor, setBackgroundColor] = useState('#ffffff'); // Default background color is white
+    const [backgroundColor, setBackgroundColor] = useState(() => {
+        // Use the stored background color or default to '#ffffff'
+        return localStorage.getItem('backgroundColor') || '#ffffff';
+    });
+
     const backgroundOptions = [
         { label: 'White', value: '#ffffff' },
         { label: 'Blue', value: '#3498db' },
@@ -15,9 +19,12 @@ const Layout = ({ children, isAuthenticated }) => {
         // Add more color options as needed
     ];
     const onBackgroundColorChange = (e) => {
-        setBackgroundColor(e.value);
-        console.log('Background Color:', e.value);
+        const newColor = e.value;
+        setBackgroundColor(newColor);
+        // Store the background color in localStorage
+        localStorage.setItem('backgroundColor', newColor);
     };
+
     return (
         <div style={{ backgroundColor }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
