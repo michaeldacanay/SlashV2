@@ -29,6 +29,21 @@ Slash currently supports the following major e-commerce websites:
 - [Costco](https://www.costco.com/)
 - [Amazon](https://www.amazon.com/)
 
+Table of Contents:
+1. [Improvements](#Improvements-over-the-Previous-project)
+2. [Getting started](#Getting-Started)
+  - [Video](#Checkout-our-video)
+  - [Installation](#Installation)
+  - [Alternatively Running with Docker](#Alternatively-Running-with-Docker)
+3. [Some handy links](#Some-handy-links)
+4. [Technology Used]
+5. [Screenshots](#Sort-and-Search-Snapshots)
+6. Use Case
+7. Why
+8. Future Roadmap
+9. Team Members
+10. Support
+
 ## :rocket: Improvements over the Previous project
 
 We have added a lot of new features to slash in this phase
@@ -44,7 +59,7 @@ We have added a lot of new features to slash in this phase
 ---
 
 Get ready to supercharge your shopping experience with Slash!
-🚀 Getting Started
+# 🚀 Getting Started
 Slash is open-source and ready for you to explore. Here's how to begin:
 
 <p align="center">
@@ -61,7 +76,6 @@ Slash is open-source and ready for you to explore. Here's how to begin:
   <a href="#golf-future-roadmap">Future Roadmap</a>
   ::
   <a href="#email-support">Support</a>
-
 </p>
 
 ---
