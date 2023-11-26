@@ -67,7 +67,10 @@ function Search() {
     return (
         <Layout isAuthenticated={isAuthenticated}>
             <div className="search-form">
-                <InputGroup style={{ display: 'flex' }}>
+                <span>Search the database, slash the price.</span>
+                <br />
+                <br />
+                <InputGroup className="mb-3">
                     <FormControl
                         placeholder="Enter item name"
                         aria-label="Itemtype"

@@ -63,20 +63,20 @@ const Wishlist = () => {
     }
 
     const deleteButton = (rowData) => {
-        return <Button
+        return <span className="pi pi-times"
             style={{
-                backgroundColor: 'red',
-                color: 'white',
-                borderColor: 'red',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                color: 'red',
             }}
-            onClick={() => deleteFromWishlist(rowData.itemURl)}>X
-        </Button>
+            onClick={() => deleteFromWishlist(rowData.itemURl)}>
+        </span>
     }
 
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div className="content" style={{ display: 'flex', justifyContent: 'center' }}>
 
                         <DataTable value={list}
 
