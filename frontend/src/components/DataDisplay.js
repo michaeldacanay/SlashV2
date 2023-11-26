@@ -184,7 +184,7 @@ function DataDisplay() {
     };
 
     return (
-        <div>
+        <div id="page-container">
             <Toaster />
             <Layout isAuthenticated={isAuthenticated}>
                 <div style={{ marginLeft: '1em', marginRight: '1em' }}>

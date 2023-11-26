@@ -1,5 +1,5 @@
 import { InputGroup, FormControl, DropdownButton, Dropdown, Button } from 'react-bootstrap';
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './custom.css'
 import DataFetch from './DataFetch.js';
 import { useNavigate } from 'react-router-dom';
@@ -65,41 +65,39 @@ function Search() {
 
 
     return (
-        <div>
-            <Layout isAuthenticated={isAuthenticated}>
-                <div className="content">
-                    <span>Search the database, slash the price.</span>
-                    <br/>
-                    <br/>
-                    <InputGroup className="mb-3">
-                        <FormControl
-                            placeholder="Enter item name"
-                            aria-label="Itemtype"
-                            onChange={(e) => setSearchItem(e.target.value)}
-                        />
-                        <DropdownButton
-                            as={InputGroup.Append}
-                            variant="outline-secondary"
-                            title={selectedWebsite || "All"}
-                            id="input-group-dropdown-2"
-                        >
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("amazon")}>Amazon</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("walmart")}>Walmart</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("costco")}>Costco</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("bestBuy")}>BestBuy</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("target")}>Target</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("ebay")}>Ebay</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleWebsiteSelect("all")}>All</Dropdown.Item>
-                        </DropdownButton>
-                        <Button bsclass="search-btn" style={{
-                            backgroundColor: '#00AA9B',
-                            color: 'white',
-                            borderColor: '#00AA9B',
-                        }} onClick={HandleSubmission}>Search</Button>
-                    </InputGroup>
-                </div>
-            </Layout>
-        </div>
+        <Layout isAuthenticated={isAuthenticated}>
+            <div className="search-form">
+                <span>Search the database, slash the price.</span>
+                <br />
+                <br />
+                <InputGroup className="mb-3">
+                    <FormControl
+                        placeholder="Enter item name"
+                        aria-label="Itemtype"
+                        onChange={(e) => setSearchItem(e.target.value)}
+                    />
+                    <DropdownButton
+                        as={InputGroup.Append}
+                        variant="outline-secondary"
+                        title={selectedWebsite || "All"}
+                        id="input-group-dropdown-2"
+                    >
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("amazon")}>Amazon</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("walmart")}>Walmart</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("costco")}>Costco</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("bestBuy")}>BestBuy</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("target")}>Target</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("ebay")}>Ebay</Dropdown.Item>
+                        <Dropdown.Item onClick={() => handleWebsiteSelect("all")}>All</Dropdown.Item>
+                    </DropdownButton>
+                    <Button bsclass="search-btn" style={{
+                        backgroundColor: '#00AA9B',
+                        color: 'white',
+                        borderColor: '#00AA9B',
+                    }} onClick={HandleSubmission}>Search</Button>
+                </InputGroup>
+            </div>
+        </Layout>
 
     );
 }
