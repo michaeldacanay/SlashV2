@@ -14,6 +14,13 @@ import axios from "axios";
 import { InputNumber } from 'primereact/inputnumber/inputnumber.esm.js';
 import toast, { Toaster } from 'react-hot-toast';
 
+import amazon_logo from "./logos/amazon_logo.png";
+import bestbuy_logo from "./logos/Best_Buy_logo.png";
+import costco_logo from "./logos/Costco-Logo.png";
+import ebay_logo from "./logos/EBay_logo.png";
+import target_logo from "./logos/Target_logo.png";
+import walmart_logo from "./logos/Walmart_logo.png";
+
 function DataDisplay() {
     const { isAuthenticated, user } = useAuth0();
     const location = useLocation();
@@ -136,6 +143,26 @@ function DataDisplay() {
         return <img src={imageUrl} alt={rowData.name} style={{ width: '100px', height: '100px' }} />;
     };
 
+    const logoBodyTemplate = (rowData) => {
+        const store = rowData.store.toLowerCase(); // Convert store name to lowercase for case-insensitive comparison
+
+        // Map store names to corresponding logos
+        const logoMap = {
+            amazon: amazon_logo,
+            walmart: walmart_logo,
+            costco: costco_logo,
+            bestbuy: bestbuy_logo,
+            target: target_logo,
+            ebay: ebay_logo,
+        };
+
+        // Check if the store name exists in the logoMap, if not, use a default logo
+        const logoSource = logoMap[store] || 'default_logo_source.png';
+
+        return <img src={logoSource} style={{ maxWidth: '100px', maxHeight: '100px' }} alt={store} />;
+    };
+
+
     const urlBodyTemplate = (rowData) => {
 
         const linkUrl = new URL("https://" + rowData.itemURl);
@@ -202,7 +229,7 @@ function DataDisplay() {
                         >
                             <Column field="name" header="Product-Name" sortable filter />
                             <Column header="Image" body={imageBodyTemplate} />
-                            <Column field="store" header="Website" sortable filter />
+                            <Column header="Website" body={logoBodyTemplate} sortable sortField="store" filter />
 
                             <Column field="price" header="Price"
                                 filter filterField="price" filterElement={balanceFilterTemplate}
