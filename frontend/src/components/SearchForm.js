@@ -67,7 +67,10 @@ function Search() {
     return (
         <div>
             <Layout isAuthenticated={isAuthenticated}>
-                <div className="form">
+                <div className="content">
+                    <span>Search the database, slash the price.</span>
+                    <br/>
+                    <br/>
                     <InputGroup className="mb-3">
                         <FormControl
                             placeholder="Enter item name"

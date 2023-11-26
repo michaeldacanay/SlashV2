@@ -27,7 +27,7 @@ const Navbar = ({ isAuthenticated }) => {
 
     return (
         <div>
-            <img src={logo} alt="Slash Logo" style={{display: 'inline-block', verticalAlign: 'top'}} />
+            <img src={logo} alt="Slash Logo" style={{display: 'inline-block', verticalAlign: 'top', borderRadius: '25%'}} />
             <Menubar
                 model={menu}
                 menuIcon={logo}

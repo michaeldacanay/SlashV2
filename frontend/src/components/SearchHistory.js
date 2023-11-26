@@ -47,7 +47,7 @@ const SearchHistory = () => {
         try {
             const rowIndex = list.indexOf(rowData);
             const rowIndexAsString = String(rowIndex);
-            const response = await axios.post(`${apiUrl}/user/deleteSearch`, {
+            await axios.post(`${apiUrl}/user/deleteSearch`, {
                 search: rowIndexAsString,
                 email: user.email,
             });
@@ -59,36 +59,23 @@ const SearchHistory = () => {
 
     const deleteButton = (rowData) => {
         const buttonStyle = {
-            backgroundColor: 'red',
-            color: 'white',
-            borderColor: 'red',
-        }
-
-        const hoverStyle = {
-            backgroundColor: '#cc0000', // Change the background color on hover 
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            color: 'red',
         }
         
         return (
-            <Button
-                style={buttonStyle}
-                onMouseOver={(e) => e.target.style.backgroundColor = hoverStyle.backgroundColor}
-                onMouseOut={(e) => e.target.style.backgroundColor = buttonStyle.backgroundColor}
+            <span className="pi pi-times" style={buttonStyle}
                 onClick={() => deleteFromSearchHistory(rowData)}>
-                X
-            </Button>
+            </span>
         )
-    }
-
-    const reSearchButton = (rowData) => {
-        return <span onClick={() => goToSearch(rowData)}>{rowData}</span>
     }
 
     const goToSearch = async (rowData) => {
         try {
-            console.log(rowData);
-            console.log("add");
+
             const search = rowData;
-            console.log(search);
+
             const result = await DataFetch("all", search);
             navigate("/data", { state: { response: result, searchItem: search, isModalOpen: false } });
         } catch (error) {
@@ -97,25 +84,30 @@ const SearchHistory = () => {
     }
 
     return (
-        <div>
-            <Layout isAuthenticated={isAuthenticated}>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <DataTable value={list}
-                        stripedRows
-                        showGridlines
 
-                    >
-                        <Column
-                            header="Search History"
-                            body={reSearchButton}
-                            style={{ cursor: 'pointer', textDecoration: 'none' }}
-                            className="search-column"
-                        />
-                        <Column header="Clear" body={deleteButton} />
-                    </DataTable>
-                </div>
-            </Layout>
-        </div>
+        <Layout isAuthenticated={isAuthenticated}>
+            <div className="content" style={{ display: 'flex', justifyContent: 'center', padding: '100px'}}>
+                <DataTable value={list}
+                    stripedRows
+                    showGridlines
+
+                >
+                    <Column
+                        header="Search History"
+                        className="search-column"
+                        body={(rowData) => (
+                            <div style={{fontSize: '1.2rem'}}
+                                 onClick={() => goToSearch(rowData)}>
+                                {rowData}
+                            </div>
+                            )}
+
+                    />
+                    <Column header="Clear" body={deleteButton} />
+                </DataTable>
+            </div>
+        </Layout>
+
 
 
     );

@@ -8,8 +8,10 @@
   /* Change the color as needed */
 }
 
-.search-column:hover span {
+.search-column:hover {
+  background-color: lightgrey;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .custom-navbar {
@@ -21,7 +23,7 @@
   font-weight: bolder;
 }
 
-.form {
+.content {
   padding: 200px;
 }
 
