@@ -86,7 +86,7 @@ const SearchHistory = () => {
     return (
 
         <Layout isAuthenticated={isAuthenticated}>
-            <div className="content" style={{ display: 'flex', justifyContent: 'center', padding: '100px'}}>
+            <div className="content" style={{ display: 'flex', justifyContent: 'center'}}>
                 <DataTable value={list}
                     stripedRows
                     showGridlines
