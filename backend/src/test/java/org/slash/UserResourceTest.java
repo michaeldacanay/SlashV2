@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.slash.UserResource;
 import org.slash.models.User;
 import org.slash.models.Item;
+import org.slash.models.Post;
+import org.slash.models.Comment;
 import org.slash.UserResource.ItemRequest;
 import org.slash.UserResource.SearchRequest;
 import org.slash.UserResource.PostDTO;
@@ -36,6 +38,9 @@ public class UserResourceTest {
 
     @Inject
     UserResource userResource;
+
+    @Inject
+    PostResource postResource;
 
     @Inject
     PostRepository postRepository;
@@ -269,14 +274,14 @@ public class UserResourceTest {
         List<String> images = List.of(testImagePath);
         testPost.setImageFiles(images);
 
-        String postResponse = postResource.makePost(testPost);
+        String postResponse = userResource.makePost(testPost);
 
         assertThat(postResponse).isEqualTo("Post Success");
         Post createdPost = postRepository.find("title", "test title").firstResult();
-        assertNotNull(createdPost);
-        assertEquals(existingUser, createdPost.getUser());
-        assertEquals("test description", createdPost.getDescription());
-        assertEquals("100", createdPost.getPrice());
+        assertThat(createdPost).isNotNull();
+        assertThat(existingUser.getEmail()).isEqualTo(createdPost.getUser().getEmail());
+        assertThat("test description").isEqualTo(createdPost.getDescription());
+        assertThat("100").isEqualTo(createdPost.getPrice());
     }
 
 

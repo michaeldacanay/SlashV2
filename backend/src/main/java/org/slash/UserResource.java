@@ -226,7 +226,7 @@ public class UserResource {
             return userEmail;
         }
 
-        public void setUser(String userEmail) {
+        public void setUserEmail(String userEmail) {
             this.userEmail = userEmail;
         }
 
