@@ -139,10 +139,24 @@ public class UserResource {
         return "Delete Success";
     }
 
-//    @Transactional
-//    @POST
-//    @Path("/user/makePost")
-//    public String
+    @Transactional
+    @POST
+    @Path("/user/makePost")
+    public String makePost(PostDTO postDTO) {
+        String userEmail = postDTO.getUserEmail();
+        User currentUser = userRepository.find("email", email).firstResult();
+
+        Post newPost = new Post();
+        newPost.setUser(currentUser);
+        newPost.setTitle(postDTO.getTitle());
+        newPost.setDescription(postDTO.getDescription());
+        newPost.setPrice(postDTO.getPrice());
+        newPost.setImageFiles(postDTO.getImageFiles());
+
+        postRepository.persist(newPost);
+        userRepository.persist(currentUser);
+        return "Post Success";
+    }
 
     public static class ItemRequest {
         private String email;
@@ -184,6 +198,60 @@ public class UserResource {
         public void setSearch(String search) {
             this.search = search;
         }
+    }
+
+    public static class PostDTO {
+        public String userEmail;
+
+        public String title;
+
+        public String description;
+
+        public String price;
+
+        public List<String> imageFiles;
+
+
+        public String getUserEmail() {
+            return userEmail;
+        }
+
+        public void setUser(String userEmail) {
+            this.userEmail = userEmail;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getPrice() {
+            return price;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
+        }
+
+        public List<String> getImageFiles() {
+            return imageFiles;
+        }
+
+        public void setImageFiles(List<String> imageFiles) {
+            this.imageFiles = imageFiles;
+        }
+
     }
 
 }

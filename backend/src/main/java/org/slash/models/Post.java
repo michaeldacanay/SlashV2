@@ -24,7 +24,7 @@ public class Post {
 
     public String description;
 
-    public Double price;
+    public String price;
 
     public List<String> imageFiles;
 
@@ -55,11 +55,11 @@ public class Post {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

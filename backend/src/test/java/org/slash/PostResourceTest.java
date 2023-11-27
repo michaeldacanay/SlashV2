@@ -67,9 +67,9 @@ public class PostResourceTest {
 
         testPost.getComments().add(testComment);
 
-        double price = 19.99;
 
-        testPost.setPrice(price);
+
+        testPost.setPrice("100");
 
         postRepository.persist(testPost);
     }
@@ -96,7 +96,7 @@ public class PostResourceTest {
         assertThat(firstComment.getContent()).isEqualTo("test comment");
         // You might want to check other properties of the comment or user associated with the comment
 
-        assertThat(firstPost.getPrice()).isEqualTo(19.99);
+        assertThat(firstPost.getPrice()).isEqualTo("100");
         // You might want to check other properties of the post or user associated with the post
     }
 }
