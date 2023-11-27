@@ -23,6 +23,7 @@ public class PostResource {
     @Inject
     PostRepository postRepository;
 
+    @Transactional
     @POST
     @Path("/feed")
     public List<Post> feed() {

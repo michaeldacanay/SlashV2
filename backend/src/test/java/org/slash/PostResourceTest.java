@@ -69,6 +69,7 @@ public class PostResourceTest {
     }
 
     @Test
+    @Transactional
     public void testFeed() {
         List<Post> feed = postResource.feed();
 
