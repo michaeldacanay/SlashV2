@@ -38,6 +38,7 @@ public class PostResourceTest {
     @Transactional
     public void setup() {
         postRepository.deleteAll();
+        userRepository.deleteAll();
         User testUser = new User();
         userRepository.persist(testUser);
         Post testPost = new Post();
