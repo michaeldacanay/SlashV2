@@ -139,6 +139,11 @@ public class UserResource {
         return "Delete Success";
     }
 
+//    @Transactional
+//    @POST
+//    @Path("/user/makePost")
+//    public String
+
     public static class ItemRequest {
         private String email;
         private String itemUrl;

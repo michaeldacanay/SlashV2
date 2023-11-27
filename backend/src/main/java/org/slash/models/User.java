@@ -30,6 +30,14 @@ public class User {
     @OneToMany
     public List<Item> wishlist;
 
+
+    @OneToMany(mappedBy = "user")
+    public List<Post> posts;
+
+    @Column
+    @OneToMany(mappedBy = "user")
+    public List<Comment> comments;
+
     @Column
     public List<String> searchHistory = new ArrayList<>();
 
@@ -49,4 +57,11 @@ public class User {
 
     public void setSearchHistory(List<String> searchHistory) { this.searchHistory = searchHistory; }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }
