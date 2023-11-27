@@ -40,7 +40,7 @@ public class UserResourceTest {
     PostRepository postRepository;
 
     @Inject
-    @CommentRepository commentRepository;
+    CommentRepository commentRepository;
 
     @BeforeEach
     @Transactional

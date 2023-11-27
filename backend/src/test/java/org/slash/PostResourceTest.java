@@ -41,6 +41,7 @@ public class PostResourceTest {
     @BeforeEach
     @Transactional
     public void setup() {
+        commentRepository.deleteAll();
         postRepository.deleteAll();
         userRepository.deleteAll();
         User testUser = new User();
