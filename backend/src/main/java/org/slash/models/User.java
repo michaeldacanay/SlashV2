@@ -31,11 +31,11 @@ public class User {
     public List<Item> wishlist;
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Post> posts = new ArrayList<Post>();
 
     @Column
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Comment> comments = new ArrayList<Comment>();
 
     @Column

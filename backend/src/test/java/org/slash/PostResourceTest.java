@@ -31,11 +31,15 @@ public class PostResourceTest {
     @Inject
     PostResource postResource;
 
+    @Inject
+    UserRepository userRepository;
+
     @BeforeEach
     @Transactional
     public void setup() {
         postRepository.deleteAll();
         User testUser = new User();
+        userRepository.persist(testUser);
         Post testPost = new Post();
 
         testPost.setUser(testUser);
