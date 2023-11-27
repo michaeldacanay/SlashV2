@@ -11,6 +11,7 @@ import org.slash.UserResource.ItemRequest;
 import org.slash.UserResource.SearchRequest;
 import org.slash.repositories.UserRepository;
 import org.slash.repositories.ItemRepository;
+import org.slash.repositories.PostRepository;
 
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -34,9 +35,13 @@ public class UserResourceTest {
     @Inject
     UserResource userResource;
 
+    @Inject
+    PostRepository postRepository;
+
     @BeforeEach
     @Transactional
     public void setup() {
+        postRepository.deleteAll();
         userRepository.deleteAll();
         itemRepository.deleteAll();
 
