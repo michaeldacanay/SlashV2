@@ -29,7 +29,7 @@ public class Post {
     public List<String> imageFiles;
 
     @OneToMany(mappedBy = "post")
-    public List<Comment> comments;
+    public List<Comment> comments = new ArrayList<Comment>();
 
     public User getUser() {
         return user;

@@ -32,11 +32,11 @@ public class User {
 
 
     @OneToMany(mappedBy = "user")
-    public List<Post> posts;
+    public List<Post> posts = new ArrayList<Post>();
 
     @Column
     @OneToMany(mappedBy = "user")
-    public List<Comment> comments;
+    public List<Comment> comments = new ArrayList<Comment>();
 
     @Column
     public List<String> searchHistory = new ArrayList<>();
