@@ -10,6 +10,7 @@ import org.slash.models.Post;
 import org.slash.models.Comment;
 import org.slash.repositories.UserRepository;
 import org.slash.repositories.PostRepository;
+import org.slash.repositories.CommentRepository;
 
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -33,6 +34,9 @@ public class PostResourceTest {
 
     @Inject
     UserRepository userRepository;
+
+    @Inject
+    CommentRepository commentRepository;
 
     @BeforeEach
     @Transactional
@@ -58,6 +62,7 @@ public class PostResourceTest {
         testComment.setUser(testUser);
         testComment.setPost(testPost);
         testComment.setContent("test comment");
+        commentRepository.persist(testComment);
 
         testPost.getComments().add(testComment);
 

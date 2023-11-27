@@ -35,7 +35,7 @@ public class User {
     public List<Post> posts = new ArrayList<Post>();
 
     @Column
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Comment> comments = new ArrayList<Comment>();
 
     @Column
