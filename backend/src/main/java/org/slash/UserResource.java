@@ -7,6 +7,10 @@ import org.slash.models.User;
 import org.slash.repositories.UserRepository;
 import org.slash.models.Item;
 import org.slash.repositories.ItemRepository;
+import org.slash.models.Post;
+import org.slash.repositories.PostRepository;
+import org.slash.models.Comment;
+import org.slash.repositories.CommentRepository;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.transaction.Transactional;
@@ -23,6 +27,12 @@ public class UserResource {
 
     @Inject
     ItemRepository itemRepository;
+
+    @Inject
+    PostRepository postRepository;
+
+    @Inject
+    CommentRepository commentRepository;
 
     @POST
     @Path("/user/addUser")
@@ -144,7 +154,7 @@ public class UserResource {
     @Path("/user/makePost")
     public String makePost(PostDTO postDTO) {
         String userEmail = postDTO.getUserEmail();
-        User currentUser = userRepository.find("email", email).firstResult();
+        User currentUser = userRepository.find("email", userEmail).firstResult();
 
         Post newPost = new Post();
         newPost.setUser(currentUser);

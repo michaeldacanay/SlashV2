@@ -9,7 +9,7 @@ import org.slash.models.User;
 import org.slash.models.Item;
 import org.slash.UserResource.ItemRequest;
 import org.slash.UserResource.SearchRequest;
-import org.slash.UserResrouce.PostDTO;
+import org.slash.UserResource.PostDTO;
 import org.slash.repositories.UserRepository;
 import org.slash.repositories.ItemRepository;
 import org.slash.repositories.PostRepository;
