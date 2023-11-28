@@ -7,6 +7,7 @@ import Profile from "./Profile.js";
 import Logout from "./Logout.js";
 import Wishlist from "./Wishlist.js";
 import SearchHistory from "./SearchHistory.js";
+import Marketplace from "./Marketplace.js";
 
 export const routes = [
     {
@@ -48,5 +49,10 @@ export const routes = [
         path: "/searchHistory",
         name: "SearchHistory",
         element: <SearchHistory />
+    },
+    {
+        path: "/marketplace",
+        name: "Marketplace",
+        element: <Marketplace />
     }
 ];

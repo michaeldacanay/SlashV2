@@ -24,7 +24,7 @@ public class PostResource {
     PostRepository postRepository;
 
     @Transactional
-    @POST
+    @GET
     @Path("/feed")
     public List<Post> feed() {
         return postRepository.listAll();

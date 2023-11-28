@@ -26,7 +26,7 @@ public class Post {
 
     public String price;
 
-    public List<String> imageFiles;
+    public String imageFile;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Comment> comments = new ArrayList<Comment>();
@@ -63,12 +63,12 @@ public class Post {
         this.price = price;
     }
 
-    public List<String> getImageFiles() {
-        return imageFiles;
+    public String getImageFile() {
+        return imageFile;
     }
 
-    public void setImageFiles(List<String> imageFiles) {
-        this.imageFiles = imageFiles;
+    public void setImageFile(String imageFile) {
+        this.imageFile = imageFile;
     }
 
     public List<Comment> getComments() {

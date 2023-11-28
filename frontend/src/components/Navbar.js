@@ -14,6 +14,7 @@ const Navbar = ({ isAuthenticated }) => {
         { label: 'Search', icon: 'pi pi-search', command:()=> navigate("/search") },
         { label: 'Search History', icon: 'pi pi-history', command:() => navigate("/searchHistory") },
         { label: 'Wishlist', icon: 'pi pi-heart', command:()=> navigate("/wishlist") },
+        { label: 'Marketplace', icon: 'pi pi-users', command:()=> navigate("/marketplace") },
         { label: 'Log Out', icon: 'pi pi-sign-out', command:()=> navigate("/logout") },
     ];
 

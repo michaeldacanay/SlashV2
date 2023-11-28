@@ -161,7 +161,7 @@ public class UserResource {
         newPost.setTitle(postDTO.getTitle());
         newPost.setDescription(postDTO.getDescription());
         newPost.setPrice(postDTO.getPrice());
-        newPost.setImageFiles(postDTO.getImageFiles());
+        newPost.setImageFile(postDTO.getImageFile());
 
         postRepository.persist(newPost);
         userRepository.persist(currentUser);
@@ -219,7 +219,7 @@ public class UserResource {
 
         public String price;
 
-        public List<String> imageFiles;
+        public String imageFile;
 
 
         public String getUserEmail() {
@@ -254,12 +254,12 @@ public class UserResource {
             this.price = price;
         }
 
-        public List<String> getImageFiles() {
-            return imageFiles;
+        public String getImageFile() {
+            return imageFile;
         }
 
-        public void setImageFiles(List<String> imageFiles) {
-            this.imageFiles = imageFiles;
+        public void setImageFile(String imageFile) {
+            this.imageFile = imageFile;
         }
 
     }

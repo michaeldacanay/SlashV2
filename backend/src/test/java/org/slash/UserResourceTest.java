@@ -271,8 +271,8 @@ public class UserResourceTest {
         testPost.setPrice("100");
 
         String testImagePath = getClass().getClassLoader().getResource("test-image.jpg").getPath();
-        List<String> images = List.of(testImagePath);
-        testPost.setImageFiles(images);
+
+        testPost.setImageFiles(testImagePath);
 
         String postResponse = userResource.makePost(testPost);
 

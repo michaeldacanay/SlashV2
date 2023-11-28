@@ -54,10 +54,10 @@ public class PostResourceTest {
 
         String testImagePath = getClass().getClassLoader().getResource("test-image.jpg").getPath();
 
-        List<String> images = List.of(testImagePath);
 
 
-        testPost.setImageFiles(images);
+
+        testPost.setImageFile(testImagePath);
 
         Comment testComment = new Comment();
         testComment.setUser(testUser);
@@ -80,23 +80,18 @@ public class PostResourceTest {
         List<Post> feed = postResource.feed();
 
 
-        // Assert that the feed is not null and contains at least one post
         assertThat(feed).isNotNull().isNotEmpty();
 
-        // Get the first post from the feed (assuming there is at least one post)
         Post firstPost = feed.get(0);
 
-        // Assert that the properties of the first post match the expected values
         assertThat(firstPost.getTitle()).isEqualTo("test title");
         assertThat(firstPost.getDescription()).isEqualTo("test description");
-        assertThat(firstPost.getImageFiles()).containsExactly(getClass().getClassLoader().getResource("test-image.jpg").getPath());
+        assertThat(firstPost.getImageFile()).containsExactly(getClass().getClassLoader().getResource("test-image.jpg").getPath());
         assertThat(firstPost.getComments()).hasSize(1);
 
         Comment firstComment = firstPost.getComments().get(0);
         assertThat(firstComment.getContent()).isEqualTo("test comment");
-        // You might want to check other properties of the comment or user associated with the comment
 
         assertThat(firstPost.getPrice()).isEqualTo("100");
-        // You might want to check other properties of the post or user associated with the post
     }
 }
