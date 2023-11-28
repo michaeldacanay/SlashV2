@@ -1,0 +1,309 @@
+---
+openapi: 3.0.3
+info:
+  title: code-with-quarkus API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /api/all:
+    get:
+      tags:
+      - Item Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /api/hello:
+    get:
+      tags:
+      - Item Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/item/{itemtype}:
+    get:
+      tags:
+      - Item Resource
+      parameters:
+      - name: itemtype
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /api/post-logout:
+    get:
+      tags:
+      - Item Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/request/{store}/{item}:
+    get:
+      tags:
+      - Request Resource
+      parameters:
+      - name: item
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: store
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                format: int32
+                type: integer
+  /api/user/addItem:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/user/addSearch:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/user/addUser:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        "201":
+          description: Created
+  /api/user/deleteItem:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/user/deleteSearch:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/user/profile:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /api/user/searchHistory:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /api/user/wishlist:
+    post:
+      tags:
+      - User Resource
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /api/{itemtype}/{store}:
+    get:
+      tags:
+      - Item Resource
+      parameters:
+      - name: itemtype
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: store
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /api/{store}:
+    get:
+      tags:
+      - Item Resource
+      parameters:
+      - name: store
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /login:
+    get:
+      tags:
+      - Authentication Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+        "403":
+          description: Not Allowed
+        "401":
+          description: Not Authorized
+      security:
+      - SecurityScheme: []
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        name:
+          type: string
+        itemType:
+          type: string
+        itemURl:
+          type: string
+        itemImageURl:
+          type: string
+        store:
+          type: string
+        price:
+          type: string
+        discountPrice:
+          type: string
+    ItemRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        itemUrl:
+          type: string
+    SearchRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        search:
+          type: string
+  securitySchemes:
+    SecurityScheme:
+      type: openIdConnect
+      description: Authentication
+      openIdConnectUrl: http://localhost:60083/realms/quarkus/.well-known/openid-configuration
