@@ -93,13 +93,13 @@ https://github.com/michaeldacanay/SlashV2/assets/62859405/e4da4024-57eb-4016-914
 
 https://github.com/michaeldacanay/SlashV2/assets/62859405/5f351e27-8965-4163-b59e-8cac3ecce6c2
 
-Demo video explaining changes here:
-https://drive.google.com/file/d/10teE8j3mSSpvxfWZMFgBB5ozAeXXMb7H/view?usp=sharing
 
 
 9. Fixed Scraper: The previous project had an infinite loop while waiting for the scraping of new items.
 10. Other UI Changes: Added currency symbols, changed to the corresponding currency when users select a different currency, added borderlines around each column and row, and made the slash symbol a round one for a better appearance. Changed the Paginator to show the current page and the max page. Changed the style of the home page.
 ---
+Demo video explaining changes here:
+https://drive.google.com/file/d/10teE8j3mSSpvxfWZMFgBB5ozAeXXMb7H/view?usp=sharing
 
 Get ready to supercharge your shopping experience with Slash!
 # 🚀 Getting Started
