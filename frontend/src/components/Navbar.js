@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import logo from "../Slashnavbar.png";
 import { Menubar } from "primereact/menubar/menubar.esm.js";
 import 'primeicons/primeicons.css';
 import './custom.css';
+import {useAuth0} from "@auth0/auth0-react";
+import axios from "axios";
 
 const Navbar = ({ isAuthenticated }) => {
     const navigate = useNavigate();
+    const { user } = useAuth0();
+
+
+
 
     const loggedInMenu = [
         { label: 'About', icon: 'pi pi-info-circle', command:()=> navigate("/"), style: { textDecoration: 'none', color: 'black' } },
@@ -14,6 +20,7 @@ const Navbar = ({ isAuthenticated }) => {
         { label: 'Search', icon: 'pi pi-search', command:()=> navigate("/search") },
         { label: 'Search History', icon: 'pi pi-history', command:() => navigate("/searchHistory") },
         { label: 'Wishlist', icon: 'pi pi-heart', command:()=> navigate("/wishlist") },
+        { label: 'Marketplace', icon: 'pi pi-users', command:()=> navigate("/marketplace") },
         { label: 'Log Out', icon: 'pi pi-sign-out', command:()=> navigate("/logout") },
     ];
 
@@ -31,9 +38,9 @@ const Navbar = ({ isAuthenticated }) => {
             <Menubar
                 model={menu}
                 menuIcon={logo}
-
-
             />
+            <br />
+            { isAuthenticated ? <span style={{margin: '10px'}}>Welcome, {user['username']}!</span> : null }
 
         </div>
 

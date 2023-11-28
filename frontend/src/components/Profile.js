@@ -7,6 +7,8 @@ const Profile = () => {
     const { user, isAuthenticated } = useAuth0();
     const apiUrl = process.env.REACT_APP_API_URL;
 
+    const name = user['username'];
+
     const [profile, setProfile] = useState("");
 
     useEffect(() => {
@@ -40,6 +42,7 @@ const Profile = () => {
         <div>
             <Layout isAuthenticated={isAuthenticated}>
                 <h1>{profile}</h1>
+                <p>Username: {name}</p>
             </Layout>
         </div>
     )

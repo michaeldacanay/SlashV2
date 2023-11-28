@@ -90,3 +90,12 @@
   background-color: transparent;
   padding-top: 5px;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}

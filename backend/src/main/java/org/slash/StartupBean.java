@@ -10,6 +10,8 @@ import org.jboss.logging.Logger;
 import org.slash.client.PythonScraperClient;
 import org.slash.repositories.ItemRepository;
 import org.slash.repositories.UserRepository;
+import org.slash.repositories.PostRepository;
+import org.slash.repositories.CommentRepository;
 
 @UnlessBuildProfile("test")
 public class StartupBean {
@@ -23,6 +25,10 @@ public class StartupBean {
     ItemRepository itemRepository;
     @Inject
     UserRepository userRepository;
+    @Inject
+    PostRepository postRepository;
+    @Inject
+    CommentRepository commentRepository;
     @RestClient
     PythonScraperClient pythonScraperClient;
     @UnlessBuildProfile("test")

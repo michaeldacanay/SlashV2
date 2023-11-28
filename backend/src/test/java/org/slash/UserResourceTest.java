@@ -7,10 +7,15 @@ import org.junit.jupiter.api.Test;
 import org.slash.UserResource;
 import org.slash.models.User;
 import org.slash.models.Item;
+import org.slash.models.Post;
+import org.slash.models.Comment;
 import org.slash.UserResource.ItemRequest;
 import org.slash.UserResource.SearchRequest;
+import org.slash.UserResource.PostDTO;
 import org.slash.repositories.UserRepository;
 import org.slash.repositories.ItemRepository;
+import org.slash.repositories.PostRepository;
+import org.slash.repositories.CommentRepository;
 
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -34,9 +39,20 @@ public class UserResourceTest {
     @Inject
     UserResource userResource;
 
+    @Inject
+    PostResource postResource;
+
+    @Inject
+    PostRepository postRepository;
+
+    @Inject
+    CommentRepository commentRepository;
+
     @BeforeEach
     @Transactional
     public void setup() {
+        commentRepository.deleteAll();
+        postRepository.deleteAll();
         userRepository.deleteAll();
         itemRepository.deleteAll();
 
@@ -239,6 +255,33 @@ public class UserResourceTest {
 
         assertThat(updatedSearchHistory).isNotNull();
         assertThat(updatedSearchHistory.size()).isEqualTo(0);
+    }
+
+    @Test
+    @Transactional
+    public void testMakePost() {
+        String existingUserEmail = "test@test.com";
+
+        User existingUser = userRepository.find("email", existingUserEmail).firstResult();
+
+        PostDTO testPost = new PostDTO();
+        testPost.setUserEmail(existingUserEmail);
+        testPost.setTitle("test title");
+        testPost.setDescription("test description");
+        testPost.setPrice("100");
+
+        String testImagePath = getClass().getClassLoader().getResource("test-image.jpg").getPath();
+
+        testPost.setImageFile(testImagePath);
+
+        String postResponse = userResource.makePost(testPost);
+
+        assertThat(postResponse).isEqualTo("Post Success");
+        Post createdPost = postRepository.find("title", "test title").firstResult();
+        assertThat(createdPost).isNotNull();
+        assertThat(existingUser.getEmail()).isEqualTo(createdPost.getUser().getEmail());
+        assertThat("test description").isEqualTo(createdPost.getDescription());
+        assertThat("100").isEqualTo(createdPost.getPrice());
     }
 
 

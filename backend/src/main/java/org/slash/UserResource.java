@@ -7,6 +7,10 @@ import org.slash.models.User;
 import org.slash.repositories.UserRepository;
 import org.slash.models.Item;
 import org.slash.repositories.ItemRepository;
+import org.slash.models.Post;
+import org.slash.repositories.PostRepository;
+import org.slash.models.Comment;
+import org.slash.repositories.CommentRepository;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.transaction.Transactional;
@@ -23,6 +27,12 @@ public class UserResource {
 
     @Inject
     ItemRepository itemRepository;
+
+    @Inject
+    PostRepository postRepository;
+
+    @Inject
+    CommentRepository commentRepository;
 
     @POST
     @Path("/user/addUser")
@@ -45,7 +55,7 @@ public class UserResource {
     public String profile(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
         if (currentUser != null) {
-            return currentUser.getEmail() + ", hello from the backend!";
+            return currentUser.getEmail() + ", hello from the backend!\nCustom profile options under construction.";
         } else {
             return "User not found";
         }
@@ -139,6 +149,28 @@ public class UserResource {
         return "Delete Success";
     }
 
+    @Transactional
+    @POST
+    @Path("/user/makePost")
+    public String makePost(PostDTO postDTO) {
+        String userEmail = postDTO.getUserEmail();
+        User currentUser = userRepository.find("email", userEmail).firstResult();
+
+        Post newPost = new Post();
+        System.out.println(newPost);
+        newPost.setUser(currentUser);
+        newPost.setTitle(postDTO.getTitle());
+        newPost.setDescription(postDTO.getDescription());
+        newPost.setPrice(postDTO.getPrice());
+        newPost.setImageFile(postDTO.getImageFile());
+
+        System.out.println(newPost);
+
+        postRepository.persist(newPost);
+        userRepository.persist(currentUser);
+        return "Post Success";
+    }
+
     public static class ItemRequest {
         private String email;
         private String itemUrl;
@@ -179,6 +211,60 @@ public class UserResource {
         public void setSearch(String search) {
             this.search = search;
         }
+    }
+
+    public static class PostDTO {
+        public String userEmail;
+
+        public String title;
+
+        public String description;
+
+        public String price;
+
+        public String imageFile;
+
+
+        public String getUserEmail() {
+            return userEmail;
+        }
+
+        public void setUserEmail(String userEmail) {
+            this.userEmail = userEmail;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getPrice() {
+            return price;
+        }
+
+        public void setPrice(String price) {
+            this.price = price;
+        }
+
+        public String getImageFile() {
+            return imageFile;
+        }
+
+        public void setImageFile(String imageFile) {
+            this.imageFile = imageFile;
+        }
+
     }
 
 }
