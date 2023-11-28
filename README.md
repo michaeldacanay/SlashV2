@@ -103,8 +103,6 @@ Get ready to supercharge your shopping experience with Slash!
 Slash is open-source and ready for you to explore. Here's how to begin:
 
 <p align="center">
-  <a href="#movie_camera-check out-our-video">Checkout our video</a>
-  ::
   <a href="#rocket-installation">Installation</a>
   ::
   <a href="#computer-technology-used">Technology Used</a>
@@ -117,12 +115,6 @@ Slash is open-source and ready for you to explore. Here's how to begin:
   ::
   <a href="#email-support">Support</a>
 </p>
-
----
-
-## :movie_camera: Checkout our video
-
-https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43cd-93bb-f331589b9aa3
 
 ---
 
