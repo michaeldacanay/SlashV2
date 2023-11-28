@@ -25,7 +25,7 @@
 | Docs: what: point descriptions of each class/function (in isolation)      | 3     | Yes, [Documentation](https://github.com/michaeldacanay/SlashV2/tree/main/docs). Ref: https://github.com/michaeldacanay/SlashV2/blob/main/docs/openapi . Accessible via localhost:8080/q/openapi        |
 | Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z       | 3     | Ref: https://github.com/michaeldacanay/SlashV2#bulb-use-case      |
 | Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing    | 3     | Yes, Ref: https://github.com/michaeldacanay/SlashV2#page_facing_up-why   |
-| Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code     | 3     |   Yes, Ref:           |
+| Docs: short video, animated, hosted on your repo. That convinces people why they want to work on your code     | 3     |   Yes, Ref: https://github.com/michaeldacanay/SlashV2/assets/18317412/40c27110-34d7-4965-8e48-8ce4148326bd          |
 | Use of version control tools            | 3     | Yes. Github is used for codebase. Ref: https://github.com/michaeldacanay/SlashV2             |
 | Use of style checkers                   | 3     | Yes, [Used prettier](https://github.com/michaeldacanay/SlashV2/blob/main/client-deprecated/.prettierrc)                                              |
 | Use of code formatters.                 | 3     | Yes, [config files in GH showing this formatter's config](https://github.com/michaeldacanay/SlashV2/blob/main/.github/workflows/python-app.yml) |
@@ -34,7 +34,7 @@
 | Other automated analysis tools          | 3     | Yes, [config files in GH](https://github.com/michaeldacanay/SlashV2/blob/main/.deepsource.toml)                                                      |
 | Test cases exist                        | 3     | Yes. Ref: [Test cases exists](https://github.com/michaeldacanay/SlashV2/tree/main/tests)                                                                  |
 | Test cases are routinely executed       | 3     | Yes. [Github workflows](https://github.com/michaeldacanay/SlashV2/tree/main/.github/workflows)                                                       |
-| The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up       | 3     | [Contributing.md](https://github.com/michaeldacanay/SlashV2/blob/main/CONTRIBUTING.md)        |
+| The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up       | 3     | Yes. Ref: [Contributing.md](https://github.com/michaeldacanay/SlashV2/blob/main/CONTRIBUTING.md)        |
 | Issues are discussed before they are closed     | 3     | Yes, Sample Ref: https://github.com/michaeldacanay/SlashV2/issues/7                        |
 | Chat channel: exists                 | 3     | Yes. Ref: https://github.com/michaeldacanay/SlashV2/discussions/43  |
 | Test cases: a large proportion of the issues related to handling failing cases.       | 3     | Yes, [Tests](https://github.com/michaeldacanay/SlashV2/tree/main/tests)        |
