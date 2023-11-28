@@ -37,7 +37,10 @@ public class PostResource {
             postDTO.setDescription(post.getDescription());
             postDTO.setPrice(post.getPrice());
             postDTO.setImageFile(post.getImageFile());
+
+            posts.add(postDTO);
         }
+        System.out.println();
         return posts;
     }
 }

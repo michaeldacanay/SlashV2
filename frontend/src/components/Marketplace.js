@@ -4,12 +4,16 @@ import axios from 'axios';
 import Layout from "./Layout.js";
 import {Column} from "primereact/column/column.esm.js";
 import {DataTable} from "primereact/datatable/datatable.esm.js";
+import './custom.css';
+import {Button} from "react-bootstrap";
 
 const Marketplace = () => {
     const { user, isAuthenticated } = useAuth0();
     const apiUrl = process.env.REACT_APP_API_URL;
     const [feed, setFeed] = useState([]);
     const [newPost, setNewPost] = useState({ title: '', description: '', price: '', imageFile: ' '});
+
+    const email = user.email;
 
 
     const loadFeed = async () => {
@@ -28,6 +32,13 @@ const Marketplace = () => {
         loadFeed();
     }, []);
 
+    function generateUniqueKey() {
+        const timestamp = new Date().getTime(); // Get current timestamp
+        const random = Math.floor(Math.random() * 1000); // Generate a random number between 0 and 999
+
+        return `${timestamp}-${random}`;
+    }
+
 
 
     const handleInputChange = (e) => {
@@ -36,9 +47,19 @@ const Marketplace = () => {
     };
 
     const handleImageChange = (e) => {
-        // Store only the file path, not the entire file
-        const filePath = e.target.value;
-        setNewPost((prevPost) => ({ ...prevPost, imageFile: filePath }));
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            const base64String = reader.result.split(',')[1];
+            const uniqueKey = generateUniqueKey();
+            localStorage.setItem(uniqueKey, base64String);
+            setNewPost((prevPost) => ({ ...prevPost, imageFile: uniqueKey }));
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -54,7 +75,7 @@ const Marketplace = () => {
                 description: newPost.description,
                 price: newPost.price,
                 imageFile: newPost.imageFile,
-                userEmail: user.email,
+                userEmail: email,
             });
 
 
@@ -62,7 +83,7 @@ const Marketplace = () => {
                 title: '',
                 description: '',
                 price: '',
-                imageFiles: [],
+                imageFile: '',
             });
 
 
@@ -78,55 +99,69 @@ const Marketplace = () => {
         <div>
             <Layout isAuthenticated={isAuthenticated}>
                 <div style={{ display: 'flex' }}>
-                    {/* Form Section */}
                     <div style={{ flex: '0 0 30%', padding: '20px' }}>
-                        <h3>Add New Post</h3>
-                        <form onSubmit={handleSubmit}>
-                            <div>
+                        <h3>Create Post</h3>
+                        <form onSubmit={handleSubmit} className="form-container">
+                            <div className="form-group">
                                 <label>Title:</label>
+                                <br />
                                 <input type="text" name="title" value={newPost.title} onChange={handleInputChange} required />
                             </div>
-                            <div>
+                            <div className="form-group">
                                 <label>Description:</label>
+                                <br />
                                 <input type="text" name="description" value={newPost.description} onChange={handleInputChange} required />
                             </div>
-                            <div>
+                            <div className="form-group">
                                 <label>Price:</label>
+                                <br />
                                 <input type="text" name="price" value={newPost.price} onChange={handleInputChange} required />
                             </div>
-                            <div>
-                                <label>Images:</label>
-                                <input type="file" accept="image/*"  onChange={handleImageChange} />
+                            <div className="form-group">
+                                <label>Image:</label>
+                                <br />
+                                <input type="file" accept="image/*" onChange={handleImageChange} />
                             </div>
-                            <div>
-                                <button type="submit">Post</button>
+                            <div className="form-group">
+                                <button type="submit" style={{
+                                    width: '100px',
+                                    backgroundColor: '#00AA9B',
+                                    color: 'white',
+                                    borderColor: '#00AA9B',
+                                    margin: '20px'
+                                }}>Post</button>
                             </div>
                         </form>
                     </div>
 
                     {/* DataTable Section */}
                     <div style={{ flex: '1', padding: '20px' }}>
-                        <h1>Marketplace</h1>
-                        <DataTable value={feed}>
+                        <h1>Slash Marketplace</h1>
+                        <DataTable value={feed} className="custom-datatable" style={{width: '40%'}}>
                             <Column
                                 header="Post Information"
                                 body={(rowData) => (
-                                    <div>
+                                    <div style={{maxWidth: '300px'}}>
                                         <h2>{rowData.title}</h2>
-                                        <p>{rowData.description}</p>
                                         <p>Price: {rowData.price}</p>
-                                        {/* Render images if available */}
+                                        <p style={{ overflowWrap: 'break-word', wordWrap: 'break-word' }}>{rowData.description}</p>
+
+
                                         {rowData.imageFile && (
                                             <img
-                                                src={rowData.imageFile}
+                                                src={`data:image/png;base64,${localStorage.getItem(
+                                                    rowData.imageFile
+                                                )}`}
                                                 alt={`Post Image`}
                                                 style={{
-                                                    width: '50px',
-                                                    height: '50px',
+                                                    width: '200px',
+                                                    height: '200px',
                                                     marginRight: '5px',
                                                 }}
                                             />
                                         )}
+                                        <p></p>
+                                        <p>Contact Seller: {rowData.userEmail}</p>
 
                                     </div>
                                 )}
