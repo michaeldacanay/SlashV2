@@ -272,7 +272,7 @@ public class UserResourceTest {
 
         String testImagePath = getClass().getClassLoader().getResource("test-image.jpg").getPath();
 
-        testPost.setImageFiles(testImagePath);
+        testPost.setImageFile(testImagePath);
 
         String postResponse = userResource.makePost(testPost);
 

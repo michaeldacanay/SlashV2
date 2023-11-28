@@ -86,7 +86,7 @@ public class PostResourceTest {
 
         assertThat(firstPost.getTitle()).isEqualTo("test title");
         assertThat(firstPost.getDescription()).isEqualTo("test description");
-        assertThat(firstPost.getImageFile()).containsExactly(getClass().getClassLoader().getResource("test-image.jpg").getPath());
+        assertThat(firstPost.getImageFile()).isEqualTo(getClass().getClassLoader().getResource("test-image.jpg").getPath());
         assertThat(firstPost.getComments()).hasSize(1);
 
         Comment firstComment = firstPost.getComments().get(0);
