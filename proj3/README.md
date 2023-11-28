@@ -14,7 +14,7 @@
 
 | Notes        | Score | Evidence/Comments/Links                                         |
 | ------------ | ----- | --------------------------------------------------------------- |
-| Video        | 3     | [Video](https://github.com/michaeldacanay/SlashV2/blob/main/kubernetes/assets/openshift-kubernetes-walkthrough.mov)                             |
+| Video        | 3     | [Video](https://drive.google.com/file/d/10teE8j3mSSpvxfWZMFgBB5ozAeXXMb7H/view?usp=sharing)                             |
 | Workload is spread over the whole team (one team member is often Xtimes more productive than the others...but nevertheless, here is a track record that everyone is contributing a lot)     | 3     | [Commits](https://github.com/michaeldacanay/SlashV2/graphs/contributors?from=2023-10-29&to=2023-11-27&type=c) (commits are spread over users)  <img width="1117" alt="image" src="https://github.com/michaeldacanay/SlashV2/assets/18317412/c0bb3220-2ad6-438e-98a9-8e72551c5eda">    |
 | Number of commits   | 3     | Yes, 103. Ref: https://github.com/SE-Fall2023-Group-41/SlashV2/compare/main...michaeldacanay:SlashV2:main       |
 | Number of commits: by different people     | 3     | Yes, mentioned in above screenshot. Ref: https://github.com/michaeldacanay/SlashV2/graphs/contributors?from=2023-10-29&to=2023-11-27&type=c        |
