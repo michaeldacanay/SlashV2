@@ -53,20 +53,48 @@ We have added a lot of new features to slash in this phase
 Here's the improved version with corrected grammar and structure:
 
 1. Authentication: With Auth0, users can log in using their own accounts.
-https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43cd-93bb-f331589b9aa3
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/c029e3a2-349c-4492-8bb4-60f9dac645d4
+
 2. History: Users can now view their search history from the past.
+
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/e7c9f5d4-c67d-4801-8523-708b43fae949
+
 
 3. Wishlist: Users will have a wishlist to save items they are interested in. There also a pop up window show you success added the item.
 
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/8c04d94c-8bcf-4a28-b5d0-fff760c7550c
+
+
 4. Navigation Bar: Users can navigate to the desired page by simply clicking on the page name in the navigation bar. The navigation bar will be different if the user is logged in.
 
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/beecbb80-0edb-40e7-b44c-8c858c2755c5
+
+
 5. Background Color: We added a dropdown menu in the top right corner so users can change the background color to their preference.
-https://github.com/michaeldacanay/SlashV2/blob/main/short%20demo/Background%20Color.mkv
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/f038aba0-66a8-4bd9-b3ab-d8d661214e7b
+
 6. Logo showing: Unlike the previous project, we have replaced store names like Walmart and Amazon with their logo images, scraped in our project. This addition allows users to view product images alongside other information, providing a more comprehensive and engaging experience.
+
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/bb5fec81-29f9-4c01-8a96-47f314bdb9c3
+
 
 7. Filtering: We've empowered users with filter options based on prices and product names. Now, users can find items with keywords and within a certain price range.
 
-8. Currency: We've implemented another column for users to see prices in other currencies.
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/e4da4024-57eb-4016-914a-d4e2ed5dbe88
+
+
+8. Currency: We've implemented another column for users to see prices in other currencies. The drop down menu is no show in the video but in the app. 
+
+
+https://github.com/michaeldacanay/SlashV2/assets/62859405/5f351e27-8965-4163-b59e-8cac3ecce6c2
+
 
 9. Fixed Scraper: The previous project had an infinite loop while waiting for the scraping of new items.
 10. Other UI Changes: Added currency symbols, changed to the corresponding currency when users select a different currency, added borderlines around each column and row, and made the slash symbol a round one for a better appearance. Changed the Paginator to show the current page and the max page. Changed the style of the home page.
