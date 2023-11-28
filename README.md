@@ -38,12 +38,11 @@ Table of Contents:
    - [Option #2: Docker](#alternatively-running-with-docker)
 3. [Some handy links](#some-handy-links)
 4. [Technology Used](#computer-technology-used)
-5. [Screenshots](#file_cabinet-sort-and-search-snapshots)
-6. [Use Cases](#bulb-use-case)
-7. [Why?](#page_facing_up-why)
-8. [Future Roadmap](#golf-future-roadmap)
-9. [Team Members](#team-members)
-10. [Support](#email-support)
+5. [Use Cases](#bulb-use-case)
+6. [Why?](#page_facing_up-why)
+7. [Future Roadmap](#golf-future-roadmap)
+8. [Team Members](#team-members)
+9. [Support](#email-support)
 
 ## :rocket: Improvements over the Previous project
 
@@ -246,20 +245,6 @@ Feel free to explore these links to access different components of the applicati
 - Docker : https://www.docker.com
 - Quarkus: https://quarkus.io/
 - Openshifts: https://docs.openshift.com/
-
-## :file_cabinet: Sort and Search Snapshots
-
-<p align="center">Shows the search function for query laptops</p>
-
-https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/3104485a-2e9b-4259-826d-f163e25f6d33
-
-<p align="center">Opens a link of the laptop we are interested to buy</p>
-
-https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/b567edbc-337e-47e4-90a4-57e603b0774b
-
-<p align="center">Sorts by website</p>
-
-https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e27-92e6-e870b8774e91
 
 ## :bulb: Use Case
 
