@@ -24,3 +24,19 @@
 |1|Documentation describing how this version improves on the older version| [Readme.md](https://github.com/Urvashi74/slash/blob/main/README.md) |
 |3|This version is a little(1), some(2), much(3) improved on the last version.|Tutor's assessment.| 
 |16| Total|
+
+
+Project 2 Version Videos:
+## :file_cabinet: Sort and Search Snapshots
+
+<p align="center">Shows the search function for query laptops</p>
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/3104485a-2e9b-4259-826d-f163e25f6d33
+
+<p align="center">Opens a link of the laptop we are interested to buy</p>
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/b567edbc-337e-47e4-90a4-57e603b0774b
+
+<p align="center">Sorts by website</p>
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e27-92e6-e870b8774e91
