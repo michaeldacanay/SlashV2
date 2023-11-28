@@ -34,9 +34,8 @@ Slash currently supports the following major e-commerce websites:
 Table of Contents:
 1. [Improvements](#rocket-improvements-over-the-previous-project)
 2. [Getting started](#-getting-started)
-  - [Video](#Checkout-our-video)
-  - [Installation](#Installation)
-  - [Alternatively Running with Docker](#Alternatively-Running-with-Docker)
+   - [Installation](#rocket-installation)
+   - [Option #2: Docker](#alternatively-running-with-docker)
 3. [Some handy links](#Some-handy-links)
 4. [Technology Used]
 5. [Screenshots](#Sort-and-Search-Snapshots)
