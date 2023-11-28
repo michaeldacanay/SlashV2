@@ -40,3 +40,8 @@ https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/b567edbc-337e-47
 <p align="center">Sorts by website</p>
 
 https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/6db1838e-8ef3-4e27-92e6-e870b8774e91
+
+## :movie_camera: Checkout our video
+
+https://github.com/SE-Fall2023-Group-41/SlashV2/assets/62643830/02359bf0-1d6b-43cd-93bb-f331589b9aa3
+
