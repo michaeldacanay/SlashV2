@@ -48,14 +48,18 @@ Table of Contents:
 
 We have added a lot of new features to slash in this phase
 
-1. Database Integration: In the previous project, data retrieval relied on calling the scraper on every frontend call, resulting in redundant calls causing slow requests for users. However, in our project, we have integrated a database. This significant improvement allows us to store and retrieve data directly from the database, reducing the need to call the scraper repeatedly. Because of this, we were able to enhance speed, reduce scraper calls, and make data more consistent and scalable. It also increases the optimization of resources.
-2. Enhanced Scraper: Our project has revamped the data retrieval process with a highly improved scraper. This enhanced scraper collects data more efficiently and accurately, ensuring faster updates. Additionally, we've fine-tuned the data formatting, resulting in a more user-friendly and visually appealing display. Users can easily access information, compare prices, view product images, and identify the source websites, providing a superior user experience.
-3. Image Scraping: Unlike the previous project, we have implemented image scraping in our project. This addition allows users to view product images alongside other information, providing a more comprehensive and engaging experience
-4. Sorting and Customization: We've empowered users with sorting options based on prices, product names, websites, and more. This flexibility allows users to organize and filter data according to their preferences.
-5. User Interface (UI): In addition to data enhancements, we've invested in a more attractive and user-friendly interface. The UI has been redesigned for a more engaging and visually appealing experience. We have also improved the search function by streamlining it, ensuring that users can now find the information they need with just the press of a single button. Additionally, we've introduced enhanced functionality for managing data, including sorting of tables and pagination, allowing users to customize their viewing experience by selecting the number of items displayed per page, ranging from 5 items to 10, all the way up to 50 items per page
-6. Docker Image Accessibility: Users can take advantage of readily available Docker images from our public repository. This accessibility eliminates the need to build images from scratch, saving time and effort.
-7. Deployment to Kubernetes: Our project is now deployed on Kubernetes, which brings scalability and resilience to our platform. This ensures that users experience consistent and reliable access to the service.
+Here's the improved version with corrected grammar and structure:
 
+1. Authentication: With Auth0, users can log in using their own accounts.
+2. History: Users can now view their search history from the past.
+3. Wishlist: Users will have a wishlist to save items they are interested in. There also a pop up window show you success added the item.
+4. Navigation Bar: Users can navigate to the desired page by simply clicking on the page name in the navigation bar. The navigation bar will be different if the user is logged in.
+5. Fixed Scraper: The previous project had an infinite loop while waiting for the scraping of new items.
+6. Logo Swap: Unlike the previous project, we have replaced store names like Walmart and Amazon with their logo images, scraped in our project. This addition allows users to view product images alongside other information, providing a more comprehensive and engaging experience.
+7. Filtering: We've empowered users with filter options based on prices and product names. Now, users can find items with keywords and within a certain price range.
+8. Currency: We've implemented another column for users to see prices in other currencies.
+9. Background Color: We added a dropdown menu in the top right corner so users can change the background color to their preference.
+10. Other UI Changes: Added currency symbols, changed to the corresponding currency when users select a different currency, added borderlines around each column and row, and made the slash symbol a round one for a better appearance. Changed the Paginator to show the current page and the max page. Changed the style of the home page.
 ---
 
 Get ready to supercharge your shopping experience with Slash!
