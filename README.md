@@ -36,14 +36,14 @@ Table of Contents:
 2. [Getting started](#-getting-started)
    - [Installation](#rocket-installation)
    - [Option #2: Docker](#alternatively-running-with-docker)
-3. [Some handy links](#Some-handy-links)
-4. [Technology Used]
-5. [Screenshots](#Sort-and-Search-Snapshots)
-6. Use Case
-7. Why
-8. Future Roadmap
-9. Team Members
-10. Support
+3. [Some handy links](#some-handy-links)
+4. [Technology Used](#computer-technology-used)
+5. [Screenshots](#file_cabinet-sort-and-search-snapshots)
+6. [Use Cases](#bulb-use-case)
+7. [Why?](#page_facing_up-why)
+8. [Future Roadmap](#golf-future-roadmap)
+9. [Team Members](#team-members)
+10. [Support](#email-support)
 
 ## :rocket: Improvements over the Previous project
 
