@@ -2,14 +2,20 @@ import React from 'react';
 import logo from '../slash.png';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const HomePage = () => {
-
+    const { isAuthenticated } = useAuth0();
     const navigate = useNavigate();
 
-    const submit = () => {
+    const noLogin = () => {
         navigate("/search");
     }
+
+    const loginWithRedirect = () => {
+        navigate("/login");
+    }
+
     return (
         <div className="hpage">
             <div className="container text-center pt-5">
@@ -34,29 +40,43 @@ const HomePage = () => {
                             Powerful: Produces JSON responses that can be easily customized to bring about the desired output
                         </p>
                         <br></br>
-                        <p>
-                            Contact Us: SEslash0041@gmail.com
-                        </p>
-                        <br></br>
-                        <p>
-                            About Us:
-                        </p>
-                        <p>
-                            Ingmar Fjolla
-                        </p>
-                        <p>
-                            Rishab Anil Muzhangathu
-                        </p>
-                        <p>
-                            Rishabh Bhargava
-                        </p>
-                        <p>
-                            Russel Lobo
-                        </p>
-                        <br></br>
                         <p>Licensed by MIT</p>
                     </div>
-                    <Button variant='primary' onClick={submit}>Start</Button>
+                    {isAuthenticated ? (
+                        <div>
+                            <br />
+                            <div>
+                                <Button
+                                    variant='primary'
+                                    style={{backgroundColor: "#00AA9B", borderColor: "#00AA9B"}}
+                                    onClick={noLogin}>
+                                    SLASH
+                                </Button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <div>
+                                <Button
+                                    variant='primary'
+                                    style={{backgroundColor: "#00AA9B", borderColor: "#00AA9B"}}
+                                    onClick={loginWithRedirect}>
+                                    Log in to your Slash account!
+                                </Button>
+                            </div>
+                            <br />
+                            <div>
+                                <Button
+                                    variant='primary'
+                                    style={{backgroundColor: "#00AA9B", borderColor: "#00AA9B"}}
+                                    onClick={noLogin}>Run Slash without an account
+                                </Button>
+                            </div>
+                        </div>
+
+                    )}
+
+
                 </div>
             </div>
         </div>

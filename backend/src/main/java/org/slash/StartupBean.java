@@ -9,6 +9,7 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.logging.Logger;
 import org.slash.client.PythonScraperClient;
 import org.slash.repositories.ItemRepository;
+import org.slash.repositories.UserRepository;
 
 @UnlessBuildProfile("test")
 public class StartupBean {
@@ -20,12 +21,14 @@ public class StartupBean {
     private static final Logger LOG = Logger.getLogger(CronJob.class);
     @Inject
     ItemRepository itemRepository;
+    @Inject
+    UserRepository userRepository;
     @RestClient
     PythonScraperClient pythonScraperClient;
     @UnlessBuildProfile("test")
     void onStart(@Observes StartupEvent ev) {
         LOG.info("The application is and calling the Python API to seed data...");
-        if (pythonScraperClient.triggerScraper().getStatus() == 500) {
+        if (pythonScraperClient.triggerScraper("all", "startup").getStatus() == 500) {
             Log.info("The scraper is failing");
         }
         LOG.info("Seeding is happening...");

@@ -105,6 +105,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+v/
 .env
 v/
 .venv
@@ -153,3 +154,4 @@ bin/
 
 # OSX
 *.DS_Store
+package-lock.json

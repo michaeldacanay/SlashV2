@@ -58,7 +58,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: slash-backend-config
-          image: quay.io/ifjollancsu/slash/slash-backend:latest
+          image: quay.io/loganwilliams0/slash/slash-backend:latest
           imagePullPolicy: Always
           name: slash-backend
           ports:

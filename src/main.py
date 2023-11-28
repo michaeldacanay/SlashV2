@@ -32,13 +32,10 @@ port="5432"
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:3000",
-]
+
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -60,8 +57,11 @@ async def read_root():
     response = RedirectResponse(url='/redoc')
     return response
 
-@app.get("/scrape")
-def scrape():
+@app.get("/scrape/{store}/{item}")
+def scrape(
+    store: str,
+    item: str
+):
     '''This function will trigger the scraper that will add items to our databse
 
     Parameters
@@ -72,14 +72,20 @@ def scrape():
     ----------
     ideally, it will return something like "done"
     '''
-    a = Thread(target=search_items_API,args=("all","laptops",))
-    b = Thread(target=search_items_API,args=("all","anime",))
-    c = Thread(target=search_items_API,args=("all","phones",))
-    a.start()
-    b.start()
-    c.start()
     response = "done"
-    return response
+
+    if item == "startup":
+        a = Thread(target=search_items_API,args=("all","laptops",))
+        b = Thread(target=search_items_API,args=("all","anime",))
+        c = Thread(target=search_items_API,args=("all","phones",))
+        a.start()
+        b.start()
+        c.start()
+        return response
+
+    else:
+        search_items_API(store, item)
+        return response
 
 # @app.get("/{site}/{item_name}", response_model=List[jsonScraps])
 def search_items_API(
@@ -107,19 +113,23 @@ def search_items_API(
 
     scrapers = []
 
-    site_mappings = {
-        'az': 'amazon',
-        'wm': 'walmart',
-        'tg': 'target',
-        'cc': 'costco',
-        'bb': 'bestbuy',
-        'eb': 'ebay',
-    }
+#     site_mappings = {
+#         'az': 'amazon',
+#         'wm': 'walmart',
+#         'tg': 'target',
+#         'cc': 'costco',
+#         'bb': 'bestbuy',
+#         'eb': 'ebay',
+#     }
+
+    all_sites = ['amazon', 'walmart', 'target', 'costco', 'bestbuy', 'ebay']
 
     if site == 'all':
-        scrapers = list(site_mappings.values())
+#         scrapers = list(site_mappings.values())
+        scrapers = all_sites
     else:
-        scrapers = [site_mappings.get(site, None)].filter(None)
+#         scrapers = [site_mappings.get(site, None)].filter(None)
+        scrapers = [site]
 
 
     # calling scraper.scrape to fetch results
@@ -130,6 +140,11 @@ def search_items_API(
         conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host,port=port)
         cursor = conn.cursor()
         # print(itemList)
+
+        select_sql = """
+        SELECT * FROM item WHERE name = %(title)s AND store = %(website)s;
+        """
+
         insert_sql = """
         INSERT INTO item (name, itemType, itemURl,itemImageURl,store,price) VALUES (%(title)s,%(item_type)s, %(link)s,%(image_url)s, %(website)s,%(price)s);
         """
@@ -138,7 +153,13 @@ def search_items_API(
                 print(items)
                 items["title"] = items["title"][:200]
                 items["item_type"] = item_name
-                cursor.execute(insert_sql,items)
+
+                cursor.execute(select_sql, items)
+                existing_item = cursor.fetchone()
+
+                if not existing_item:
+                    cursor.execute(insert_sql,items)
+
 
         conn.commit()
         cursor.close()

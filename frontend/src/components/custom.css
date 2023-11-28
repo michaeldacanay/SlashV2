@@ -1,3 +1,28 @@
+.custom-datatable .p-datatable-tbody>tr>td {
+  border: 1px solid #0d0e0e;
+  /* Change the color as needed */
+}
+
+.search-form {
+  /* Your specific styles for the search form go here */
+  padding: 400px;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.custom-datatable .p-datatable-thead>tr>th {
+  border: 1px solid #0d0e0e;
+  /* Change the color as needed */
+}
+
+.search-column:hover {
+  background-color: lightgrey;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .custom-navbar {
   background-color: #00AA9B;
 }
@@ -7,7 +32,7 @@
   font-weight: bolder;
 }
 
-.form {
+.content {
   padding: 200px;
 }
 
@@ -20,6 +45,11 @@
 
 .hpage {
   background-color: #03514B;
+  height: 100vh;
+}
+
+.layout {
+
   height: 100vh;
 }
 
@@ -44,4 +74,19 @@
   margin-bottom: 10px;
   color: white;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.p-menuitem-link {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.p-menubar {
+  display: inline-block;
+  vertical-align: top;
+  border-color: transparent;
+  position: absolute;
+  left: 100px;
+  background-color: transparent;
+  padding-top: 5px;
 }

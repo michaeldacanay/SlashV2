@@ -40,7 +40,7 @@ public class CronJob {
         LOG.info("Clearing database...");
         Long items = delete();
         LOG.info("Database cleared, seeding it now...");
-        if (pythonScraperClient.triggerScraper().getStatus() == 500) {
+        if (pythonScraperClient.triggerScraper("all", "startup").getStatus() == 500) {
             LOG.info("The scraper is failing");
         }
         LOG.info("Seeding is done...");
