@@ -31,6 +31,8 @@ public class User {
     public List<Item> wishlist;
 
 
+
+    @Column
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Post> posts = new ArrayList<Post>();
 

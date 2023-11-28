@@ -8,27 +8,22 @@ import {DataTable} from "primereact/datatable/datatable.esm.js";
 const Marketplace = () => {
     const { user, isAuthenticated } = useAuth0();
     const apiUrl = process.env.REACT_APP_API_URL;
-    const [feed, setFeed] = useState();
-    const [newPost, setNewPost] = useState({ title: '', description: '', price: '', imageFiles: [], comments: [] });
+    const [feed, setFeed] = useState([]);
+    const [newPost, setNewPost] = useState({ title: '', description: '', price: '', imageFile: ' '});
 
+
+    const loadFeed = async () => {
+        try {
+            const response = await axios.get(`${apiUrl}/feed`);
+            console.log(response.data);
+            setFeed(response.data);
+            console.log(feed);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
-
-        const loadFeed = async () => {
-            try {
-                const response = await axios.get(`${apiUrl}/feed`);
-                setFeed(response.data);
-                console.log(feed);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
-
-
-
-
-
 
         loadFeed();
     }, []);
@@ -41,38 +36,37 @@ const Marketplace = () => {
     };
 
     const handleImageChange = (e) => {
-        const files = Array.from(e.target.files);
-        setNewPost((prevPost) => ({ ...prevPost, imageFiles: files }));
+        // Store only the file path, not the entire file
+        const filePath = e.target.value;
+        setNewPost((prevPost) => ({ ...prevPost, imageFile: filePath }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            // Create a FormData object to send files
-            const formData = new FormData();
-            formData.append('title', newPost.title);
-            formData.append('description', newPost.description);
-            formData.append('price', newPost.price);
-            newPost.imageFiles.forEach((file, index) => {
-                formData.append(`image_${index + 1}`, file);
+
+
+
+
+            await axios.post(`${apiUrl}/user/makePost`, {
+                title: newPost.title,
+                description: newPost.description,
+                price: newPost.price,
+                imageFile: newPost.imageFile,
+                userEmail: user.email,
             });
 
-            // Send API request to add the new post with images
-            await axios.post(`${apiUrl}/add-post`, formData);
 
-            // Clear the form after successful submission
             setNewPost({
                 title: '',
                 description: '',
                 price: '',
                 imageFiles: [],
-                comments: [],
             });
 
-            // Refresh the post feed
-            const response = await axios.get(`${apiUrl}/feed`);
-            setFeed(response.data);
+
+            loadFeed();
         } catch (error) {
             console.error('Error adding post:', error);
         }
@@ -102,11 +96,10 @@ const Marketplace = () => {
                             </div>
                             <div>
                                 <label>Images:</label>
-                                <input type="file" name="imageFiles" multiple onChange={handleImageChange} />
+                                <input type="file" accept="image/*"  onChange={handleImageChange} />
                             </div>
-                            {/* Add other fields as needed */}
                             <div>
-                                <button type="submit">Submit</button>
+                                <button type="submit">Post</button>
                             </div>
                         </form>
                     </div>
@@ -123,34 +116,18 @@ const Marketplace = () => {
                                         <p>{rowData.description}</p>
                                         <p>Price: {rowData.price}</p>
                                         {/* Render images if available */}
-                                        {rowData.imageFiles &&
-                                            rowData.imageFiles.length > 0 && (
-                                                <div>
-                                                    {rowData.imageFiles.map((image, index) => (
-                                                        <img
-                                                            key={index}
-                                                            src={image}
-                                                            alt={`Image ${index + 1}`}
-                                                            style={{
-                                                                width: '50px',
-                                                                height: '50px',
-                                                                marginRight: '5px',
-                                                            }}
-                                                        />
-                                                    ))}
-                                                </div>
-                                            )}
-                                        {/* Render comments if available */}
-                                        {rowData.comments.length > 0 && (
-                                            <div>
-                                                <h3>Comments:</h3>
-                                                <ul>
-                                                    {rowData.comments.map((comment, index) => (
-                                                        <li key={index}>{comment.text}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
+                                        {rowData.imageFile && (
+                                            <img
+                                                src={rowData.imageFile}
+                                                alt={`Post Image`}
+                                                style={{
+                                                    width: '50px',
+                                                    height: '50px',
+                                                    marginRight: '5px',
+                                                }}
+                                            />
                                         )}
+
                                     </div>
                                 )}
                             ></Column>

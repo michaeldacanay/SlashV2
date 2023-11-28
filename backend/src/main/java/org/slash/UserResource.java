@@ -157,11 +157,14 @@ public class UserResource {
         User currentUser = userRepository.find("email", userEmail).firstResult();
 
         Post newPost = new Post();
+        System.out.println(newPost);
         newPost.setUser(currentUser);
         newPost.setTitle(postDTO.getTitle());
         newPost.setDescription(postDTO.getDescription());
         newPost.setPrice(postDTO.getPrice());
         newPost.setImageFile(postDTO.getImageFile());
+
+        System.out.println(newPost);
 
         postRepository.persist(newPost);
         userRepository.persist(currentUser);

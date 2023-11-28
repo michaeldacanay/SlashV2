@@ -16,6 +16,7 @@ public class Post {
     @Id
     public Long id;
 
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     public User user;

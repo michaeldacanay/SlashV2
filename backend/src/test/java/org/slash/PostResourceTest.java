@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slash.UserResource;
+import org.slash.UserResource.PostDTO;
 import org.slash.models.User;
 import org.slash.models.Post;
 import org.slash.models.Comment;
@@ -45,6 +46,7 @@ public class PostResourceTest {
         postRepository.deleteAll();
         userRepository.deleteAll();
         User testUser = new User();
+        testUser.setEmail("test@test.com");
         userRepository.persist(testUser);
         Post testPost = new Post();
 
@@ -77,20 +79,17 @@ public class PostResourceTest {
     @Test
     @Transactional
     public void testFeed() {
-        List<Post> feed = postResource.feed();
+        List<PostDTO> feed = postResource.feed();
 
 
         assertThat(feed).isNotNull().isNotEmpty();
 
-        Post firstPost = feed.get(0);
+        PostDTO firstPost = feed.get(0);
 
         assertThat(firstPost.getTitle()).isEqualTo("test title");
         assertThat(firstPost.getDescription()).isEqualTo("test description");
         assertThat(firstPost.getImageFile()).isEqualTo(getClass().getClassLoader().getResource("test-image.jpg").getPath());
-        assertThat(firstPost.getComments()).hasSize(1);
 
-        Comment firstComment = firstPost.getComments().get(0);
-        assertThat(firstComment.getContent()).isEqualTo("test comment");
 
         assertThat(firstPost.getPrice()).isEqualTo("100");
     }
