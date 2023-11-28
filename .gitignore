@@ -155,3 +155,4 @@ bin/
 # OSX
 *.DS_Store
 package-lock.json
+backend/.metadata/
