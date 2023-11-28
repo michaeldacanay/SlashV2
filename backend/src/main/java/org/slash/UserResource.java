@@ -55,7 +55,7 @@ public class UserResource {
     public String profile(String email) {
         User currentUser = userRepository.find("email", email).firstResult();
         if (currentUser != null) {
-            return currentUser.getEmail() + ", hello from the backend!";
+            return currentUser.getEmail() + ", hello from the backend!\nCustom profile options under construction.";
         } else {
             return "User not found";
         }
