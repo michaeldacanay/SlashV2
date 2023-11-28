@@ -1,12 +1,19 @@
-| Notes                                                                                                                                                                                                                                                     | Score | Evidence                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Total of items overall                                                                                                                                                                                                                                    | 233   |                                                                                                                                                       |
-| Total of items in rubric                                                                                                                                                                                                                                  | 64    |                                                                                                                                                       |
+## The Team
 
-## Scorecards
+| Unity ID | Name               |
+| -------- | ------------------ |
+| mzdacana | Michael Dacanay    |
+| lrwilli7 | Logan Williams     |
+| xliang8  | Xiaochun Liang     |
 
-| Notes                                                                                                                                                                                                                                                     | Score | Evidence                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+## Part I: Scorecards
+
+### **Repo Link:** https://github.com/michaeldacanay/SlashV2
+**Total Score:** 87/87
+
+
+| Notes        | Score | Evidence/Comments/Links                        |
+| ------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Video                                                                                                                                                                                                                                                     | 3     | [Video](https://github.com/michaeldacanay/SlashV2/blob/main/kubernetes/assets/openshift-kubernetes-walkthrough.mov)                             |
 | Workload is spread over the whole team (one team member is often Xtimes more productive than the others...but nevertheless, here is a track record that everyone is contributing a lot)                                                                   | 3     | [Commits](https://github.com/michaeldacanay/SlashV2/graphs/contributors) (commits are spread over users)                                        |
 | Number of commits                                                                                                                                                                                                                                         | 3     | [Commits](https://github.com/michaeldacanay/SlashV2/graphs/contributors)                                                                        |
