@@ -225,21 +225,17 @@ Here are some handy links to access different aspects of the application (requir
 
 <p align="center"><img width="500" src="./assets/se_ss2.png"></p>
 
-[Scraper Exposed URL](http://localhost:3000): Access the scraper's exposed URL.
+[Scraper Exposed URL](http://localhost:8000): Access the scraper's exposed URL.
 
 <p align="center"><img width="500" src="./assets/se_ss3.png"></p>
 
-[PublicDockerImages](https://quay.io/user/ifjollancsu/): Find our public repositories on Quay.io, where you can conveniently use Docker images without the need to build them from scratch.
-
-<p align="center"><img width="500" src="./assets/se_ss4.png"></p> 
 Feel free to explore these links to access different components of the application and make the most of its features.
 
 ## :computer: Technology Used
 
-- FastAPI : https://fastapi.tiangolo.com
 - Docker : https://www.docker.com
 - Quarkus: https://quarkus.io/
-- Openshifts: https://docs.openshift.com/
+- Auth0: https://auth0.com/
 
 ## :bulb: Use Case
 
