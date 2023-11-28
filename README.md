@@ -32,8 +32,8 @@ Slash currently supports the following major e-commerce websites:
 ![ezgif-1-d37cdde22f](https://github.com/michaeldacanay/SlashV2/assets/18317412/f9badf97-973a-4dcb-971f-194b1cac4148)
 
 Table of Contents:
-1. [Improvements](#Improvements-over-the-Previous-project)
-2. [Getting started](#Getting-Started)
+1. [Improvements](#rocket-improvements-over-the-previous-project)
+2. [Getting started](#-getting-started)
   - [Video](#Checkout-our-video)
   - [Installation](#Installation)
   - [Alternatively Running with Docker](#Alternatively-Running-with-Docker)
