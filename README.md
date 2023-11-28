@@ -192,19 +192,19 @@ These commands above will run and build 4 containers locally.
 ## Some handy links:
 
 <br>
-Here are some handy links to access different aspects of the application:
+Here are some handy links to access different aspects of the application (requires application backend to be running):
 
-[Swagger UI for Backend](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/swagger-ui/): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot
+[Swagger UI for Backend](http://localhost:8080/q/swagger-ui/): Explore the API using the Swagger UI, where you can experiment and interact with the backend. Below is a snapshot
 
 <p align="center"><img width="500" src="./assets/se_ss1.png"></p>
 
-[OpenAPI Specification](http://slash-backend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/q/openapi): Access the OpenAPI specification for a detailed description of the API endpoints.
+[OpenAPI Specification](http://localhost:8080/q/openapi): Access the OpenAPI specification for a detailed description of the API endpoints.
 
-[Slash Web Application](http://slash-frontend-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Visit the Slash web application by clicking on this link. Below is a snapshot
+[Slash Web Application](http://localhost:3000): Visit the Slash web application by clicking on this link. Below is a snapshot
 
 <p align="center"><img width="500" src="./assets/se_ss2.png"></p>
 
-[Scraper Exposed URL](http://slash-scraper-ifjolla-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/): Access the scraper's exposed URL.
+[Scraper Exposed URL](http://localhost:3000): Access the scraper's exposed URL.
 
 <p align="center"><img width="500" src="./assets/se_ss3.png"></p>
 
